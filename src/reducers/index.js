@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
-import testReducers from './testReducers';
+import tracksReducers from './tracksReducer';
+import authReducers from './authReducers';
 
 export default combineReducers({
-    test: testReducers
+    tracks: tracksReducers,
+    auth: authReducers
 })

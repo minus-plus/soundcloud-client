@@ -5,25 +5,32 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-
+import {Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-router';
 import reducers from './reducers';
-const middleware = applyMiddleware(logger, thunk);
+import App from './components/App';
+import Callback from './components/Callback';
+// AUTH OF SOUNDCLOUD
+import { CLIENT_ID, REDIRECT_URI } from './constants/auth';
+SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
+
+const middleware = applyMiddleware(thunk, logger);
 const store = createStore(reducers, middleware);
 
-import Stream from './components/Stream';
+import Stream from './containers/StreamContainer';
 
-const tracks = [
-    {
-        title: 'Some track'
-    },
-    {
-        title: 'Some other track'
-    }
-];
+const Routes = (
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/" component={App}>
+                <IndexRoute component={Stream} />
+                <Route path="callback" component={Callback} />
+            </Route>
+        </Router>
+    </Provider>
+);
+
 
 render(
-    <Provider store={store}>
-        <Stream tracks={tracks} />
-    </Provider>,
+    Routes,
     document.getElementById('app')
 );

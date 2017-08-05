@@ -9,6 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, 'public')
     },
     watch: true,
+    devtool: 'cheap-module-eval-source-map',
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {

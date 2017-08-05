@@ -1,11 +1,13 @@
 import Stream from './Stream';
+import {getTracks} from '../actions/trackActions';
 
 import {renderComponent, expect} from '../../test/TestUtils';
 
 describe("#Stream", () => {
     let component;
     const props = {
-        tracks: [{title: "title 1"}, {title: "title 2"}]
+        tracks: [{title: "title 1"}, {title: "title 2"}],
+        getTracks: getTracks
     };
     beforeEach(() => {
         component = renderComponent(Stream, props);

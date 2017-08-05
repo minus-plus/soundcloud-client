@@ -16,10 +16,10 @@ app.use(cookieParser());
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function(req, res) {
+app.get('*', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 })
 
-app.listen(3000, function() {
-    console.log('web-server running on localhost:3000');
+app.listen(8080, function() {
+    console.log('web-server running on localhost:8080');
 });
