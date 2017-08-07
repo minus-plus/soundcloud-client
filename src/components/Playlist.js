@@ -19,6 +19,7 @@ class Playlist extends Component {
                                 {track.title}
                                 <button type="button" onClick={() => this.props.playTracks(track)}>Play</button>
                             </div>
+
                         )
                     })
                 }

@@ -1,9 +1,10 @@
 import {getTracks} from './trackActions';
 import {auth} from './authActions';
-import {playTracks} from './playerActions';
+import {playTracks, setDuration} from './playerActions';
 
 export {
     auth,
     getTracks,
-    playTracks
+    playTracks,
+    setDuration,
 };
