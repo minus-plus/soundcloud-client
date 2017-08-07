@@ -28,10 +28,12 @@ function getTracks(session, dispatch) {
     axios({
         method: 'get',
         url: `//api.soundcloud.com/me/activities?limit=20&offset=0&oauth_token=${session.oauth_token}`
-    }).then((response) => {
+    })
+        .then((response) => {
+        const tracks = response.data.collection.map((track => track.origin || track));
         dispatch({
             type: 'GET_TRACKS',
-            payload: response.data.collection
+            payload: tracks
         })
     })
 }

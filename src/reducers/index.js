@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
 import tracksReducers from './tracksReducer';
-import authReducers from './authReducers';
+import authReducer from './authReducer';
+import playerReducer from './playerReducer';
 
 export default combineReducers({
     tracks: tracksReducers,
-    auth: authReducers
+    auth: authReducer,
+    player: playerReducer
 })

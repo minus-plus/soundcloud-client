@@ -1,7 +1,7 @@
 ## SoundCloud client 
 SoundCloud client implemented with React.js and Redux
 
-#### How to use
+### How to use
 ```
 npm install
 
@@ -11,5 +11,6 @@ click login button (make sure you have a SoundCloud accout), input your account 
 
 ```
 
+* * * 
 ### Todo
 implement player footer bar
