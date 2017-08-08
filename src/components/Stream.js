@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import '../../style/nav-bar.css';
 import '../../style/player.css';
 import '../../style/playlist.css';
+import '../../style/player.scss';
 
 import NavbarMenu from '../containers/NavbarContainer';
 import Playlist from '../containers/PlaylistContainer';
@@ -27,9 +28,8 @@ class Stream extends Component {
                 <div className="body-container">
                     <Playlist />
                 </div>
-                <div className="foot-player">
-                    <Player />
-                </div>
+
+                <Player />
             </div>
 
         );

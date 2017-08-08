@@ -130,11 +130,11 @@ class Player extends Component {
         const playingTrack = playList[playingTrackIndex];
         return (
             <div className="player">
-                <audio id="audio" ref="audio" src={getStreamUrl(playList, playingTrackIndex)} controls />
+                <audio id="audio" ref="audio" src={getStreamUrl(playList, playingTrackIndex)}  />
                 <div className="container">
                     <div className="player-main">
                         <div className="player-section player-info">
-                            {playingTrack ? <div>Playing | {playingTrack.title}</div> : null}
+                            {playingTrack ? <div>Playing | {playingTrack.title.substring(0, 6)}</div> : null}
                         </div>
                         <div className="player-section">
                             <div className="player-section">
