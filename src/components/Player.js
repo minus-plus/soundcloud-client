@@ -24,8 +24,7 @@ class Player extends Component {
         this.handlePlayNext = this.handlePlayNext.bind(this);
 
         //BIND MEDIAN EVENT HANDLERs
-        this.handlePlay = this.handlePlay.bind(this);
-        this.handlePause = this.handlePause.bind(this);
+
         this.handleLoadedMetadata = this.handleLoadedMetadata.bind(this);
         this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
         this.handleLoadStart = this.handleLoadStart.bind(this);
@@ -34,28 +33,31 @@ class Player extends Component {
 
     componentDidMount() {
         // INITIALIZE PLAYLIST
-        // this.props.getPlayList();
+
         // REGISTER MEDIA EVENT HANDLERS
         const audioElement = ReactDOM.findDOMNode(this.refs.audio);
-        audioElement.addEventListener('play', this.handlePlay, false);
-        audioElement.addEventListener('pause', this.handlePause, false);
         audioElement.addEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.addEventListener('timeupdate', this.handleTimeUpdate, false);
         audioElement.addEventListener('loadStart', this.handleLoadStart, false);
     }
 
     componentDidUpdate(prevProps) {
-
-        if (prevProps.playingTrackIndex === this.props.playingTrackIndex) {
+        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        if (!audioElement) {
             return;
         }
-        ReactDOM.findDOMNode(this.refs.audio).play();
+        const {isPlaying} = this.props;
+        if (isPlaying) {
+            audioElement.play();
+        } else {
+            audioElement.pause()
+        }
     }
 
     componentWillUnmount() {
         const audioElement = ReactDOM.findDOMNode(this.refs.audio);
-        audioElement.removeEventListener('play', this.handlePlay, false);
-        audioElement.removeEventListener('pause', this.handlePause, false);
+        // audioElement.removeEventListener('play', this.handlePlay, false);
+        // audioElement.removeEventListener('pause', this.handlePause, false);
         audioElement.removeEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.removeEventListener('timeupdate', this.timeupdate, false);
         audioElement.removeEventListener('loadStart', this.handleLoadStart, false);
@@ -63,13 +65,7 @@ class Player extends Component {
 
 
     togglePlay() {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
-        const {isPlaying} = this.props;
-        if (!isPlaying) {
-            audioElement.play();
-        } else {
-            audioElement.pause();
-        }
+        this.props.toggleIsPlaying();
     }
 
     handlePlayPrev() {
@@ -101,15 +97,6 @@ class Player extends Component {
         // DISPATCH AN ACTION
         this.props.setDuration(Math.floor(audioElement.duration));
     }
-
-    handlePlay() {
-        this.props.toggleIsPlaying();
-    }
-
-    handlePause() {
-        this.props.toggleIsPlaying();
-    }
-
 
     handleEnded() {
         // PLAY NEXT

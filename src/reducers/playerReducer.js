@@ -25,7 +25,9 @@ export default function playerReducer(state = initialState, action) {
         case "PLAY_TRACKS":
             return {
                 ...state,
-                playingTrackIndex: action.payload,
+                playingTrackIndex: action.payload.track_index,
+                playingTrackId: action.payload.track_id,
+                isPlaying: true
             };
         case "SET_DURATION":
             return {

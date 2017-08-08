@@ -9,11 +9,17 @@ class Playlist extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(track_index){
-        // console.log("changing the isplaying state");
+    handleClick(track){
+        // toggleIsPlaying
+        // send track to player
         // this.setState({isPlaying:!this.state.isPlaying}, ()=>{console.log(this.state.isPlaying)});
         //
-        this.props.playTracks(track_index);
+        if(track.track_id != this.props.playingTrackId) {
+            this.props.playTracks(track);
+        } else {
+            this.props.toggleIsPlaying();
+        }
+
 
     }
 
@@ -22,6 +28,8 @@ class Playlist extends Component {
     }
 
     render() {
+        const {playingTrackId, isPlaying} = this.props;
+
         return(
             <div>
                 {
@@ -34,8 +42,8 @@ class Playlist extends Component {
 
                                         </div>
                                         <div className="toggle-play-button">
-                                            <i className={this.state.isPlaying === true ?"fa fa-pause" :"fa fa-play"}
-                                               onClick={() => this.handleClick(track_index)}> </i>
+                                            <i className={ isPlaying && playingTrackId=== track.id ?"fa fa-pause" :"fa fa-play"}
+                                               onClick={() => this.handleClick({track_index: track_index, track_id: track.id})}> </i>
                                         </div>
                                     </div>
 

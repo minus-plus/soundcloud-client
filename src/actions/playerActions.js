@@ -15,10 +15,10 @@ export function getPlayList() {
     }
 }
 
-export function playTracks(track_index) {
+export function playTracks(track) {
     return {
         type: 'PLAY_TRACKS',
-        payload: track_index
+        payload: track
     }
 }
 
