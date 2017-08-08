@@ -92,3 +92,24 @@ body{
     border-radius: 100%;
     float: left;
 }
+
+
+/* PLAYER */
+.player {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #e3e3e3;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    z-index: 999;
+}
+
+.player-section {
+    display: inline-block;
+    border: 1px solid red;
+    padding: 0 2em 0 2em;
+}

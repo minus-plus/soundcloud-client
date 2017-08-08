@@ -69,10 +69,15 @@ class Player extends Component {
     }
 
     handlePlayPrev() {
-        const {playingTrackIndex} = this.props;
+        const {
+            playingTrackIndex,
+            playList
+        } = this.props;
         if (playingTrackIndex > 0) {
             // SET playingTrackIndex -= 1
-            this.props.playTracks(playingTrackIndex - 1);
+            const track_index = playingTrackIndex - 1;
+            const track_id = playList[track_index].id;
+            this.props.playTracks({track_index, track_id});
         }
     }
 
@@ -82,8 +87,9 @@ class Player extends Component {
             playList
         } = this.props;
         if (playingTrackIndex < playList.length - 1) {
-            // SET playingTrackIndex -= 1
-            this.props.playTracks(playingTrackIndex + 1);
+            const track_index = playingTrackIndex + 1;
+            const track_id = playList[track_index].id;
+            this.props.playTracks({track_index, track_id});
         }
     }
 
@@ -131,25 +137,38 @@ class Player extends Component {
                             {playingTrack ? <div>Playing | {playingTrack.title}</div> : null}
                         </div>
                         <div className="player-section">
-                            <div>
-                                <button onClick={this.handlePlayPrev}> {"prev"} </button>
-                            </div>
-                            <div
-                                className="player-button"
-                                onClick={this.togglePlay}
-                            >
-                                <button>{isPlaying ? "Pause" : "Play"}</button>
-                            </div>
-                            <div>
-                                <button onClick={this.handlePlayNext}> {"next"} </button>
+                            <div className="player-section">
+                                <div
+                                    className="player-button"
+                                    onClick={this.handlePlayPrev}
+                                >
+                                    <i className="fa fa-backward" aria-hidden="true"></i>
+                                </div>
                             </div>
 
-                            <div>
-                                Duration {formatTime(duration)}
+                            <div className="player-section">
+                                <div
+                                    className="player-button"
+                                    onClick={this.togglePlay}
+                                >
+                                    <i className={isPlaying ? "fa fa-pause" : "fa fa-play"} aria-hidden="true"></i>
+                                </div>
                             </div>
-                            <div>
-                                CurrentTime {formatTime(currentTime)}
+
+                            <div className="player-section">
+                                <div
+                                    className="player-button"
+                                    onClick={this.handlePlayNext}
+                                >
+                                    <i className="fa fa-forward" aria-hidden="true"></i>
+                                </div>
                             </div>
+                            <div className="player-section">
+                                <div>
+                                    {formatTime(currentTime)} / {formatTime(duration)}
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>
