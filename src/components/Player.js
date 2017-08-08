@@ -56,13 +56,10 @@ class Player extends Component {
 
     componentWillUnmount() {
         const audioElement = ReactDOM.findDOMNode(this.refs.audio);
-        // audioElement.removeEventListener('play', this.handlePlay, false);
-        // audioElement.removeEventListener('pause', this.handlePause, false);
         audioElement.removeEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.removeEventListener('timeupdate', this.timeupdate, false);
         audioElement.removeEventListener('loadStart', this.handleLoadStart, false);
     }
-
 
     togglePlay() {
         this.props.toggleIsPlaying();

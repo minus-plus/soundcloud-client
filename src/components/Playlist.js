@@ -38,7 +38,7 @@ class Playlist extends Component {
                             <div className="col-1-5 clearfix" key={track_index}>
                                 <div className="song-card">
                                     <div className="song-card-container" >
-                                        <div className="song-card-image" style={{backgroundImage: 'url('+"https://i1.sndcdn.com/artworks-000041124475-2lu7vg-t300x300.jpg"+')'}}>
+                                        <div className="song-card-image" style={{backgroundImage: `url(${track.artwork_url})`}}>
 
                                         </div>
                                         <div className="toggle-play-button">
