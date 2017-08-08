@@ -9,11 +9,53 @@ class Navbar extends Component {
         const {user} = this.props;
         return(
             <div>
-                {
-                    user?
-                        <div>{user.username}</div> :
-                        <button onClick={this.props.onAuth} type="button">Login</button>
-                }
+                <div className="nav">
+                    <div className="container clearfix">
+                        <div className="nav-logo">
+                            <i className="icon ion-radio-waves"> </i>
+                        </div>
+                        <div className="nav-nav float-left">
+                            <div className="nav-nav-item">
+                                <a className="nav-nav-item-link active" href="/#/songs" title="">SoundRedux</a>
+                            </div>
+                            <div className="nav-nav-item">
+                                <a className="nav-nav-user-link " href="/#/me/stream" title="">
+                                    <span className="nav-nav-user-link-text">stream</span>
+                                </a>
+                            </div>
+                            <div className="nav-nav-item">
+                                <a className="nav-nav-user-link " href="/#/me/likes" title="">
+                                    <span className="nav-nav-user-link-text">likes</span></a>
+                            </div>
+                            <div className="nav-nav-item nav-playlists popover ">
+                                <div className="nav-nav-user-link ">
+                                    <span className="nav-nav-user-link-text">playlists</span>
+                                    <i className="icon ion-chevron-down"></i>
+                                    <i className="icon ion-chevron-up"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="nav-nav float-right">
+                            <div className="nav-nav-item">
+                                <div className="nav-search">
+                                    <i className="icon ion-search">
+                                    
+                                    </i>
+                                    <input type="text" className="nav-search-input" placeholder="SEARCH" />
+                                </div>
+                            </div>
+                            <div className="nav-nav-item">
+                                <div className="nav-user popover ">
+                                    <div className="nav-user-link">
+                                        <img alt="user avatar" className="nav-authed-image" src="https://a1.sndcdn.com/images/default_avatar_large.png" />
+                                            <i className="icon ion-chevron-down"> </i>
+                                            <i className="icon ion-chevron-up"> </i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         )
@@ -22,3 +64,5 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+{/*<button onClick={this.props.onAuth} type="button">Login</button>*/}
