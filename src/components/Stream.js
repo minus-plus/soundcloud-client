@@ -18,12 +18,15 @@ class Stream extends Component {
 
     render() {
         return (
-            <div>
+            <div className="parent-container">
                 <NavbarMenu />
                 <br/>
-                <Playlist />
-                <Player />
-
+                <div className="body-container">
+                    <Playlist />
+                </div>
+                <div className="foot-player">
+                    <Player />
+                </div>
             </div>
 
         );
@@ -32,3 +35,4 @@ class Stream extends Component {
 
 
 export default Stream;
+
