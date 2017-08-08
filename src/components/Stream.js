@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import '../../style/nav-bar.css';
+import '../../style/player.css';
+import '../../style/playlist.css';
+
 import NavbarMenu from '../containers/NavbarContainer';
 import Playlist from '../containers/PlaylistContainer';
 import Player from '../containers/PlayerContainer';
