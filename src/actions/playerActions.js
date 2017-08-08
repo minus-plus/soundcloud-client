@@ -5,10 +5,20 @@ export function toggleIsPlaying () {
     }
 }
 
-export function playTracks(track) {
+export function getPlayList() {
+    return function(dispatch, getState) {
+        const tracks = getState().tracks;
+        dispatch({
+            type: 'GET_PLAYLIST',
+            payload: tracks
+        })
+    }
+}
+
+export function playTracks(track_index) {
     return {
         type: 'PLAY_TRACKS',
-        payload: track
+        payload: track_index
     }
 }
 
@@ -25,3 +35,4 @@ export function setCurrentTime(currentTime) {
         payload: currentTime
     }
 }
+

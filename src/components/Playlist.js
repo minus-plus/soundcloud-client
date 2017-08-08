@@ -13,13 +13,12 @@ class Playlist extends Component {
         return(
             <div>
                 {
-                    this.props.tracks.map((track, key) => {
+                    this.props.tracks.map((track, track_index) => {
                         return (
-                            <div className="track" key={key}>
+                            <div className="track" key={track_index}>
                                 {track.title}
-                                <button type="button" onClick={() => this.props.playTracks(track)}>Play</button>
+                                <button type="button" onClick={() => this.props.playTracks(track_index)}>Play</button>
                             </div>
-
                         )
                     })
                 }

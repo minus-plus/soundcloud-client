@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 
 import {CLIENT_ID} from '../constants/auth';
 
-function getStreamUrl(track) {
-    return `https://api.soundcloud.com/tracks/${track.id}/stream?client_id=${CLIENT_ID}`;
+function getStreamUrl(playList, trackIndex) {
+    if (trackIndex === undefined || !playList || trackIndex < 0 || trackIndex >= playList.length) {
+        return "";
+    }
+    const trackId = playList[trackIndex].id;
+    return `https://api.soundcloud.com/tracks/${trackId}/stream?client_id=${CLIENT_ID}`;
 }
 
 function formatTime(time) {
@@ -14,39 +18,47 @@ function formatTime(time) {
 class Player extends Component {
     constructor(props) {
         super(props);
-        // bind eventHandlers
+        // BIND EVENTHANDLERs
         this.togglePlay = this.togglePlay.bind(this);
+        this.handlePlayPrev = this.handlePlayPrev.bind(this);
+        this.handlePlayNext = this.handlePlayNext.bind(this);
 
         //BIND MEDIAN EVENT HANDLERs
         this.handlePlay = this.handlePlay.bind(this);
         this.handlePause = this.handlePause.bind(this);
         this.handleLoadedMetadata = this.handleLoadedMetadata.bind(this);
         this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
-
+        this.handleLoadStart = this.handleLoadStart.bind(this);
     }
 
 
     componentDidMount() {
+        // INITIALIZE PLAYLIST
+        // this.props.getPlayList();
         // REGISTER MEDIA EVENT HANDLERS
         const audioElement = ReactDOM.findDOMNode(this.refs.audio);
         audioElement.addEventListener('play', this.handlePlay, false);
         audioElement.addEventListener('pause', this.handlePause, false);
         audioElement.addEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.addEventListener('timeupdate', this.handleTimeUpdate, false);
+        audioElement.addEventListener('loadStart', this.handleLoadStart, false);
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.playingTrack && prevProps.playingTrack.id === this.props.playingTrack.id) {
+
+        if (prevProps.playingTrackIndex === this.props.playingTrackIndex) {
             return;
         }
         ReactDOM.findDOMNode(this.refs.audio).play();
     }
 
     componentWillUnmount() {
+        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
         audioElement.removeEventListener('play', this.handlePlay, false);
         audioElement.removeEventListener('pause', this.handlePause, false);
         audioElement.removeEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.removeEventListener('timeupdate', this.timeupdate, false);
+        audioElement.removeEventListener('loadStart', this.handleLoadStart, false);
     }
 
 
@@ -60,7 +72,30 @@ class Player extends Component {
         }
     }
 
+    handlePlayPrev() {
+        const {playingTrackIndex} = this.props;
+        if (playingTrackIndex > 0) {
+            // SET playingTrackIndex -= 1
+            this.props.playTracks(playingTrackIndex - 1);
+        }
+    }
+
+    handlePlayNext() {
+        const {
+            playingTrackIndex,
+            playList
+        } = this.props;
+        if (playingTrackIndex < playList.length - 1) {
+            // SET playingTrackIndex -= 1
+            this.props.playTracks(playingTrackIndex + 1);
+        }
+    }
+
     // MEDIA EVENT HANDLERS
+    handleLoadStart() {
+        this.props.setDuration(0);
+        this.props.setCurrentTime(0);
+    }
     handleLoadedMetadata() {
         const audioElement = ReactDOM.findDOMNode(this.refs.audio);
         // DISPATCH AN ACTION
@@ -77,7 +112,8 @@ class Player extends Component {
 
 
     handleEnded() {
-
+        // PLAY NEXT
+        this.handlePlayNext();
     }
 
     handleTimeUpdate() {
@@ -92,20 +128,25 @@ class Player extends Component {
 
     render() {
         const {
-            playingTrack,
+            playingTrackIndex,
+            playList,
             isPlaying,
             duration,
             currentTime
         } = this.props;
+        const playingTrack = playList[playingTrackIndex];
         return (
             <div className="player">
-                <audio id="audio" ref="audio" src={getStreamUrl(playingTrack)} controls />
+                <audio id="audio" ref="audio" src={getStreamUrl(playList, playingTrackIndex)} controls />
                 <div className="container">
                     <div className="player-main">
                         <div className="player-section player-info">
-                            {playingTrack.id ? <div>Playing | {playingTrack.title}</div> : null}
+                            {playingTrack ? <div>Playing | {playingTrack.title}</div> : null}
                         </div>
                         <div className="player-section">
+                            <div>
+                                <button onClick={this.handlePlayPrev}> {"prev"} </button>
+                            </div>
                             <div
                                 className="player-button"
                                 onClick={this.togglePlay}
@@ -113,17 +154,16 @@ class Player extends Component {
                                 <button>{isPlaying ? "Pause" : "Play"}</button>
                             </div>
                             <div>
+                                <button onClick={this.handlePlayNext}> {"next"} </button>
+                            </div>
+
+                            <div>
                                 Duration {formatTime(duration)}
                             </div>
                             <div>
                                 CurrentTime {formatTime(currentTime)}
                             </div>
-                            <div>
-                                <button> {"<<<<"} </button>
-                            </div>
-                            <div>
-                                <button> {">>>>"} </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>

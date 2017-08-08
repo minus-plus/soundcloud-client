@@ -1,7 +1,9 @@
 
 const initialState = {
+    playList: [],
     isPlaying: false,
     playingTrack: {},
+    playingTrackIndex: -1,
     duration: 0,
     currentTime: 0
 };
@@ -10,6 +12,11 @@ const initialState = {
 export default function playerReducer(state = initialState, action) {
 
     switch (action.type) {
+        case "GET_PLAYLIST":
+            return {
+                ...state,
+                playList: action.payload
+            }
         case "TOGGLE_IS_PLAYING":
             return {
                 ...state,
@@ -18,7 +25,7 @@ export default function playerReducer(state = initialState, action) {
         case "PLAY_TRACKS":
             return {
                 ...state,
-                playingTrack: action.payload
+                playingTrackIndex: action.payload,
             };
         case "SET_DURATION":
             return {
