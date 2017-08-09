@@ -116,6 +116,28 @@ class Player extends Component {
         }
     }
 
+
+    renderDurationBar() {
+        const { currentTime, duration } = this.props;
+
+        if (duration !== 0) {
+            const width = currentTime / duration * 100;
+            return (
+                <div
+                    className="player-seek-duration-bar"
+                    style={{  width: `${width}%` , border: "1px solid red"}}
+                >
+                    <div
+                        className="player-seek-handle"
+                    >
+                    </div>
+                </div>
+            );
+        }
+
+        return null;
+    }
+
     render() {
         const {
             playingTrackIndex,
@@ -134,40 +156,56 @@ class Player extends Component {
                             {playingTrack ? <div>Playing | {playingTrack.title.substring(0, 6)}</div> : null}
                         </div>
                         <div className="player-section">
-                            <div className="player-section">
-                                <div
-                                    className="player-button"
-                                    onClick={this.handlePlayPrev}
-                                >
-                                    <i className="fa fa-backward" aria-hidden="true"></i>
+                            <div
+                                className="player-button"
+                                onClick={this.handlePlayPrev}
+                            >
+                                <i className="fa fa-backward" aria-hidden="true"></i>
+                            </div>
+
+                            <div
+                                className="player-button"
+                                onClick={this.togglePlay}
+                            >
+                                <i className={isPlaying ? "fa fa-pause" : "fa fa-play"} aria-hidden="true"></i>
+                            </div>
+
+                            <div
+                                className="player-button"
+                                onClick={this.handlePlayNext}
+                            >
+                                <i className="fa fa-forward" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+
+                        <div className="player-section player-seek">
+                            <div className="player-seek-bar-wrap" onClick={this.seek}>
+                                <div className="player-seek-bar" ref="seekBar">
+                                    {this.renderDurationBar()}
                                 </div>
                             </div>
 
-                            <div className="player-section">
-                                <div
-                                    className="player-button"
-                                    onClick={this.togglePlay}
-                                >
-                                    <i className={isPlaying ? "fa fa-pause" : "fa fa-play"} aria-hidden="true"></i>
-                                </div>
-                            </div>
-
-                            <div className="player-section">
-                                <div
-                                    className="player-button"
-                                    onClick={this.handlePlayNext}
-                                >
-                                    <i className="fa fa-forward" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div className="player-section">
+                            <div className="player-time">
                                 <div>
                                     {formatTime(currentTime)} / {formatTime(duration)}
                                 </div>
                             </div>
-
-
                         </div>
+
+                        <div className="player-section player-seek">
+                            <div
+                                className="player-button"
+                            >
+                                <i className="fa fa-repeat" />
+                            </div>
+                            <div
+                                className="player-button"
+                            >
+                                <i className="fa fa-random" />
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
