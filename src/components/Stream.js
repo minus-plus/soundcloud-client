@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import '../../style/nav-bar.css';
 import '../../style/player.css';
-import '../../style/playlist.css';
+import '../../style/trackslist.css';
 import '../../style/player.scss';
 
 import NavbarMenu from '../containers/NavbarContainer';
-import Playlist from '../containers/PlaylistContainer';
+import TracksList from '../containers/TracksListContainer';
 import Player from '../containers/PlayerContainer';
 
 class Stream extends Component {
@@ -26,7 +26,7 @@ class Stream extends Component {
                 <NavbarMenu />
                 <br/>
                 <div className="body-container">
-                    <Playlist />
+                    <TracksList />
                 </div>
 
                 <Player />

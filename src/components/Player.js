@@ -29,7 +29,8 @@ class Player extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSeeking: false
+            isSeeking: false,
+            playNext: 'NORMAL'
         };
         // BIND EVENT-HANDLERs
         this.togglePlay = this.togglePlay.bind(this);

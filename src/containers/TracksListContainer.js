@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import Playlist from '../components/Playlist';
+import TracksList from '../components/TracksList';
 import {getTracks, playTracks, toggleIsPlaying} from '../actions';
 
 function mapStateToProps(state) {
@@ -21,4 +21,4 @@ function mapDispatchToProps(dispatch) {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Playlist);
+export default connect(mapStateToProps, mapDispatchToProps)(TracksList);
