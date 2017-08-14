@@ -126,6 +126,9 @@ class Player extends Component {
     }
 
     handleTimeUpdate() {
+        if (this.state.isSeeking) {
+            return;
+        }
         const audioElement = ReactDOM.findDOMNode(this.refs.audio);
         const currentTime = Math.floor(audioElement.currentTime);
         if (currentTime === this.props.currentTime) {
