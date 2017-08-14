@@ -153,7 +153,7 @@ class Player extends Component {
                 <div className="container">
                     <div className="player-main">
                         <div className="player-section player-info">
-                            {playingTrack ? <div>Playing | {playingTrack.title.substring(0, 6)}</div> : null}
+                            {playingTrack ? <div>Playing | {playingTrack.title}</div> : null}
                         </div>
                         <div className="player-section">
                             <div
@@ -203,6 +203,11 @@ class Player extends Component {
                                 className="player-button"
                             >
                                 <i className="fa fa-random" />
+                            </div>
+                            <div
+                                className="player-button"
+                            >
+                                <i className="fa fa-list" />
                             </div>
                         </div>
 

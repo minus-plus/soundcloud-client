@@ -34,12 +34,13 @@ class Playlist extends Component {
             <div>
                 {
                     this.props.tracks.map((track, track_index) => {
+                        const username = track.user ? track.user.username : "";
+                        const title = track.title || "";
                         return (
                             <div className="col-1-5 clearfix" key={track_index}>
                                 <div className="song-card">
                                     <div className="song-card-container" >
                                         <div className="song-card-image" style={{backgroundImage: `url(${track.artwork_url})`}}>
-
                                         </div>
                                         <div className="toggle-play-button">
                                             <i className={ isPlaying && playingTrackId=== track.id ?"fa fa-pause" :"fa fa-play"}
@@ -50,9 +51,9 @@ class Playlist extends Component {
                                     <div className="song-card-user clearfix">
                                         < img alt="user avatar" className="song-card-user-image" src="https://i1.sndcdn.com/avatars-000217622831-lwr9mn-large.jpg" />
                                         <div className="song-card-details">
-                                            <a className="song-card-title" title="Lana Del Rey - Summertime Sadness (Cedric Gervais Remix)">{track.title.substring(0, 6)}</ a>
+                                            <a className="song-card-title" title="Lana Del Rey - Summertime Sadness (Cedric Gervais Remix)">{title.substring(0, 6)}</ a>
                                             <br/>
-                                            <a className="song-card-user-username" title="House">{track.user.username.substring(0, 6)}</ a>
+                                            <a className="song-card-user-username" title="House">{username.substring(0, 6)}</ a>
                                             <div className="song-heart song-card-heart popover ">
                                                 <i className="icon ion-ios-heart"> </i>
                                             </div>
