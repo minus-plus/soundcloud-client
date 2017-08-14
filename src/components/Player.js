@@ -15,10 +15,23 @@ function formatTime(time) {
     return Math.floor(time / 60) + ':' + ('0' + (time % 60)).slice(-2);
 }
 
+function offsetLeft(element) {
+    let curr = element;
+    let offset = 0;
+    while (curr) {
+        offset += curr.offsetLeft;
+        curr = curr.offsetParent;
+    }
+    return offset;
+
+}
 class Player extends Component {
     constructor(props) {
         super(props);
-        // BIND EVENTHANDLERs
+        this.state = {
+            isSeeking: false
+        };
+        // BIND EVENT-HANDLERs
         this.togglePlay = this.togglePlay.bind(this);
         this.handlePlayPrev = this.handlePlayPrev.bind(this);
         this.handlePlayNext = this.handlePlayNext.bind(this);
@@ -28,6 +41,12 @@ class Player extends Component {
         this.handleLoadedMetadata = this.handleLoadedMetadata.bind(this);
         this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
         this.handleLoadStart = this.handleLoadStart.bind(this);
+
+        this.handleMouseClick = this.handleMouseClick.bind(this);
+        this.handleSeekMouseDown = this.handleSeekMouseDown.bind(this);
+        this.handleSeekMouseMove = this.handleSeekMouseMove.bind(this);
+        this.handleSeekMouseUp = this.handleSeekMouseUp.bind(this);
+        this.handleSeekWithClick = this.handleSeekWithClick.bind(this);
     }
 
 
@@ -116,7 +135,7 @@ class Player extends Component {
         }
     }
 
-
+    // DURATION BAR
     renderDurationBar() {
         const { currentTime, duration } = this.props;
 
@@ -129,6 +148,8 @@ class Player extends Component {
                 >
                     <div
                         className="player-seek-handle"
+                        onClick={this.handleMouseClick}
+                        onMouseDown={this.handleSeekMouseDown}
                     >
                     </div>
                 </div>
@@ -137,6 +158,65 @@ class Player extends Component {
 
         return null;
     }
+
+    handleMouseClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    bindSeekMouseEvents() {
+        document.addEventListener('mousemove', this.handleSeekMouseMove);
+        document.addEventListener('mouseup', this.handleSeekMouseUp);
+    }
+
+    unbindSeekMouseEvents() {
+        document.removeEventListener('mousemove', this.handleSeekMouseMove);
+        document.removeEventListener('mouseup', this.handleSeekMouseUp);
+    }
+
+    handleSeekMouseDown() {
+        console.log('mouse down');
+        this.bindSeekMouseEvents();
+        this.setState({isSeeking: true});
+    }
+
+    handleSeekMouseMove(e) {
+        console.log('moving');
+        const seekBar = ReactDOM.findDOMNode(this.refs.seekBar);
+        let offset = e.clientX - offsetLeft(seekBar);
+        offset = Math.max(offset, 0);
+        let percent = offset / seekBar.offsetWidth;
+        percent = Math.min(1, percent);
+        this.props.setCurrentTime(Math.floor(percent * this.props.duration));
+    }
+
+    handleSeekMouseUp() {
+        console.log('mouse up');
+        if (!this.state.isSeeking) {
+            return;
+        }
+        this.unbindSeekMouseEvents();
+        const {currentTime} = this.props;
+        this.setState({isSeeking: false}, function() {
+            const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+            audioElement.currentTime = currentTime;
+        })
+    }
+
+    handleSeekWithClick(e) {
+        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const percent = (e.clientX - offsetLeft(e.currentTarget)) / e.currentTarget.offsetWidth;
+        const currentTime = Math.floor(percent * this.props.duration);
+        console.log(percent, currentTime);
+        this.props.setCurrentTime(currentTime);
+        audioElement.currentTime = currentTime;
+    }
+
+
+    // END OF DURATION BAR
+
+
+
 
     render() {
         const {
@@ -153,7 +233,7 @@ class Player extends Component {
                 <div className="container">
                     <div className="player-main">
                         <div className="player-section player-info">
-                            {playingTrack ? <div>Playing | {playingTrack.title}</div> : null}
+                            {playingTrack ? <div>{playingTrack.title.substring(0, 6)}</div> : null}
                         </div>
                         <div className="player-section">
                             <div
@@ -180,7 +260,7 @@ class Player extends Component {
 
 
                         <div className="player-section player-seek">
-                            <div className="player-seek-bar-wrap" onClick={this.seek}>
+                            <div className="player-seek-bar-wrap" onClick={this.handleSeekWithClick}>
                                 <div className="player-seek-bar" ref="seekBar">
                                     {this.renderDurationBar()}
                                 </div>
