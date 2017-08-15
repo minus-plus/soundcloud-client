@@ -39,12 +39,14 @@ class TracksList extends Component {
                         return (
                             <div className="col-1-5 clearfix" key={track_index}>
                                 <div className="song-card">
-                                    <div className="song-card-container" >
+                                    <div className="song-card-container"
+                                         onClick={() => this.handleClick({track_index: track_index, track_id: track.id})}
+                                    >
                                         <div className="song-card-image" style={{backgroundImage: `url(${track.artwork_url})`}}>
                                         </div>
                                         <div className="toggle-play-button">
                                             <i className={ isPlaying && playingTrackId=== track.id ?"fa fa-pause" :"fa fa-play"}
-                                               onClick={() => this.handleClick({track_index: track_index, track_id: track.id})}> </i>
+                                               > </i>
                                         </div>
                                     </div>
 
