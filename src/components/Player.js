@@ -29,7 +29,8 @@ class Player extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSeeking: false
+            isSeeking: false,
+            playMode: 'NORMAL'
         };
         // BIND EVENT-HANDLERs
         this.togglePlay = this.togglePlay.bind(this);
@@ -47,6 +48,9 @@ class Player extends Component {
         this.handleSeekMouseMove = this.handleSeekMouseMove.bind(this);
         this.handleSeekMouseUp = this.handleSeekMouseUp.bind(this);
         this.handleSeekWithClick = this.handleSeekWithClick.bind(this);
+
+        this.handleToggleRepeat = this.handleToggleRepeat.bind(this);
+        this.handleToggleShuffle = this.handleToggleShuffle.bind(this);
     }
 
 
@@ -54,14 +58,15 @@ class Player extends Component {
         // INITIALIZE PLAYLIST
 
         // REGISTER MEDIA EVENT HANDLERS
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = this.audioElement;
         audioElement.addEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.addEventListener('timeupdate', this.handleTimeUpdate, false);
         audioElement.addEventListener('loadStart', this.handleLoadStart, false);
+        audioElement.addEventListener('ended', this.handlePlayNext, false);
     }
 
     componentDidUpdate(prevProps) {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = this.audioElement;
         if (!audioElement) {
             return;
         }
@@ -74,10 +79,12 @@ class Player extends Component {
     }
 
     componentWillUnmount() {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = this.audioElement;
         audioElement.removeEventListener('loadedmetadata', this.handleLoadedMetadata, false);
         audioElement.removeEventListener('timeupdate', this.timeupdate, false);
         audioElement.removeEventListener('loadStart', this.handleLoadStart, false);
+        audioElement.removeEventListener('ended', this.handlePlayNext, false);
+
     }
 
     togglePlay() {
@@ -89,12 +96,17 @@ class Player extends Component {
             playingTrackIndex,
             playList
         } = this.props;
-        if (playingTrackIndex > 0) {
-            // SET playingTrackIndex -= 1
-            const track_index = playingTrackIndex - 1;
-            const track_id = playList[track_index].id;
-            this.props.playTracks({track_index, track_id});
+
+        let track_index;
+        if (this.state.playMode === 'NORMAL') {
+            track_index = (playingTrackIndex - 1 + playList.length) % playList.length;
+        } else if (this.state.playMode === 'REPEAT') {
+            track_index = playingTrackIndex;
+        } else {
+            track_index = (Math.random() * playList.length) ^ 0;
         }
+        const track_id = playList[track_index].id;
+        this.props.playTracks({track_index, track_id});
     }
 
     handlePlayNext() {
@@ -102,11 +114,17 @@ class Player extends Component {
             playingTrackIndex,
             playList
         } = this.props;
-        if (playingTrackIndex < playList.length - 1) {
-            const track_index = playingTrackIndex + 1;
-            const track_id = playList[track_index].id;
-            this.props.playTracks({track_index, track_id});
+
+        let track_index;
+        if (this.state.playMode === 'NORMAL') {
+            track_index = (playingTrackIndex + 1) % playList.length;
+        } else if (this.state.playMode === 'REPEAT') {
+            track_index = playingTrackIndex;
+        } else {
+            track_index = (Math.random() * playList.length) ^ 0;
         }
+        const track_id = playList[track_index].id;
+        this.props.playTracks({track_index, track_id});
     }
 
     // MEDIA EVENT HANDLERS
@@ -115,7 +133,7 @@ class Player extends Component {
         this.props.setCurrentTime(0);
     }
     handleLoadedMetadata() {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = this.audioElement;
         // DISPATCH AN ACTION
         this.props.setDuration(Math.floor(audioElement.duration));
     }
@@ -129,7 +147,7 @@ class Player extends Component {
         if (this.state.isSeeking) {
             return;
         }
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = this.audioElement;
         const currentTime = Math.floor(audioElement.currentTime);
         if (currentTime === this.props.currentTime) {
             return;
@@ -185,7 +203,7 @@ class Player extends Component {
 
     handleSeekMouseMove(e) {
         console.log('moving');
-        const seekBar = ReactDOM.findDOMNode(this.refs.seekBar);
+        const seekBar = this.seekBar;
         let offset = e.clientX - offsetLeft(seekBar);
         offset = Math.max(offset, 0);
         let percent = offset / seekBar.offsetWidth;
@@ -201,13 +219,13 @@ class Player extends Component {
         this.unbindSeekMouseEvents();
         const {currentTime} = this.props;
         this.setState({isSeeking: false}, function() {
-            const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+            const audioElement = this.audioElement;
             audioElement.currentTime = currentTime;
         })
     }
 
     handleSeekWithClick(e) {
-        const audioElement = ReactDOM.findDOMNode(this.refs.audio);
+        const audioElement = this.audioElement;
         const percent = (e.clientX - offsetLeft(e.currentTarget)) / e.currentTarget.offsetWidth;
         const currentTime = Math.floor(percent * this.props.duration);
         console.log(percent, currentTime);
@@ -215,9 +233,35 @@ class Player extends Component {
         audioElement.currentTime = currentTime;
     }
 
-
     // END OF DURATION BAR
 
+    // <<<--- TOGGLE REPEATE --->>>
+
+    handleToggleRepeat() {
+        if (this.state.playMode !== 'REPEAT') {
+            this.setState({
+                playMode: 'REPEAT'
+            })
+        } else {
+            this.setState({
+                playMode: 'NORMAL'
+            })
+        }
+    }
+
+    handleToggleShuffle() {
+        if (this.state.playMode !== 'SHUFFLE') {
+            this.setState({
+                playMode: 'SHUFFLE'
+            })
+        } else {
+            this.setState({
+                playMode: 'NORMAL'
+            })
+        }
+    }
+
+    // <<<--- TOGGLE REPEATE END--->>>
 
 
 
@@ -232,11 +276,11 @@ class Player extends Component {
         const playingTrack = playList[playingTrackIndex];
         return (
             <div className="player">
-                <audio id="audio" ref="audio" src={getStreamUrl(playList, playingTrackIndex)}  />
+                <audio id="audio" ref={(audio) => this.audioElement = audio} src={getStreamUrl(playList, playingTrackIndex)}  />
                 <div className="container">
                     <div className="player-main">
                         <div className="player-section player-info">
-                            {playingTrack ? <div>{playingTrack.title.substring(0, 6)}</div> : null}
+                            {playingTrack ? <div>{playingTrack.title}</div> : null}
                         </div>
                         <div className="player-section">
                             <div
@@ -264,7 +308,7 @@ class Player extends Component {
 
                         <div className="player-section player-seek">
                             <div className="player-seek-bar-wrap" onClick={this.handleSeekWithClick}>
-                                <div className="player-seek-bar" ref="seekBar">
+                                <div className="player-seek-bar" ref={(seekBar) => this.seekBar = seekBar}>
                                     {this.renderDurationBar()}
                                 </div>
                             </div>
@@ -278,12 +322,14 @@ class Player extends Component {
 
                         <div className="player-section player-seek">
                             <div
-                                className="player-button"
+                                className={`player-button ${(this.state.playMode === 'REPEAT' ? ' active' : '')}`}
+                                onClick={this.handleToggleRepeat}
                             >
                                 <i className="fa fa-repeat" />
                             </div>
                             <div
-                                className="player-button"
+                                className={`player-button ${(this.state.playMode === 'SHUFFLE' ? ' active' : '')}`}
+                                onClick={this.handleToggleShuffle}
                             >
                                 <i className="fa fa-random" />
                             </div>
