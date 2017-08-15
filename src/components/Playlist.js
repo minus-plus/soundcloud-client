@@ -29,7 +29,6 @@ class Playlist extends Component {
 
     render() {
         const {playingTrackId, isPlaying} = this.props;
-
         return(
             <div>
                 {

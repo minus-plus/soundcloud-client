@@ -1,16 +1,11 @@
 import React, {Component} from 'react';
+import NavSearch from '../containers/NavSearchContainer';
 
 class Navbar extends Component {
     constructor(props) {
         super(props);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
     
-    handleKeyPress(e){
-        if(e.key === 'Enter') {
-            console.log(e.target.value);
-        }
-    }
 
     render() {
         const {user} = this.props;
@@ -27,13 +22,13 @@ class Navbar extends Component {
                             <div className="nav-nav-item">
                                 <div className="nav-search">
                                     <i className="fa fa-search" aria-hidden="true"> </i>
-                                    <input type="text" className="nav-search-input" placeholder="SEARCH" onKeyPress={this.handleKeyPress} />
+                                    <NavSearch/>
                                 </div>
                                 
                             </div>
                             <div className="nav-nav-item">
                                 <div className="nav-logo">
-                                    <i className="fa fa-user fa-2x sign-in" onClick={this.props.onAuth} aria-hidden="true"></i>
+                                    <i className="fa fa-user fa-2x sign-in" onClick={this.props.onAuth} aria-hidden="true"> </i>
                                 </div>
                             </div>
                         </div>
