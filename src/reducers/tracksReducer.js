@@ -1,12 +1,17 @@
 const initialState = {
-    tracks:[]
-}
+    tracksList:[]
+};
+/*
+* tracksReducers deal with the actions that fetch tracks from server and set tracks to the tracks list, which
+* will be rendered to the map page.  pass tracks to TrackList component
+*
+* **/
 const tracksReducers = function(state = initialState, action) {
     switch(action.type) {
-        case "GET_TRACKS":
+        case "SET_TRACKS_LIST":
             return {
                 ...state,
-                tracks: [...action.payload]
+                tracksList: [...action.payload]
             };
             break;
 
@@ -14,7 +19,5 @@ const tracksReducers = function(state = initialState, action) {
             return state;
     }
 };
-
-
 
 export default tracksReducers;

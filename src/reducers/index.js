@@ -4,7 +4,7 @@ import authReducer from './authReducer';
 import playerReducer from './playerReducer';
 
 export default combineReducers({
-    tracks: tracksReducers,
+    tracksList: tracksReducers,
     auth: authReducer,
     player: playerReducer
 })

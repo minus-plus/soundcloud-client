@@ -5,7 +5,7 @@ import {getTracks, playTracks, toggleIsPlaying} from '../actions';
 
 function mapStateToProps(state) {
     return {
-        tracks: state.tracks.tracks,
+        tracksList: state.tracksList.tracksList,
         playingTrackId: state.player.playingTrackId,
         isPlaying: state.player.isPlaying
     }

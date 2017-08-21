@@ -7,7 +7,7 @@ import {getPlayList, toggleIsPlaying, setDuration, setCurrentTime, playTracks} f
 
 function mapStateToProps(state) {
     return {
-        playList: state.tracks.tracks,
+        playList: state.tracksList.tracksList,
         playingTrackIndex: state.player.playingTrackIndex,
         isPlaying: state.player.isPlaying,
         duration: state.player.duration,

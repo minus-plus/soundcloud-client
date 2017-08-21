@@ -1,31 +1,22 @@
 .player {
   position: fixed;
-  left: 0;
   bottom: 0;
+  left: 0;
   width: 100%;
   background-color: #fff;
-  border-top: 1px solid #e3e3e3;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  z-index: 999;
+  border-top: 1px solid #000;
+  user-select: none;
+  z-index:999;
 
-  .song-card-details {
-    overflow: hidden;
-  }
-}
-
-.player-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  & + .player-section {
-    margin-left: 40px;
-  }
 }
 
 .player-main {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.player-section {
   display: flex;
   flex-direction: row;
   padding: 8px;
@@ -33,19 +24,21 @@
 
 .player-info {
   width: 140px;
+  overflow: hidden;
 }
 
 .player-image {
   width: 30px;
   height: 30px;
   float: left;
-  margin-right: 8px;
   flex-shrink: 0;
+  margin-right: 8px;
+  border: thin solid #e3e3e3;
 }
 
 .player-button {
   padding: 4px;
-
+  margin-left: 20px;
   & > i {
     color: #ccc;
   }
@@ -59,13 +52,6 @@
 
     & > i {
       color: #A6D2A5;
-    }
-
-    .player-button-tooltip {
-      margin-left: -22px;
-      &::after {
-        content: ' off';
-      }
     }
   }
 
@@ -94,14 +80,6 @@
   }
 }
 
-.player-button-tooltip {
-  display: none;
-  position: absolute;
-  color: #222;
-  font-size: 10px;
-  margin-left: -12px;
-  margin-top: -31px;
-}
 
 .player-seek {
   flex: 1;
@@ -119,8 +97,11 @@
 .player-seek-bar {
   position: relative;
   height: 2px;
+  top: 50%;
+  transform: translateY(-50%);
   background-color: #ddd;
 }
+
 
 .player-seek-duration-bar {
   position: absolute;
@@ -142,37 +123,45 @@
 }
 
 .player-time {
+  position: relative;
   margin-left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #ccc;
   font-size: 11px;
+
+
+  & div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .player-time-divider {
   margin: 0 10px;
 }
 
-.player-volume {
-  margin-left: 30px;
-  width: 100px;
-}
-
-.player-volume-button {
-  width: 12px;
-}
-
-.player-volume-button-wrap {
+// scss for song-card
+.song-card-details {
   position: relative;
 
-  .ion-android-volume-up, .ion-android-volume-down {
-    z-index: 0;
-    color: #A6D2A5;
-  }
+}
 
-  .ion-android-volume-mute {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    color: #ccc;
-  }
+.song-card-title {
+  display: block;
+  color: #222;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.song-card-user-username {
+  display: block;
+  margin-right: 30px;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-
 import {CLIENT_ID} from '../constants/auth';
+import Popout from "./Popout";
+import Playlist from "./Playlist";
+import TrackDetails from './TrackDetails';
+
+import '../../style/popout.scss';
 
 function getStreamUrl(playList, trackIndex) {
     if (trackIndex === undefined || !playList || trackIndex < 0 || trackIndex >= playList.length) {
@@ -23,7 +26,6 @@ function offsetLeft(element) {
         curr = curr.offsetParent;
     }
     return offset;
-
 }
 class Player extends Component {
     constructor(props) {
@@ -235,7 +237,7 @@ class Player extends Component {
 
     // END OF DURATION BAR
 
-    // <<<--- TOGGLE REPEATE --->>>
+    // <<<--- TOGGLE REPEAT --->>>
 
     handleToggleRepeat() {
         if (this.state.playMode !== 'REPEAT') {
@@ -261,8 +263,17 @@ class Player extends Component {
         }
     }
 
-    // <<<--- TOGGLE REPEATE END--->>>
+    // <<<--- TOGGLE REPEAT END--->>>
 
+    renderPlaylist() {
+        const {playList} = this.props;
+        console.log('>>>>>', playList);
+        return(
+            <Playlist
+                playList={playList}
+            />
+        )
+    }
 
 
     render() {
@@ -273,14 +284,27 @@ class Player extends Component {
             duration,
             currentTime
         } = this.props;
-        const playingTrack = playList[playingTrackIndex];
+        const playingTrack = playList[playingTrackIndex] || {};
+        const user = playingTrack.user || {};
+
         return (
             <div className="player">
                 <audio id="audio" ref={(audio) => this.audioElement = audio} src={getStreamUrl(playList, playingTrackIndex)}  />
                 <div className="container">
                     <div className="player-main">
                         <div className="player-section player-info">
-                            {playingTrack ? <div>{playingTrack.title}</div> : null}
+                            <img
+                                alt=""
+                                className="player-image"
+                                src={playingTrack ? `${playingTrack.artwork_url}` : ""}
+                            />
+                            <TrackDetails
+                                trackId={playingTrack.id}
+                                title={playingTrack.title}
+                                userId={user.id}
+                                username={user.username}
+                            />
+
                         </div>
                         <div className="player-section">
                             <div
@@ -314,9 +338,7 @@ class Player extends Component {
                             </div>
 
                             <div className="player-time">
-                                <div>
-                                    {formatTime(currentTime)} / {formatTime(duration)}
-                                </div>
+                                <div>{formatTime(currentTime)} / {formatTime(duration)}</div>
                             </div>
                         </div>
 
@@ -333,11 +355,10 @@ class Player extends Component {
                             >
                                 <i className="fa fa-random" />
                             </div>
-                            <div
-                                className="player-button"
-                            >
+                            <Popout className="player-button top-right">
                                 <i className="fa fa-list" />
-                            </div>
+                                {this.renderPlaylist()}
+                            </Popout>
                         </div>
 
                     </div>

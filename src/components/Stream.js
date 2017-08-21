@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import '../../style/nav-bar.css';
-import '../../style/player.css';
 import '../../style/trackslist.css';
 import '../../style/player.scss';
+// import '../../style/playlist.scss'; // already import in Playlist component, need to refactor
+
 
 import NavbarMenu from '../containers/NavbarContainer';
 import TracksList from '../containers/TracksListContainer';
 import Player from '../containers/PlayerContainer';
+import Popout from './Popout';
 
 class Stream extends Component {
     constructor(props) {
