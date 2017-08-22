@@ -20,6 +20,7 @@ class Playlist extends Component {
 
 
     render() {
+        console.log('re-rendering...');
         const {playList=[]} = this.props;
         const trackList = playList.map((track, index) => {
             const isActive = this.isActive(track.id);
@@ -27,10 +28,10 @@ class Playlist extends Component {
               <li
                 key={`${track.id}-${index}`}
               >
-                  <div className="track-item"
+                  <div className={`track-item ${isActive ? 'playlist-active' : ''}`}
                     onClick={() => this.handleClickTrack(index, track.id)}
                   >
-                      <img className={`playlist-image ${isActive ? 'active' : ''}`}
+                      <img className='playlist-image'
                         src={track.artwork_url || '/images/track-avatar.jpg'}
                       />
                       <div className="track-title">{track.title}</div>
