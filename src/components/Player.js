@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {CLIENT_ID} from '../constants/auth';
 import Popout from "./Popout";
-import Playlist from "./Playlist";
+import Playlist from "../containers/PlaylistContainer";
 import TrackDetails from './TrackDetails';
 
 import '../../style/popout.scss';
@@ -267,7 +267,6 @@ class Player extends Component {
 
     renderPlaylist() {
         const {playList} = this.props;
-        console.log('>>>>>', playList);
         return(
             <Playlist
                 playList={playList}
@@ -296,7 +295,7 @@ class Player extends Component {
                             <img
                                 alt=""
                                 className="player-image"
-                                src={playingTrack ? `${playingTrack.artwork_url}` : ""}
+                                src={playingTrack ? `${playingTrack.artwork_url || '/images/track-avatar.jpg'}` : ""}
                             />
                             <TrackDetails
                                 trackId={playingTrack.id}

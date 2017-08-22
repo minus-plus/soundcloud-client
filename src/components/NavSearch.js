@@ -10,7 +10,6 @@ class NavSearch extends React.Component{
         if(e.key === 'Enter') {
             const {searchTracks} = this.props;
             const value = e.target.value.trim();
-            console.log(value);
             searchTracks({path:'songs', query:{q:value}});
         }
     }

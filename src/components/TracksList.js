@@ -41,7 +41,7 @@ class TracksList extends Component {
                                     <div className="song-card-container"
                                          onClick={() => this.handleClick({track_index: track_index, track_id: track.id})}
                                     >
-                                        <div className="song-card-image" style={{backgroundImage: `url(${track.artwork_url})`}}>
+                                        <div className="song-card-image" style={{backgroundImage: `url(${ track.artwork_url || '/images/track-avatar.jpg'})`}}>
                                         </div>
                                         <div className="toggle-play-button">
                                             <i className={ isPlaying && playingTrackId=== track.id ?"fa fa-pause" :"fa fa-play"}
@@ -50,14 +50,11 @@ class TracksList extends Component {
                                     </div>
 
                                     <div className="song-card-user clearfix">
-                                        < img alt="user avatar" className="song-card-user-image" src="https://i1.sndcdn.com/avatars-000217622831-lwr9mn-large.jpg" />
+                                        < img alt="user avatar" className="song-card-user-image" src={track.user.avatar_url} />
                                         <div className="song-card-details">
                                             <a className="song-card-title" >{title.substring(0, 6)}</ a>
-                                            <br/>
                                             <a className="song-card-user-username" title="House">{username.substring(0, 6)}</ a>
-                                            <div className="song-heart song-card-heart popover ">
-                                                <i className="icon ion-ios-heart"> </i>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

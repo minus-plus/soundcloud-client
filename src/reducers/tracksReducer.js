@@ -9,6 +9,7 @@ const initialState = {
 const tracksReducers = function(state = initialState, action) {
     switch(action.type) {
         case "SET_TRACKS_LIST":
+            console.log('.......................>>>>>', 'setting track list')
             return {
                 ...state,
                 tracksList: [...action.payload]
