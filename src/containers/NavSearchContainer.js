@@ -4,6 +4,7 @@ import NavSearch from '../components/NavSearch';
 import {searchTracks} from '../actions/searchActions';
 
 function mapDispatchToProps(dispatch) {
+    console.log('--------------------getting tracks');
     return bindActionCreators(
         {
             searchTracks:searchTracks
