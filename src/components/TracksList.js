@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 class TracksList extends Component {
     constructor(props) {
         super(props);
-        this.loading = false;
+        this.isLoading = false;
         this.state = {
             isPlaying:false
         };
@@ -33,10 +33,10 @@ class TracksList extends Component {
     }
 
     toggleLoading() {
-        this.loading = !this.loading;
+        this.isLoading = !this.isLoading;
     }
     onScroll(event) {
-        if (!this.props.next_href || this.loading) {
+        if (!this.props.next_href || this.isLoading) {
             return;
         }
 
@@ -47,7 +47,6 @@ class TracksList extends Component {
             this.props.loadMoreTracks(this.props.next_href, this.toggleLoading);
         }
     }
-
 
     render() {
         const {playingTrackId, isPlaying} = this.props;
