@@ -1,13 +1,14 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TracksList from '../components/TracksList';
-import {getTracks, playTracks, toggleIsPlaying} from '../actions';
+import {getTracks, playTracks, toggleIsPlaying, loadMoreTracks} from '../actions';
 
 function mapStateToProps(state) {
     return {
         tracksList: state.tracksList.tracksList,
         playingTrackId: state.player.playingTrackId,
-        isPlaying: state.player.isPlaying
+        isPlaying: state.player.isPlaying,
+        next_href: state.tracksList.next_href
     }
 }
 
@@ -16,7 +17,8 @@ function mapDispatchToProps(dispatch) {
         {
             getTracks: getTracks,
             playTracks: playTracks,
-            toggleIsPlaying: toggleIsPlaying
+            toggleIsPlaying: toggleIsPlaying,
+            loadMoreTracks: loadMoreTracks
         }, dispatch
     )
 }

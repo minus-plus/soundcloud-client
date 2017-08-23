@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
 
 class TracksList extends Component {
     constructor(props) {
@@ -7,25 +9,36 @@ class TracksList extends Component {
             isPlaying:false
         };
         this.handleClick = this.handleClick.bind(this);
+        this.onScroll = this.onScroll.bind(this);
+    }
+
+    componentDidMount() {
+        document.addEventListener('scroll', this.onScroll, false);
+        this.props.getTracks();
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.onScroll, false);
     }
 
     handleClick(track){
         // toggleIsPlaying
-        // send track to player
-        // this.setState({isPlaying:!this.state.isPlaying}, ()=>{console.log(this.state.isPlaying)});
-        //
         if(track.track_id != this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
             this.props.toggleIsPlaying();
         }
-
-
     }
 
-    componentDidMount() {
-        this.props.getTracks();
+    onScroll(event) {
+        const th = 20;
+        let scrollTop = event.srcElement.body.scrollTop;
+        if(scrollTop >= document.documentElement.offsetHeight - window.innerHeight - th){
+            console.log('scroll for more');
+            this.props.loadMoreTracks(this.props.next_href);
+        }
     }
+
 
     render() {
         const {playingTrackId, isPlaying} = this.props;
@@ -35,6 +48,7 @@ class TracksList extends Component {
                     this.props.tracksList.map((track, track_index) => {
                         const username = track.user ? track.user.username : "";
                         const title = track.title || "";
+                        const avatar_url = track.user ? track.user.avatar_url : "";
                         return (
                             <div className="col-1-5 clearfix" key={track_index}>
                                 <div className="song-card">
@@ -50,7 +64,7 @@ class TracksList extends Component {
                                     </div>
 
                                     <div className="song-card-user clearfix">
-                                        < img alt="user avatar" className="song-card-user-image" src={track.user.avatar_url} />
+                                        < img alt="user avatar" className="song-card-user-image" src={avatar_url} />
                                         <div className="song-card-details">
                                             <a className="song-card-title" >{title.substring(0, 6)}</ a>
                                             <a className="song-card-user-username" title="House">{username.substring(0, 6)}</ a>

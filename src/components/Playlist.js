@@ -20,7 +20,6 @@ class Playlist extends Component {
 
 
     render() {
-        console.log('re-rendering...');
         const {playList=[]} = this.props;
         const trackList = playList.map((track, index) => {
             const isActive = this.isActive(track.id);

@@ -1,4 +1,4 @@
-import {getTracks} from './trackActions';
+import {getTracks, loadMoreTracks} from './trackActions';
 import {searchTracks} from './searchActions';
 import {auth} from './authActions';
 import {playTracks, setDuration, toggleIsPlaying} from './playerActions';
@@ -10,4 +10,5 @@ export {
     playTracks,
     setDuration,
     toggleIsPlaying,
+    loadMoreTracks
 };

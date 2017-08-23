@@ -1,6 +1,6 @@
 const initialState = {
     tracksList:[],
-    nextHref:""
+    next_href:""
 };
 
 /*
@@ -10,7 +10,7 @@ const initialState = {
 * **/
 const tracksReducers = function(state = initialState, action) {
     switch(action.type) {
-        case "SET_TRACKS_LIST":
+        case 'SET_TRACKS_LIST':
             const {tracksList} = action.payload;
             const {next_href} = action.payload;
            
@@ -21,6 +21,14 @@ const tracksReducers = function(state = initialState, action) {
                 
             };
             break;
+        case 'LOAD_MORE_TRACKS':
+            const newTrackList = [...state.tracksList, ...action.payload.tracksList];
+            return {
+                ...state,
+                tracksList: newTrackList,
+                next_href: action.payload.next_href
+            };
+            return;
         default:
             return state;
     }
