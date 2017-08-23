@@ -12,6 +12,7 @@ class TracksList extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.onScroll = this.onScroll.bind(this);
         this.toggleLoading = this.toggleLoading.bind(this);
+        this.handleScrollToTop = this.handleScrollToTop.bind(this);
     }
 
     componentDidMount() {
@@ -48,6 +49,10 @@ class TracksList extends Component {
         }
     }
 
+    handleScrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         const {playingTrackId, isPlaying} = this.props;
         return(
@@ -79,6 +84,9 @@ class TracksList extends Component {
 
                                         </div>
                                     </div>
+                                </div>
+                                <div className="return-to-top" onClick={this.handleScrollToTop}>
+                                    <i className="fa fa-angle-up" aria-hidden="true"></i>
                                 </div>
                             </div>
                         )
