@@ -5,11 +5,13 @@ import ReactDOM from 'react-dom';
 class TracksList extends Component {
     constructor(props) {
         super(props);
+        this.loading = false;
         this.state = {
             isPlaying:false
         };
         this.handleClick = this.handleClick.bind(this);
         this.onScroll = this.onScroll.bind(this);
+        this.toggleLoading = this.toggleLoading.bind(this);
     }
 
     componentDidMount() {
@@ -23,19 +25,26 @@ class TracksList extends Component {
 
     handleClick(track){
         // toggleIsPlaying
-        if(track.track_id != this.props.playingTrackId) {
+        if(track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
             this.props.toggleIsPlaying();
         }
     }
 
+    toggleLoading() {
+        this.loading = !this.loading;
+    }
     onScroll(event) {
+        if (!this.props.next_href || this.loading) {
+            return;
+        }
+
         const th = 20;
         let scrollTop = event.srcElement.body.scrollTop;
         if(scrollTop >= document.documentElement.offsetHeight - window.innerHeight - th){
-            console.log('scroll for more');
-            this.props.loadMoreTracks(this.props.next_href);
+            this.toggleLoading();
+            this.props.loadMoreTracks(this.props.next_href, this.toggleLoading);
         }
     }
 
