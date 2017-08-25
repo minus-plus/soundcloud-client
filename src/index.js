@@ -9,6 +9,7 @@ import {Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-rout
 import reducers from './reducers';
 import App from './components/App';
 import Callback from './components/Callback';
+import TrackDetail from './components/tracksComponents/TrackDetail';
 // AUTH OF SOUNDCLOUD
 import { CLIENT_ID, REDIRECT_URI } from './constants/auth';
 SC.initialize({ client_id: CLIENT_ID, redirect_uri: REDIRECT_URI });
@@ -24,6 +25,7 @@ const Routes = (
             <Route path="/" component={App}>
                 <IndexRoute component={Stream} />
                 <Route path="callback" component={Callback} />
+                <Route path="/track/:id" component={TrackDetail} />
             </Route>
         </Router>
     </Provider>
