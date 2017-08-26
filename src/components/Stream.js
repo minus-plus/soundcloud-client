@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import '../../style/nav-bar.scss';
 import '../../style/trackslist.scss';
 import '../../style/player.scss';
+import '../../style/trackscomponent.css';
 // import '../../style/playlist.scss'; // already import in Playlist component, need to refactor
 
 

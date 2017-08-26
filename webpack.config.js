@@ -8,6 +8,9 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'public')
     },
+    devServer: {
+        historyApiFallback: true
+    },
     watch: true,
     devtool: 'cheap-module-eval-source-map',
     plugins: [
