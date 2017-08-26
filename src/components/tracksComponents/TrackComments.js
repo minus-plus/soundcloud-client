@@ -4,16 +4,16 @@ import SidebarContent from './SidebarContent';
 class TrackComments extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            comments: []
-        }
     }
 
     render() {
-        console.log(this.state.comments);
+        if (this.props.comments.length === 0) {
+            return <div>loading...</div>
+        }
+        console.log(this.props.comments);
         return (
             <div>
-                <SidebarContent comments={this.state.comments}/>
+                <SidebarContent comments={this.props.comments}/>
             </div>
         );
     }

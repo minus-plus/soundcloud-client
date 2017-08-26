@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import NavbarMenu from '../NavbarMenu';
-import TrackDsiplay from './TrackDisplay';
+import TrackTop from './TrackDisplay';
 import TrackComments from './TrackComments';
+import TrackDown from './TrackDown';
 
 class TrackDetail extends Component {
     constructor(props) {
@@ -10,14 +11,13 @@ class TrackDetail extends Component {
         this.state = {
             isPlaying: false,
             myTrack: {},
-            comments: {},
-            tracks:{}
+            comments: [],
+            tracks: []
         };
     }
 
     componentDidMount() {
         const trackId = this.props.params.id;
-        console.log(this.state.comments);
         axios.get(`http://api.soundcloud.com/tracks/${trackId}?client_id=a281614d7f34dc30b665dfcaa3ed7505`)
             .then(res => {
                 this.setState({
@@ -42,9 +42,6 @@ class TrackDetail extends Component {
     }
 
     render() {
-        console.log(this.state.myTrack);
-        console.log(this.state.comments);
-        console.log(this.state.tracks);
         const track = this.state.myTrack;
         if (!track || track.user === undefined) {
             return (
@@ -56,8 +53,9 @@ class TrackDetail extends Component {
             return (
                 <div>
                     <NavbarMenu/>
-                    <TrackDsiplay track={track}/>
+                    <TrackTop track={track}/>
                     <TrackComments comments={this.state.comments}/>
+                    <TrackDown track={this.state.tracks}/>
                 </div>
             )
         }
