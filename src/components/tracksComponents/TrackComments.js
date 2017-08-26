@@ -1,22 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import SidebarContent from './SidebarContent';
 
-class TrackComments extends Component {
-    constructor(props) {
-        super(props);
+export default function TrackComments(props) {
+    if (props.comments.length === 0) {
+        return <div>loading...</div>
     }
-
-    render() {
-        if (this.props.comments.length === 0) {
-            return <div>loading...</div>
-        }
-        console.log(this.props.comments);
-        return (
-            <div>
-                <SidebarContent comments={this.props.comments}/>
-            </div>
-        );
-    }
+    console.log(props.comments);
+    return (
+        <div>
+            <SidebarContent comments={props.comments}/>
+        </div>
+    );
 }
-
-export default TrackComments

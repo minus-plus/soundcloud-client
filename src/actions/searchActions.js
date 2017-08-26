@@ -18,10 +18,6 @@ export function searchTracks(route) {
                         }
                     })
                 }
-                // dispatch({
-                //     type:"SET_TRACKS_LIST",
-                //     payload:res.collection
-                // })
             })
             .catch(function(err) {
                 console.log('error in searching tracks', err);

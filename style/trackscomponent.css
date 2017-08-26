@@ -45,6 +45,19 @@
     flex: 1;
 }
 
+.sidebar.sticky {
+    position: fixed;
+    top: 40px;
+    width: 351px
+}
+
+.sidebar-content {
+    overflow: scroll;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none
+}
+
 .song-card-container {
     position: relative;
     width: 100%;
