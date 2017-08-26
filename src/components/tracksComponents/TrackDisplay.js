@@ -36,6 +36,8 @@ export default function TrackTop(props) {
                             </div>
                         </div>
                             <TrackDown track={props.trackContent}/>
+                    </div>
+                    <div className="col-3-10">
                         <TrackComments className="float-right" comments={props.comments}/>
                     </div>
                 </div>

@@ -2,6 +2,15 @@
     white-space: pre-line;
 }
 
+.comment {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #e3e3e3;
+    border-left: 1px solid #e3e3e3;
+    border-right: 1px solid #e3e3e3;
+    font-size: 11px;
+}
+
 .song-card {
     border: 1px solid #e3e3e3;
     padding: 10px;
@@ -58,13 +67,11 @@
 }
 
 .sidebar-content {
-    height: 500px;
-    width: 351px;
-    float: right;
+    max-height: 296px;
     overflow: scroll;
     -moz-user-select: none;
     -webkit-user-select: none;
-    -ms-user-select: none
+    -ms-user-select: none;
 }
 
 .song-card-container {
