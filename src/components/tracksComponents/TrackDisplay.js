@@ -5,13 +5,13 @@ import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
 import TrackWave from './TrackWave';
 import TrackComments from './TrackComments';
+import TrackDown from './TrackDown';
 
 export default function TrackTop(props) {
     const track = props.track;
     return (
         <div className="container">
             <div className="content">
-                <TrackComments className="float-right" comments={props.comments}/>
                 <div className="grid">
                     <div className="col-7-10">
                         <div className="song-card">
@@ -21,7 +21,9 @@ export default function TrackTop(props) {
                                         <TrackPoster track={track}/>
                                     </div>
                                     <div className="song--info--wrap">
-                                        <TrackTitle title={track.title}/>
+                                        <div className="song-title">
+                                            <TrackTitle title={track.title}/>
+                                        </div>
                                         <TrackUser track={track}/>
                                         <TrackStatus likesCount={track.favoritings_count}
                                                      playsCount={track.playback_count}
@@ -33,6 +35,8 @@ export default function TrackTop(props) {
                                 </div>
                             </div>
                         </div>
+                            <TrackDown track={props.trackContent}/>
+                        <TrackComments className="float-right" comments={props.comments}/>
                     </div>
                 </div>
             </div>

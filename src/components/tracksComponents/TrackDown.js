@@ -1,45 +1,44 @@
 import React from 'react';
-import TrackPoster from './TrackPoster';
+import TrackDetailPoster from './TrackDetailPoster';
 import TrackTitle from './TrackTitle';
 import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
-import TrackWave from './TrackWave';
+import TrackDetailWave from './TrackDetailWave';
 
 export default function TrackDown(props) {
     const allTracks = props.track;
     if (allTracks.length === 0) {
-        return <div>loading...</div>
+        return null;
     }
-    console.log(typeof(allTracks));
     const track = allTracks.map(track => {
         return (
-            <div key={track.id}>
-                <div className="col-7-10">
-                    <div className="song-card">
-                        <div className="song-card-detail-container">
-                            <div className="song-main">
-                                <div className="song-poster">
-                                    <TrackPoster track={track}/>
-                                </div>
-                                <div className="song--info--wrap">
-                                    <TrackTitle title={track.title}/>
+                <div className="song-list-item" key={track.id}>
+                    <TrackDetailPoster className="song-list-item-image" track={track}/>
+                    <div className="song-list-item-info-wrap">
+                        <div className="song-list-item-info">
+                            <div className="song-list-item-title">
+                                <TrackTitle title={track.title}/>
+                            </div>
+                            <div className="song-list-item-info-extra">
+                                <div className="song-list-item-user">
                                     <TrackUser track={track}/>
+                                </div>
+                                <div className="song-list-item-stats">
                                     <TrackStatus likesCount={track.favoritings_count}
                                                  playsCount={track.playback_count}
                                                  commentsCount={track.comment_count}
                                                  description=""
                                     />
                                 </div>
-                                <TrackWave imageSrc={track.waveform_url}/>
                             </div>
                         </div>
                     </div>
+                    <TrackDetailWave imageSrc={track.waveform_url}/>
                 </div>
-            </div>
         )
     });
     return (
-        <div>
+        <div className="tab-content">
             {track}
         </div>
     )

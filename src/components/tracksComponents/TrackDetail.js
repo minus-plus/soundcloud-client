@@ -53,8 +53,7 @@ class TrackDetail extends Component {
             return (
                 <div>
                     <NavbarMenu/>
-                    <TrackTop track={track} comments={this.state.comments}/>
-                    <TrackDown track={this.state.tracks}/>
+                    <TrackTop track={track} comments={this.state.comments} trackContent={this.state.tracks}/>
                 </div>
             )
         }
