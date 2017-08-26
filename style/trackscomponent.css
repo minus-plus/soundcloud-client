@@ -45,13 +45,17 @@
     flex: 1;
 }
 
-.sidebar.sticky {
+.sidebar {
+    float: right;
     position: fixed;
     top: 40px;
-    width: 351px
+    height: 500px;
+    width: 351px;
 }
 
 .sidebar-content {
+    height: 500px;
+    width: 351px;
     overflow: scroll;
     -moz-user-select: none;
     -webkit-user-select: none;

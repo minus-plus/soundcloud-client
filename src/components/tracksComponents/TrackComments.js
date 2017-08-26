@@ -7,7 +7,7 @@ export default function TrackComments(props) {
     }
     console.log(props.comments);
     return (
-        <div>
+        <div className="sidebar">
             <SidebarContent comments={props.comments}/>
         </div>
     );

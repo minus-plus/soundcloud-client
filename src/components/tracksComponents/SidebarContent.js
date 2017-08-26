@@ -8,27 +8,23 @@ export default function SidebarContent(props) {
 
     const comment = myComments.map(comment => {
         return (
-            <div>
+            <div key={comment.id}>
                 {comment.body}
             </div>
         )
     });
     return (
-        <div>
-            <div className="col-3-10" key={comment.id}>
-                <div className="sidebar">
-                    <div className="comments">
-                        <div className="comments-header">
-                            <div className="comments-header-title">
-                                Comments
-                            </div>
+            <div className="sidebar">
+                <div className="comments">
+                    <div className="comments-header">
+                        <div className="comments-header-title">
+                            Comments
                         </div>
-                        <div className="sidebar-content">
-                            {comment}
-                        </div>
+                    </div>
+                    <div className="sidebar-content">
+                        {comment}
                     </div>
                 </div>
             </div>
-        </div>
     )
 }

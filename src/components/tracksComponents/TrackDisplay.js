@@ -4,12 +4,14 @@ import TrackTitle from './TrackTitle';
 import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
 import TrackWave from './TrackWave';
+import TrackComments from './TrackComments';
 
 export default function TrackTop(props) {
     const track = props.track;
     return (
         <div className="container">
             <div className="content">
+                <TrackComments comments={props.comments}/>
                 <div className="grid">
                     <div className="col-7-10">
                         <div className="song-card">
