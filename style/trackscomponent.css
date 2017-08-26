@@ -53,9 +53,14 @@
     width: 351px;
 }
 
+.float-right {
+    float:right;
+}
+
 .sidebar-content {
     height: 500px;
     width: 351px;
+    float: right;
     overflow: scroll;
     -moz-user-select: none;
     -webkit-user-select: none;

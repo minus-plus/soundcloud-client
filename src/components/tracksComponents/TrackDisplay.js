@@ -11,7 +11,7 @@ export default function TrackTop(props) {
     return (
         <div className="container">
             <div className="content">
-                <TrackComments comments={props.comments}/>
+                <TrackComments className="float-right" comments={props.comments}/>
                 <div className="grid">
                     <div className="col-7-10">
                         <div className="song-card">
