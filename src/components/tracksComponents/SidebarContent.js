@@ -18,7 +18,6 @@ export default function SidebarContent(props) {
     myComments = myComments.sort(compare);
 
     const comment = myComments.map(comment => {
-        console.log(comment.timestamp);
         if (comment.timestamp === null) {
             comment.timestamp = 0;
         }
