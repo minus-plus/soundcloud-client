@@ -11,6 +11,36 @@
     font-size: 11px;
 }
 
+.comment-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.comment-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.comment-comment {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+.comment-username {
+    color: #ccc;
+}
+
+.comment-time {
+    align-items: center;
+}
+
 .song-card {
     border: 1px solid #e3e3e3;
     padding: 10px;
