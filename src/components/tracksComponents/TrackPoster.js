@@ -1,6 +1,16 @@
 import React from 'react';
 
 export default function TrackPoster(props) {
+
+    function handleClick(track) {
+        // toggleIsPlaying
+        if (track.track_id !== this.props.playingTrackId) {
+            this.props.playTracks(track);
+        } else {
+            this.props.toggleIsPlaying();
+        }
+    }
+
     const track = props.track;
     return (
         <div className="song-image"

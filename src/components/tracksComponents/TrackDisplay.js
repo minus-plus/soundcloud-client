@@ -8,11 +8,20 @@ import TrackComments from './TrackComments';
 import TrackDown from './TrackDown';
 import Player from '../Player';
 
-class TrackTop extends Component {
+class TrackDisplay extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isPlaying: false
+        }
+    }
+
+    handleClick(track) {
+        // toggleIsPlaying
+        if (track.track_id !== this.props.playingTrackId) {
+            this.props.playTracks(track);
+        } else {
+            this.props.toggleIsPlaying();
         }
     }
 
@@ -52,11 +61,12 @@ class TrackTop extends Component {
                         </div>
                     </div>
                 </div>
-                <Player playList={this.props.trackContent}/>
+                <Player playList={this.props.trackContent}
+                />
             </div>
         )
     }
 }
 
-export default TrackTop;
+export default TrackDisplay;
 

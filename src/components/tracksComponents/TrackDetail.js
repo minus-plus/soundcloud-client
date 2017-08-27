@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import NavbarMenu from '../NavbarMenu';
-import TrackTop from '../../containers/TrackDisplayContainer';
+import TrackDisplay from '../../containers/TrackDisplayContainer';
 import TrackComments from './TrackComments';
 import TrackDown from './TrackDown';
 
@@ -52,7 +52,7 @@ class TrackDetail extends Component {
             return (
                 <div>
                     <NavbarMenu/>
-                    <TrackTop track={track} comments={this.state.comments} trackContent={this.state.tracks}/>
+                    <TrackDisplay track={track} comments={this.state.comments} trackContent={this.state.tracks}/>
                 </div>
             )
         }
