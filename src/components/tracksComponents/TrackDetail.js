@@ -51,7 +51,6 @@ class TrackDetail extends Component {
         } else {
             return (
                 <div>
-                    <NavbarMenu/>
                     <TrackDisplay track={track} comments={this.state.comments} trackContent={this.state.tracks}/>
                 </div>
             )

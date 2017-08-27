@@ -85,7 +85,7 @@ class TracksList extends Component {
                                         < img alt="user avatar" className="song-card-user-image" src={avatar_url}/>
                                         <div className="song-card-details">
                                             <Link to={`/track/${id}`}>
-                                                <a className="song-card-title">{title.substring(0, 6)}</ a>
+                                                <span className="song-card-title">{title.substring(0, 6)}</span>
                                             </Link>
                                             <Link>
                                                 <a className="song-card-user-username">{username.substring(0, 6)}</ a>
