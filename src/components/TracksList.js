@@ -88,9 +88,9 @@ class TracksList extends Component {
                                             <Link to={`/track/${id}`}>
                                                 <a className="song-card-title">{title.substring(0, 6)}</ a>
                                             </Link>
-                                            <a className="song-card-user-username"
-                                               title="House">{username.substring(0, 6)}</ a>
-
+                                            <Link>
+                                                <a className="song-card-user-username">{username.substring(0, 6)}</ a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

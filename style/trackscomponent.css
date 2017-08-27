@@ -157,6 +157,10 @@
     flex-shrink: 0;
 }
 
+.song-image:hover{
+    cursor: pointer;
+}
+
 .song-title {
     display: block;
     font-size: 20px;
@@ -277,40 +281,6 @@
     align-items: center;
 }
 
-.toggle-play-button {
-    position: absolute;
-    opacity: 0;
-    background-color: #e3e3e3;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    transition: .5s ease;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-}
-
-.toggle-play-button-detail {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    transition: background-color .2s ease-in-out;
-}
-
-.toggle-play-button .fa {
-    position: absolute;
-    overflow: hidden;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-}
-
 .song-card-container:hover .toggle-play-button {
     opacity: 0.7;
 }
@@ -393,6 +363,34 @@
     margin-right: 10px;
     border-radius: 100%;
     float: left;
+}
+
+.toggle-play-button:hover .toggle-play-button-icon {
+    opacity: 1;
+}
+
+.toggle-play-button-detail {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color .2s ease-in-out;
+}
+
+.toggle-play-button-detail-icon{
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+.toggle-play-button-detail:hover {
+    background-color: rgba(0,0,0,.8);
+}
+
+.toggle-play-button-detail:hover .toggle-play-button-detail-icon {
+    opacity: 1;
 }
 
 .waveform {

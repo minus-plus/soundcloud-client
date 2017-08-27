@@ -6,7 +6,7 @@ export default function TrackPoster(props) {
         <div className="song-list-item-image"
              style={{backgroundImage: `url(${track.artwork_url})`}}>
             <div className="toggle-play-button-detail">
-                <i className="fa fa-play"></i>
+                <i className="toggle-play-button-detail-icon fa fa-play"></i>
             </div>
         </div>
     )
