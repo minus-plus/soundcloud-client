@@ -80,6 +80,10 @@
     border: 1px solid #e3e3e3;
 }
 
+.grid {
+    width: 100%;
+}
+
 .comments-header-title {
     flex: 1;
 }
@@ -87,7 +91,6 @@
 .sidebar {
     float: right;
     position: fixed;
-    top: 40px;
     height: 500px;
     width: 351px;
 }
@@ -186,16 +189,6 @@
     border-top: 1px solid #e3e3e3;
     border-left: 1px solid #e3e3e3;
     border-right: 1px solid #e3e3e3;
-}
-
-.song-list-item-image {
-    width: 60px;
-    height: 60px;
-    margin: 10px 20px 10px 10px;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    flex-shrink: 0;
 }
 
 .song-list-item-info-wrap {

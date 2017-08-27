@@ -15,27 +15,25 @@ export default function TrackTop(props) {
                 <div className="grid">
                     <div className="col-7-10">
                         <div className="song-card">
-                            <div className="song-card-detail-container">
-                                <div className="song-main">
-                                    <div className="song-poster">
-                                        <TrackPoster track={track}/>
-                                    </div>
-                                    <div className="song--info--wrap">
-                                        <div className="song-title">
-                                            <TrackTitle title={track.title}/>
-                                        </div>
-                                        <TrackUser track={track}/>
-                                        <TrackStatus likesCount={track.favoritings_count}
-                                                     playsCount={track.playback_count}
-                                                     commentsCount={track.comment_count}
-                                                     description={track.description.substring(0, 100)}
-                                        />
-                                    </div>
-                                    <TrackWave imageSrc={track.waveform_url}/>
+                            <div className="song-main">
+                                <div className="song-poster">
+                                    <TrackPoster track={track}/>
                                 </div>
+                                <div className="song--info--wrap">
+                                    <div className="song-title">
+                                        <TrackTitle title={track.title}/>
+                                    </div>
+                                    <TrackUser track={track}/>
+                                    <TrackStatus likesCount={track.favoritings_count}
+                                                 playsCount={track.playback_count}
+                                                 commentsCount={track.comment_count}
+                                                 description={track.description.substring(0, 100)}
+                                    />
+                                </div>
+                                <TrackWave imageSrc={track.waveform_url}/>
                             </div>
                         </div>
-                            <TrackDown track={props.trackContent}/>
+                        <TrackDown track={props.trackContent}/>
                     </div>
                     <div className="col-3-10">
                         <TrackComments className="float-right" comments={props.comments}/>
