@@ -54,7 +54,6 @@ class TracksList extends Component {
     }
 
     render() {
-        console.log(this.props.tracksList);
         const {playingTrackId, isPlaying} = this.props;
         return (
             <div>
