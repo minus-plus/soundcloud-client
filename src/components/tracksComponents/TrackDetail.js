@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import NavbarMenu from '../NavbarMenu';
-import TrackTop from './TrackDisplay';
+import TrackTop from '../../containers/TrackDisplayContainer';
 import TrackComments from './TrackComments';
 import TrackDown from './TrackDown';
 
@@ -9,7 +9,6 @@ class TrackDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isPlaying: false,
             myTrack: {},
             comments: [],
             tracks: []
