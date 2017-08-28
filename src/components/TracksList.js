@@ -7,24 +7,33 @@ class TracksList extends Component {
             isPlaying:false
         };
         this.handleClick = this.handleClick.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
     }
 
     handleClick(track){
         // toggleIsPlaying
         // send track to player
         // this.setState({isPlaying:!this.state.isPlaying}, ()=>{console.log(this.state.isPlaying)});
-        //
-        if(track.track_id != this.props.playingTrackId) {
+        
+        if(track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
             this.props.toggleIsPlaying();
         }
-
-
     }
 
     componentDidMount() {
         this.props.getTracks();
+        document.addEventListener('scroll', this.handleScroll);
+    }
+    
+    handleScroll(event){
+        let scrollTop = event.srcElement.body.scrollTop;
+        // console.log('scroll *********** window',scrollTop);
+        // console.log('scroll *********** document',document.documentElement.offsetHeight-window.innerHeight);
+        if(scrollTop >= document.documentElement.offsetHeight-window.innerHeight - 1){
+            console.log('scroll for more');
+        }
     }
 
     render() {
