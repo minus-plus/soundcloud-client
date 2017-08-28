@@ -1,6 +1,8 @@
 const initialState = {
-    tracksList:[],
-    next_href:""
+    topTrack: [],
+    relatedTracks: [],
+    tracksList: [],
+    next_href: ""
 };
 
 /*
@@ -8,17 +10,29 @@ const initialState = {
 * will be rendered to the map page.  pass tracks to TrackList component
 *
 * **/
-const tracksReducers = function(state = initialState, action) {
-    switch(action.type) {
+const tracksReducers = function (state = initialState, action) {
+    switch (action.type) {
+        case "SET_TOP_TRACK":
+            const {topTrack} = action.payload;
+            return {
+                ...state,
+                topTrack: topTrack
+            };
+        case "SET_BUTTOM_TRACK":
+            const {relatedTracks} = action.payload;
+            return {
+                ...state,
+                relatedTracks: relatedTracks
+            };
         case 'SET_TRACKS_LIST':
             const {tracksList} = action.payload;
             const {next_href} = action.payload;
-           
+
             return {
                 ...state,
                 tracksList: tracksList,
                 next_href: next_href
-                
+
             };
             break;
         case 'LOAD_MORE_TRACKS':
