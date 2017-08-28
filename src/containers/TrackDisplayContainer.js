@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TrackDisplay from '../components/tracksComponents/TrackDisplay';
-import {getTracks, playTracks, toggleIsPlaying, loadMoreTracks, getTracksInfo, getButtomTrack} from '../actions';
+import {getTracks, playTracks, toggleIsPlaying, loadMoreTracks, getTracksInfo} from '../actions';
 
 function mapStateToProps(state) {
     return {
         track: state.tracksList.topTrack,
-        tracks: state.tracksList.relatedTracks
+        tracks: state.tracksList.relatedTracks,
+        comments: state.tracksList.comments
         // tracksList: state.tracksList.tracksList,
         // playingTrackId: state.player.playingTrackId,
         // isPlaying: state.player.isPlaying,
