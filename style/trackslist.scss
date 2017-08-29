@@ -6,6 +6,10 @@
     padding: 10px;
 }
 
+.tracks-container{
+    margin-left: 100px;
+}
+
 .clearfix {
     display: block;
 }
@@ -16,13 +20,14 @@
     padding-right: 20px;
 }
 
-.category-vertical{
-    height:100%;
-}
-.col-1-5 {
-    width: 20%;
+
+.col-1-4 {
+    width: 25%;
     min-width: 175px;
     margin-bottom: 15px;
+}
+.col-4-5 {
+    width: 80%;
 }
 .song-card-container{
     position: relative;

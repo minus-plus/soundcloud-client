@@ -1,0 +1,27 @@
+.col-1-5 {
+  margin-left: -80px;
+  min-width: 175px;
+}
+
+.toolbar{
+  margin-top:50px;
+  position: fixed;
+  margin-left: 100px;
+}
+
+.toolbar-item-li{
+  list-style-type: none;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size:18px;
+  font-family: 'Crimson Text', serif;
+  text-align: center;
+}
+
+.toolbar-item-li:hover{
+  font-size:20px;
+  cursor: pointer;
+  border: 1px solid #222222;
+  background:#3a3f41;
+}

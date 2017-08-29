@@ -24,26 +24,11 @@ class TracksList extends Component {
     }
 
     handleClick(track) {
-        
-
+      
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
             this.props.toggleIsPlaying();
-        }
-    }
-
-    componentDidMount() {
-        this.props.getTracks();
-        document.addEventListener('scroll', this.handleScroll);
-    }
-    
-    handleScroll(event){
-        let scrollTop = event.srcElement.body.scrollTop;
-        // console.log('scroll *********** window',scrollTop);
-        // console.log('scroll *********** document',document.documentElement.offsetHeight-window.innerHeight);
-        if(scrollTop >= document.documentElement.offsetHeight-window.innerHeight - 1){
-            console.log('scroll for more');
         }
     }
 
@@ -83,7 +68,7 @@ class TracksList extends Component {
                             image_url = track.artwork_url.toString().replace('-large', '-t300x300');
                         }
                         return (
-                            <div className="col-1-5 clearfix" key={track_index}>
+                            <div className="col-1-4 clearfix" key={track_index}>
                                 <div className="song-card">
                                     <div className="song-card-container"
                                          onClick={() => this.handleClick({
