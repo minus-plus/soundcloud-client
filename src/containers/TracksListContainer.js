@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import TracksList from '../components/TracksList';
-import {getTracks, playTracks, toggleIsPlaying, loadMoreTracks} from '../actions';
+import {getTracks, loadMoreTracks, playTracks, toggleIsPlaying } from '../actions';
 
 function mapStateToProps(state) {
     return {

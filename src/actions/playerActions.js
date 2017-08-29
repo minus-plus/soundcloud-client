@@ -1,10 +1,3 @@
-
-export function toggleIsPlaying () {
-    return {
-        type: 'TOGGLE_IS_PLAYING'
-    }
-}
-
 export function getPlayList() {
     return function(dispatch, getState) {
         const tracks = getState().tracks;
@@ -14,6 +7,12 @@ export function getPlayList() {
         })
     }
 }
+export function setPlaylist(playlist) {
+    return {
+        type: 'SET_PLAYLIST',
+        playload: playlist
+    }
+}
 
 export function playTracks(track) {
     return {
@@ -21,6 +20,7 @@ export function playTracks(track) {
         payload: track
     }
 }
+
 
 export function setDuration(duration) {
     return {
@@ -35,4 +35,12 @@ export function setCurrentTime(currentTime) {
         payload: currentTime
     }
 }
+
+export function toggleIsPlaying () {
+    return {
+        type: 'TOGGLE_IS_PLAYING'
+    }
+}
+
+
 

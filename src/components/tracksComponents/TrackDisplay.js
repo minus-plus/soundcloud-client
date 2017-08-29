@@ -28,6 +28,8 @@ class TrackDisplay extends Component {
         }
     }
 
+
+
     render() {
         let {tracksList} = this.props;
         if (tracksList.length === undefined) {
@@ -35,13 +37,14 @@ class TrackDisplay extends Component {
         }
         let topTrack = this.topTrack;
         if (tracksList.length > 0) {
-            this.tracksList = tracksList.slice(1);
+            this.tracksList = tracksList;
         }
         let tracks = this.tracksList;
         console.log('>>>>>>>>>>>>', tracks)
         if (!tracksList || tracksList.length === 0 || !tracks || !topTrack) {
             return <div>loading...</div>
         }
+
 
         return (
             <div className="myContainer">

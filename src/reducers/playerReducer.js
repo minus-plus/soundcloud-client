@@ -10,8 +10,24 @@ const initialState = {
 
 
 export default function playerReducer(state = initialState, action) {
-
     switch (action.type) {
+        case "PLAY_TRACKS":
+            return {
+                ...state,
+                playingTrackIndex: action.payload.track_index,
+                playingTrackId: action.payload.track_id,
+                isPlaying: true
+            };
+        case "SET_CURRENT_TIME":
+            return {
+                ...state,
+                currentTime: action.payload
+            };
+        case "SET_DURATION":
+            return {
+                ...state,
+                duration: action.payload
+            };
         case "SET_PLAYLIST":
             return {
                 ...state,
@@ -22,24 +38,8 @@ export default function playerReducer(state = initialState, action) {
                 ...state,
                 isPlaying: !state.isPlaying
             };
-        case "PLAY_TRACKS":
-            return {
-                ...state,
-                playingTrackIndex: action.payload.track_index,
-                playingTrackId: action.payload.track_id,
-                isPlaying: true
-            };
-        case "SET_DURATION":
-            return {
-                ...state,
-                duration: action.payload
-            };
-        case "SET_CURRENT_TIME":
-            return {
-                ...state,
-                currentTime: action.payload
-            };
         default:
             return state;
     }
+
 }

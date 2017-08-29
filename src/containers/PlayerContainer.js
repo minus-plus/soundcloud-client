@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Player from '../components/Player';
-import {getPlayList, toggleIsPlaying, setDuration, setCurrentTime, playTracks} from '../actions/playerActions';
+import {playTracks, setCurrentTime, setDuration, toggleIsPlaying} from '../actions/playerActions';
 
 
 
 function mapStateToProps(state) {
     return {
-        playList: state.tracksList.tracksList,
+        playList: state.player.currentPlayList,
         playingTrackIndex: state.player.playingTrackIndex,
         isPlaying: state.player.isPlaying,
         duration: state.player.duration,
@@ -17,11 +17,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(
         {
-            getPlayList,
-            toggleIsPlaying,
-            setDuration,
+            playTracks,
             setCurrentTime,
-            playTracks
+            setDuration,
+            toggleIsPlaying
         }, dispatch
     )
 }
