@@ -64,7 +64,7 @@ class TracksList extends Component {
                         const avatar_url = track.user ? track.user.avatar_url : "";
                         const id = track.id || "";
                         return (
-                            <div className="col-1-5 clearfix" key={track_index}>
+                            <div className="col-1-6 clearfix" key={track_index}>
                                 <div className="song-card">
                                     <div className="song-card-container"
                                          onClick={() => this.handleClick({
@@ -88,7 +88,12 @@ class TracksList extends Component {
                                                 <span className="song-card-title">{title.substring(0, 6)}</span>
                                             </Link>
                                             <Link>
+<<<<<<< HEAD
                                                 <span className="song-card-user-username">{username.substring(0, 6)}</ span>
+=======
+                                                <span
+                                                    className="song-card-user-username">{username.substring(0, 6)}</ span>
+>>>>>>> d49e5c172fae4a239fc6ab51d4217488953b76f9
                                             </Link>
                                         </div>
                                     </div>
