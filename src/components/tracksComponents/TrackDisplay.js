@@ -28,6 +28,8 @@ class TrackDisplay extends Component {
         }
     }
 
+
+
     render() {
         let {topTrack} = this.props;
         let {tracksList} = this.props;
@@ -45,6 +47,7 @@ class TrackDisplay extends Component {
             return <div>loading...</div>
         }
         console.log(topTrack);
+
 
         return (
             <div className="myContainer">
