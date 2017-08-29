@@ -28,25 +28,23 @@ class TrackDisplay extends Component {
         }
     }
 
+    getIndexInTracklist(track, trackList) {
+        for (let i = 0; i < trackList.length; i++) {
+            if (track.id === trackList[i].id) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
     render() {
-        let {topTrack} = this.props;
-        let {tracksList} = this.props;
-        // console.log('^^^^^^^^^^^^^^', tracksList);
-        // if (tracksList.length === undefined) {
-        //     this.topTrack = tracksList;
-        // }
-        // let topTrack = this.topTrack;
-        // if (tracksList.length > 0) {
-        //     this.tracksList = tracksList;
-        // }
-        // let tracks = this.tracksList;
-        // console.log('>>>>>>>>>>>>', tracks)
+        let {topTrack, tracksList, playTracks} = this.props;
         if (!topTrack || topTrack.length === 0) {
             return <div>loading...</div>
         }
-        console.log(topTrack);
+
+        const trackIndex = this.getIndexInTracklist(topTrack, tracksList);
 
 
         return (
@@ -59,7 +57,7 @@ class TrackDisplay extends Component {
                                     <div className="song-main">
                                         <div className="song-poster" onClick={() => this.handleClick({
                                             track_id: topTrack.id,
-                                            track_index: 0
+                                            track_index: trackIndex
                                         })}>
                                             <div className="song-image"
                                                  style={{backgroundImage: `url(${topTrack.artwork_url})`}}>
@@ -83,7 +81,7 @@ class TrackDisplay extends Component {
                                         <TrackWave imageSrc={topTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown track={tracksList}/>
+                                <TrackDown tracks={tracksList} ignorIndex={trackIndex} playTracks={playTracks}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>

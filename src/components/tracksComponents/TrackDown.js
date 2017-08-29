@@ -6,14 +6,19 @@ import TrackStatus from './TrackStatus';
 import TrackDetailWave from './TrackDetailWave';
 
 export default function TrackDown(props) {
-    const allTracks = props.track;
+    const allTracks = props.tracks;
+    const trackIndex = props.ignorIndex;
+    const playTracks = props.playTracks;
     if (allTracks.length === 0) {
         return null;
     }
-    const track = allTracks.map(track => {
+    const track = allTracks.map((track, index) => {
+        if (index === trackIndex) {
+            return null;
+        }
         return (
                 <div className="song-list-item" key={track.id}>
-                    <TrackDetailPoster className="song-list-item-image" track={track}/>
+                    <TrackDetailPoster className="song-list-item-image" track={track} trackIndex={index} playTracks={playTracks} />
                     <div className="song-list-item-info-wrap">
                         <div className="song-list-item-info">
                             <div className="song-list-item-title">
