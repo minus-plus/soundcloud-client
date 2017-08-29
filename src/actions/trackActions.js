@@ -8,12 +8,17 @@ export function getTracks() {
             .then(function (response) {
                 
                 let tracks = response.data.collection;
+                let next_href = response.data.next_href;
                 dispatch({
                     type:"SET_TRACKS_LIST",
                     payload: {
-                        tracksList: response.data.collection,
-                        next_href: response.data.next_href
+                        tracksList: tracks,
+                        next_href: next_href
                     }
+                });
+                dispatch({
+                    type: 'SET_PLAYLIST',
+                    payload: tracks
                 })
             })
             .catch(function(err) {

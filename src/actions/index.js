@@ -1,16 +1,21 @@
 import {getTracks, loadMoreTracks} from './trackActions';
 import {searchTracks} from './searchActions';
 import {auth} from './authActions';
-import {playTracks, setDuration, toggleIsPlaying} from './playerActions';
+import {playTracks, setCurrentTime, setDuration, setPlaylist, toggleIsPlaying} from './playerActions';
 import {getTracksInfo} from "./trackDetailActions";
 
 export {
     auth,
+
     searchTracks,
-    getTracks,
+
     playTracks,
+    setCurrentTime,
     setDuration,
+    setPlaylist,
     toggleIsPlaying,
+
+    getTracks,
     loadMoreTracks,
     getTracksInfo
 };

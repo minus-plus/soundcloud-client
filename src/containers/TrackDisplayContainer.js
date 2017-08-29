@@ -5,13 +5,12 @@ import {getTracks, playTracks, toggleIsPlaying, loadMoreTracks, getTracksInfo} f
 
 function mapStateToProps(state) {
     return {
-        track: state.tracksList.topTrack,
-        tracks: state.tracksList.relatedTracks,
-        comments: state.tracksList.comments
-        // tracksList: state.tracksList.tracksList,
-        // playingTrackId: state.player.playingTrackId,
-        // isPlaying: state.player.isPlaying,
-        // next_href: state.tracksList.next_href
+        topTrack: state.tracksList.topTrack,
+        tracksList: state.tracksList.tracksList,
+        comments: state.tracksList.comments,
+        playingTrackId: state.player.playingTrackId,
+        isPlaying: state.player.isPlaying,
+        next_href: state.tracksList.next_href
     }
 }
 
@@ -20,9 +19,8 @@ function mapDispatchToProps(dispatch) {
         {
             getTracksInfo,
             // getTracks: getTracks,
-            // playTracks: playTracks,
-            // toggleIsPlaying: toggleIsPlaying,
-            // loadMoreTracks: loadMoreTracks
+            playTracks,
+            toggleIsPlaying
         }, dispatch
     )
 }

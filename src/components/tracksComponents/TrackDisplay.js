@@ -20,6 +20,7 @@ class TrackDisplay extends Component {
 
     handleClick(track) {
         // toggleIsPlaying
+        console.log(track);
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
@@ -27,12 +28,25 @@ class TrackDisplay extends Component {
         }
     }
 
+    getIndexInTracklist(track, trackList) {
+        for (let i = 0; i < trackList.length; i++) {
+            if (track.id === trackList[i].id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     render() {
-        const {track} = this.props;
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',this.props);
-        if (!track || track.length === 0) {
+        let {topTrack, tracksList, playTracks} = this.props;
+        if (!topTrack || topTrack.length === 0) {
             return <div>loading...</div>
         }
+
+        const trackIndex = this.getIndexInTracklist(topTrack, tracksList);
+
+
         return (
             <div className="myContainer">
                 <div className="container">
@@ -42,33 +56,32 @@ class TrackDisplay extends Component {
                                 <div className="song card">
                                     <div className="song-main">
                                         <div className="song-poster" onClick={() => this.handleClick({
-                                            track_id: track.id,
-                                            track_index: track.id
+                                            track_id: topTrack.id,
+                                            track_index: trackIndex
                                         })}>
                                             <div className="song-image"
-                                                 style={{backgroundImage: `url(${track.artwork_url})`}}>
+                                                 style={{backgroundImage: `url(${topTrack.artwork_url})`}}>
                                                 <div className="toggle-play-button-detail">
                                                     <div className="toggle-play-button-detail-icon">
-                                                        <i className={this.props.isPlaying && this.props.playingTrackId === track.id ? "fa fa-pause" : "fa fa-play"}/>
+                                                        <i className={this.props.isPlaying && this.props.playingTrackId === topTrack.id ? "fa fa-pause" : "fa fa-play"}/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="song--info--wrap">
                                             <div className="song-title">
-                                                <TrackTitle title={track.title}/>
+                                                <TrackTitle title={topTrack.title}/>
                                             </div>
-                                            <TrackUser track={track}/>
-                                            <TrackStatus likesCount={track.favoritings_count}
-                                                         playsCount={track.playback_count}
-                                                         commentsCount={track.comment_count}
-                                                         description={track.description.substring(0, 100)}
+                                            <TrackUser track={topTrack}/>
+                                            <TrackStatus likesCount={topTrack.favoritings_count}
+                                                         playsCount={topTrack.playback_count}
+                                                         commentsCount={topTrack.comment_count}
                                             />
                                         </div>
-                                        <TrackWave imageSrc={track.waveform_url}/>
+                                        <TrackWave imageSrc={topTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown track={this.props.tracks}/>
+                                <TrackDown tracks={tracksList} ignorIndex={trackIndex} playTracks={playTracks}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>
@@ -76,8 +89,8 @@ class TrackDisplay extends Component {
                         </div>
                     </div>
                 </div>
-                <Player playList={track}
-
+                <Player playList={this.props.track}
+                        playingTrackIndex={0}
                 />
             </div>
         )

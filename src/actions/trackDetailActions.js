@@ -23,6 +23,10 @@ export function getTracksInfo(id) {
                             payload: {
                                 relatedTracks: tracks
                             }
+                        });
+                        dispatch({
+                            type: "SET_PLAYLIST",
+                            payload: tracks
                         })
                     })
             })
