@@ -9,6 +9,7 @@ export function getTracksInfo(id) {
         axios.get(URL)
             .then(function (response) {
                 let myTrack = response.data;
+                console.log('1111111111111111',myTrack);
                 dispatch({
                     type: "SET_TOP_TRACK",
                     payload: {

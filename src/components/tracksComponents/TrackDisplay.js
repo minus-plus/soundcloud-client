@@ -29,10 +29,12 @@ class TrackDisplay extends Component {
     }
 
     render() {
-        const {track} = this.props;
-        if (!track || track.length === 0) {
+        const {tracksList} = this.props;
+        const topTrack = tracksList[0];
+        if (!tracksList || tracksList.length === 0 || !topTrack) {
             return <div>loading...</div>
         }
+        console.log(topTrack);
         return (
             <div className="myContainer">
                 <div className="container">
@@ -42,34 +44,34 @@ class TrackDisplay extends Component {
                                 <div className="song card">
                                     <div className="song-main">
                                         <div className="song-poster" onClick={() => this.handleClick({
-                                            track_id: track.id,
+                                            track_id: topTrack.id,
                                             track_index: 0,
-                                            playList: track
+                                            playList: topTrack
                                         })}>
                                             <div className="song-image"
-                                                 style={{backgroundImage: `url(${track.artwork_url})`}}>
+                                                 style={{backgroundImage: `url(${topTrack.artwork_url})`}}>
                                                 <div className="toggle-play-button-detail">
                                                     <div className="toggle-play-button-detail-icon">
-                                                        <i className={this.props.isPlaying && this.props.playingTrackId === track[0].id ? "fa fa-pause" : "fa fa-play"}/>
+                                                        <i className={this.props.isPlaying && this.props.playingTrackId === topTrack.id ? "fa fa-pause" : "fa fa-play"}/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="song--info--wrap">
                                             <div className="song-title">
-                                                <TrackTitle title={track.title}/>
+                                                <TrackTitle title={topTrack.title}/>
                                             </div>
-                                            <TrackUser track={track}/>
-                                            <TrackStatus likesCount={track.favoritings_count}
-                                                         playsCount={track.playback_count}
-                                                         commentsCount={track.comment_count}
-                                                         description={track.description.substring(0, 100)}
+                                            <TrackUser track={topTrack}/>
+                                            <TrackStatus likesCount={topTrack.favoritings_count}
+                                                         playsCount={topTrack.playback_count}
+                                                         commentsCount={topTrack.comment_count}
+                                                         description={topTrack.description.substring(0, 100)}
                                             />
                                         </div>
-                                        <TrackWave imageSrc={track.waveform_url}/>
+                                        <TrackWave imageSrc={topTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown track={this.props.tracks}/>
+                                <TrackDown track={tracksList.slice(1)}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>

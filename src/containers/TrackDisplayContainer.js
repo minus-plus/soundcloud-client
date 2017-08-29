@@ -5,8 +5,7 @@ import {getTracks, playTracks, toggleIsPlaying, loadMoreTracks, getTracksInfo} f
 
 function mapStateToProps(state) {
     return {
-        track: state.tracksList.tracksList[0],
-        tracks: state.tracksList.tracksList,
+        tracksList: state.tracksList.tracksList,
         comments: state.tracksList.comments
         // tracksList: state.tracksList.tracksList,
         // playingTrackId: state.player.playingTrackId,
