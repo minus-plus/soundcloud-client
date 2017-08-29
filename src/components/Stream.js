@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import '../../style/nav-bar.scss';
 import '../../style/trackslist.scss';
 import '../../style/player.scss';
+import '../../style/trackscomponent.css';
 
 import NavbarMenu from '../containers/NavbarContainer';
 import TracksList from '../containers/TracksListContainer';
@@ -24,9 +25,7 @@ class Stream extends Component {
             <div className="parent-container">
                 <br/>
                 <div className="body-container">
-                    <div className="col-1-5">
-                        <Toolbar/>
-                    </div>
+                    <Toolbar/>
                     <div className="col-4-5 tracks-container">
                         <TracksList />
                     </div>

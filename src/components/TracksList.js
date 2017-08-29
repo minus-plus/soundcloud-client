@@ -15,7 +15,7 @@ class TracksList extends Component {
     }
 
     componentDidMount() {
-        document.addEventListener('scroll', this.onScroll, false);
+        // document.addEventListener('scroll', this.onScroll, false);
         this.props.getTracks();
     }
 
