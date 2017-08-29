@@ -29,20 +29,22 @@ class TrackDisplay extends Component {
     }
 
     render() {
+        let {topTrack} = this.props;
         let {tracksList} = this.props;
-        console.log('^^^^^^^^^^^^^^', tracksList);
-        if (tracksList.length === undefined) {
-            this.topTrack = tracksList;
-        }
-        let topTrack = this.topTrack;
-        if (tracksList.length > 0) {
-            this.tracksList = tracksList;
-        }
-        let tracks = this.tracksList;
-        console.log('>>>>>>>>>>>>', tracks)
-        if (!tracksList || !tracks || !topTrack) {
+        // console.log('^^^^^^^^^^^^^^', tracksList);
+        // if (tracksList.length === undefined) {
+        //     this.topTrack = tracksList;
+        // }
+        // let topTrack = this.topTrack;
+        // if (tracksList.length > 0) {
+        //     this.tracksList = tracksList;
+        // }
+        // let tracks = this.tracksList;
+        // console.log('>>>>>>>>>>>>', tracks)
+        if (!topTrack || topTrack.length === 0) {
             return <div>loading...</div>
         }
+        console.log(topTrack);
 
         return (
             <div className="myContainer">
@@ -78,7 +80,7 @@ class TrackDisplay extends Component {
                                         <TrackWave imageSrc={topTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown track={tracks}/>
+                                <TrackDown track={tracksList}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>
