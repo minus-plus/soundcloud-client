@@ -20,6 +20,7 @@ class TrackDisplay extends Component {
 
     handleClick(track) {
         // toggleIsPlaying
+        console.log(track);
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
@@ -29,7 +30,6 @@ class TrackDisplay extends Component {
 
     render() {
         const {track} = this.props;
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',this.props);
         if (!track || track.length === 0) {
             return <div>loading...</div>
         }
@@ -43,13 +43,14 @@ class TrackDisplay extends Component {
                                     <div className="song-main">
                                         <div className="song-poster" onClick={() => this.handleClick({
                                             track_id: track.id,
-                                            track_index: track.id
+                                            track_index: 0,
+                                            playList: track
                                         })}>
                                             <div className="song-image"
                                                  style={{backgroundImage: `url(${track.artwork_url})`}}>
                                                 <div className="toggle-play-button-detail">
                                                     <div className="toggle-play-button-detail-icon">
-                                                        <i className={this.props.isPlaying && this.props.playingTrackId === track.id ? "fa fa-pause" : "fa fa-play"}/>
+                                                        <i className={this.props.isPlaying && this.props.playingTrackId === track[0].id ? "fa fa-pause" : "fa fa-play"}/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,8 +77,8 @@ class TrackDisplay extends Component {
                         </div>
                     </div>
                 </div>
-                <Player playList={track}
-
+                <Player playList={this.props.track}
+                        playingTrackIndex={0}
                 />
             </div>
         )

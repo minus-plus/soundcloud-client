@@ -1,6 +1,4 @@
 const initialState = {
-    topTrack: [],
-    relatedTracks: [],
     tracksList: [],
     comments: [],
     next_href: ""
@@ -17,13 +15,13 @@ const tracksReducers = function (state = initialState, action) {
             const {topTrack} = action.payload;
             return {
                 ...state,
-                topTrack: topTrack
+                tracksList: topTrack
             };
         case "SET_RELATED_TRACKS":
             const {relatedTracks} = action.payload;
             return {
                 ...state,
-                relatedTracks: relatedTracks
+                tracksList: relatedTracks
             };
         case "SET_COMMENTS":
             const {comments} = action.payload;
