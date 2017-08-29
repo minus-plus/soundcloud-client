@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import {Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-router';
 import reducers from './reducers';
 import App from './components/App';
+
 import Callback from './components/Callback';
 import TrackDetail from './components/tracksComponents/TrackDetail';
 // AUTH OF SOUNDCLOUD

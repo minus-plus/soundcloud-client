@@ -4,6 +4,7 @@ import '../../style/nav-bar.scss';
 import '../../style/trackslist.scss';
 import '../../style/player.scss';
 import '../../style/trackscomponent.css';
+import '../../style/body.scss';
 
 import NavbarMenu from '../containers/NavbarContainer';
 import TracksList from '../containers/TracksListContainer';
@@ -26,7 +27,7 @@ class Stream extends Component {
                 <br/>
                 <div className="body-container">
                     <Toolbar/>
-                    <div className="col-4-5 tracks-container">
+                    <div className="col-4-5">
                         <TracksList />
                     </div>
                     
