@@ -64,7 +64,7 @@ class TracksList extends Component {
                         const avatar_url = track.user ? track.user.avatar_url : "";
                         const id = track.id || "";
                         return (
-                            <div className="col-1-5 clearfix" key={track_index}>
+                            <div className="col-1-6 clearfix" key={track_index}>
                                 <div className="song-card">
                                     <div className="song-card-container"
                                          onClick={() => this.handleClick({

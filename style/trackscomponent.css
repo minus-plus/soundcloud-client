@@ -1,7 +1,3 @@
-.parent-container {
-    white-space: pre-line;
-}
-
 .myContainer {
     margin-right: auto;
     margin-left: auto;
@@ -58,17 +54,7 @@
     border: 1px solid #e3e3e3
 }
 
-.clearfix {
-    display: block;
-}
-
-[class*=col-] {
-    float: left;
-    min-height: 1px;
-    padding-right: 20px;
-}
-
-.col-1-5 {
+.col-1-6 {
     width: 20%;
 }
 
@@ -107,10 +93,6 @@
     width: 351px;
 }
 
-.float-right {
-    float:right;
-}
-
 .sidebar-content {
     max-height: 296px;
     overflow: scroll;
@@ -119,31 +101,9 @@
     -ms-user-select: none;
 }
 
-.song-card-container {
-    position: relative;
-    width: 100%;
-}
-
-.song-card-image {
-    display: block;
-    width: 100%;
-    transition: .5s ease;
-    height: 70px;
-    margin-bottom: 10px;
-    background-position: 50%;
-    opacity: 1;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .song--info--wrap {
     margin: 10px 20px 0 0;
     flex: 1;
-    overflow: hidden;
-}
-
-.song--info {
-    width: 100%;
     overflow: hidden;
 }
 
@@ -174,10 +134,6 @@
 .tab-content {
     margin-top: 20px;
     background-color: #fff;
-}
-
-.popover {
-    position: relative;
 }
 
 .content {
@@ -239,12 +195,6 @@
     margin-top: 10px;
 }
 
-.song-list-item-user {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 .song-list-item-stats {
     flex: 1;
     margin-left: 20px;
@@ -281,10 +231,6 @@
     align-items: center;
 }
 
-.song-card-container:hover .toggle-play-button {
-    opacity: 0.7;
-}
-
 .waveform-image-container:hover .waveform-play-highlight, .waveform-image-container:hover .waveform-play-highlight-icon {
     opacity: 1;
 }
@@ -300,24 +246,6 @@
     z-index: 3;
     color: #a6d2a5;
     font-size: 20px;
-}
-
-.waveform-play-highlight, .waveform-play-highlight-icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: all .2s ease-in-out;
-}
-
-/*.song-main:hover .song__image {*/
-/*opacity: 0.3;*/
-/*}*/
-
-.song-poster:hover .song--image {
-    opacity: 0.3;
 }
 
 .song-user {
@@ -346,23 +274,8 @@
     color: #ccc;
 }
 
-.song-list-item-stat {
-    display: inline-block;
-    width: 80px;
-}
-
 .song-username {
     font-size: 18px;
-}
-
-.song-card-user-image {
-    display: block;
-    width: 24px;
-    height: 24px;
-    margin-top: 4px;
-    margin-right: 10px;
-    border-radius: 100%;
-    float: left;
 }
 
 .toggle-play-button:hover .toggle-play-button-icon {
@@ -420,6 +333,16 @@
     top: 0;
     left: 0;
     height: 100%;
+}
+
+.waveform-play-highlight, .waveform-play-highlight-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all .2s ease-in-out;
 }
 
 .waveform-play-highlight, .waveform-play-highlight-icon {
