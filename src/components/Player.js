@@ -285,9 +285,11 @@ class Player extends Component {
         } = this.props;
         const playingTrack = playList[playingTrackIndex] || {};
         const user = playingTrack.user || {};
+        if (playingTrackIndex === -1 ) {
 
+        }
         return (
-            <div className="player">
+            <div className={`player ${playingTrackIndex === -1 ? 'player-hidden' : ''}`}>
                 <audio id="audio" ref={(audio) => this.audioElement = audio} src={getStreamUrl(playList, playingTrackIndex)}  />
                 <div className="container">
                     <div className="player-main">
@@ -330,7 +332,7 @@ class Player extends Component {
 
 
                         <div className="player-section player-seek">
-                            <div className="player-seek-bar-wrap" onClick={this.handleSeekWithClick}>
+                            <div className="player-seek-bar-wrap" onClick={this.handleMouseClick} onMouseDown={this.handleSeekWithClick}>
                                 <div className="player-seek-bar" ref={(seekBar) => this.seekBar = seekBar}>
                                     {this.renderDurationBar()}
                                 </div>

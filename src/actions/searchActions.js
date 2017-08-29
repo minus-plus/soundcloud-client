@@ -18,25 +18,10 @@ export function searchTracks(route) {
                         }
                     })
                 }
-                // dispatch({
-                //     type:"SET_TRACKS_LIST",
-                //     payload:res.collection
-                // })
             })
             .catch(function(err) {
                 console.log('error in searching tracks', err);
             });
-        
-        function getAll(url) {
-            axios.get(url)
-                .then(function (res) {
-                    console.log('******',res);
-                    if(res.next_href){
-                        console.log('continue');
-                        getAll(res.next_href);
-                    }
-                })
-        }
     }
 }
 

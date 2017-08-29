@@ -1,21 +1,32 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 class TracksList extends Component {
     constructor(props) {
         super(props);
+        this.isLoading = false;
         this.state = {
-            isPlaying:false
+            isPlaying: false
         };
         this.handleClick = this.handleClick.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
+        this.onScroll = this.onScroll.bind(this);
+        this.toggleLoading = this.toggleLoading.bind(this);
+        this.handleScrollToTop = this.handleScrollToTop.bind(this);
     }
 
-    handleClick(track){
-        // toggleIsPlaying
-        // send track to player
-        // this.setState({isPlaying:!this.state.isPlaying}, ()=>{console.log(this.state.isPlaying)});
+    componentDidMount() {
+        document.addEventListener('scroll', this.onScroll, false);
+        this.props.getTracks();
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.onScroll, false);
+    }
+
+    handleClick(track) {
         
-        if(track.track_id !== this.props.playingTrackId) {
+
+        if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
             this.props.toggleIsPlaying();
@@ -36,36 +47,73 @@ class TracksList extends Component {
         }
     }
 
+    toggleLoading() {
+        this.isLoading = !this.isLoading;
+    }
+
+    onScroll(event) {
+        if (!this.props.next_href || this.isLoading) {
+            return;
+        }
+
+        const th = 20;
+        let scrollTop = event.srcElement.body.scrollTop;
+        if (scrollTop >= document.documentElement.offsetHeight - window.innerHeight - th) {
+            this.toggleLoading();
+            this.props.loadMoreTracks(this.props.next_href, this.toggleLoading);
+        }
+    }
+
+    handleScrollToTop() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         const {playingTrackId, isPlaying} = this.props;
-        return(
+        return (
             <div>
                 {
                     this.props.tracksList.map((track, track_index) => {
                         const username = track.user ? track.user.username : "";
                         const title = track.title || "";
+                        const avatar_url = track.user ? track.user.avatar_url : "";
+                        const id = track.id || "";
+                        let image_url;
+                        if (track.artwork_url !== null) {
+                            image_url = track.artwork_url.toString().replace('-large', '-t300x300');
+                        }
                         return (
                             <div className="col-1-5 clearfix" key={track_index}>
                                 <div className="song-card">
                                     <div className="song-card-container"
-                                         onClick={() => this.handleClick({track_index: track_index, track_id: track.id})}
+                                         onClick={() => this.handleClick({
+                                             track_index: track_index,
+                                             track_id: track.id
+                                         })}
                                     >
-                                        <div className="song-card-image" style={{backgroundImage: `url(${ track.artwork_url || '/images/track-avatar.jpg'})`}}>
+                                        <div className="song-card-image"
+                                             style={{backgroundImage: `url(${ image_url || '/images/track-avatar.jpg'})`}}>
                                         </div>
                                         <div className="toggle-play-button">
-                                            <i className={ isPlaying && playingTrackId=== track.id ?"fa fa-pause" :"fa fa-play"}
-                                               > </i>
+                                            <i className={isPlaying && playingTrackId === track.id ? "fa fa-pause" : "fa fa-play"}
+                                            > </i>
                                         </div>
                                     </div>
 
                                     <div className="song-card-user clearfix">
-                                        < img alt="user avatar" className="song-card-user-image" src={track.user.avatar_url} />
+                                        < img alt="user avatar" className="song-card-user-image" src={avatar_url}/>
                                         <div className="song-card-details">
-                                            <a className="song-card-title" >{title.substring(0, 6)}</ a>
-                                            <a className="song-card-user-username" title="House">{username.substring(0, 6)}</ a>
-
+                                            <Link to={`/track/${id}`}>
+                                                <span className="song-card-title">{title.substring(0, 6)}</span>
+                                            </Link>
+                                            <Link>
+                                                <a className="song-card-user-username">{username.substring(0, 6)}</ a>
+                                            </Link>
                                         </div>
                                     </div>
+                                </div>
+                                <div className="return-to-top" onClick={this.handleScrollToTop}>
+                                    <i className="fa fa-angle-up" aria-hidden="true"></i>
                                 </div>
                             </div>
                         )

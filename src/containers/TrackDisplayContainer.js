@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import TracksList from '../components/TracksList';
+import TrackDisplay from '../components/tracksComponents/TrackDisplay';
 import {getTracks, playTracks, toggleIsPlaying, loadMoreTracks} from '../actions';
 
 function mapStateToProps(state) {
@@ -23,4 +23,4 @@ function mapDispatchToProps(dispatch) {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TracksList);
+export default connect(mapStateToProps, mapDispatchToProps)(TrackDisplay);

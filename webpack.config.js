@@ -1,7 +1,5 @@
 var path = require('path');
 
-const webpack = require('webpack');
-
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -10,20 +8,6 @@ module.exports = {
     },
     watch: true,
     devtool: 'cheap-module-eval-source-map',
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            comments: false,
-            compress: {
-                warnings: false
-            }
-        })
-    ],
     module: {
         loaders: [
             {
@@ -36,11 +20,17 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'style!css!sass'
+                use: [ 'style-loader', 'css-loader' ]
             },
             {
                 test: /\.scss$/,
-                loader: 'style!css!sass'
+                use: [{
+                    loader: "style-loader" // 将 JS 字符串生成为 style 节点
+                }, {
+                    loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+                }, {
+                    loader: "sass-loader" // 将 Sass 编译成 CSS
+                }]
             }
         ]
     }
