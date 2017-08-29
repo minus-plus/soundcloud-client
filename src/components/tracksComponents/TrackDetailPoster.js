@@ -11,7 +11,7 @@ export default function TrackPoster(props) {
             <div className="toggle-play-button-detail"
                 onClick={() => playTracks({
                     track_id: track.id,
-                    track_index: trackIndex
+                    track_index: trackIndex + 1
                 })}
             >
                 <div className="toggle-play-button-detail-icon">

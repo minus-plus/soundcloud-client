@@ -2,7 +2,7 @@ import {getTracks, loadMoreTracks} from './trackActions';
 import {searchTracks} from './searchActions';
 import {auth} from './authActions';
 import {playTracks, setCurrentTime, setDuration, setPlaylist, toggleIsPlaying} from './playerActions';
-import {getTracksInfo} from "./trackDetailActions";
+import {getTrackDetails, getComments} from "./trackDetailActions";
 
 export {
     auth,
@@ -17,5 +17,6 @@ export {
 
     getTracks,
     loadMoreTracks,
-    getTracksInfo
+    getTrackDetails,
+    getComments
 };

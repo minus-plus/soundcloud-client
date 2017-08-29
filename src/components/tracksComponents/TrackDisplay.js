@@ -14,8 +14,13 @@ class TrackDisplay extends Component {
         this.state = {
             isPlaying: false
         };
-        props.getTracksInfo(this.props.id);
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount() {
+        const id = this.props.params.id;
+        this.props.getTrackDetails(id);
+        this.props.getComments(id);
     }
 
     handleClick(track) {
@@ -28,9 +33,9 @@ class TrackDisplay extends Component {
         }
     }
 
-    getIndexInTracklist(track, trackList) {
-        for (let i = 0; i < trackList.length; i++) {
-            if (track.id === trackList[i].id) {
+    getIndexInTracklist(track, playList) {
+        for (let i = 0; i < playList.length; i++) {
+            if (track.id === playList[i].id) {
                 return i;
             }
         }
@@ -39,14 +44,13 @@ class TrackDisplay extends Component {
 
 
     render() {
-        let {topTrack, tracksList, playTracks} = this.props;
-        if (!topTrack || topTrack.length === 0) {
+        let {currentTrack, relatedTracks, playList, playTracks} = this.props;
+
+        console.log('L47 ..... ', !currentTrack.id, this.props);
+        if (!currentTrack.id) {
             return <div>loading...</div>
         }
-
-        const trackIndex = this.getIndexInTracklist(topTrack, tracksList);
-
-
+        const trackIndex = this.getIndexInTracklist(currentTrack, playList);
         return (
             <div className="myContainer">
                 <div className="container">
@@ -56,32 +60,32 @@ class TrackDisplay extends Component {
                                 <div className="song card">
                                     <div className="song-main">
                                         <div className="song-poster" onClick={() => this.handleClick({
-                                            track_id: topTrack.id,
-                                            track_index: trackIndex
+                                            track_id: currentTrack.id,
+                                            track_index: 0
                                         })}>
                                             <div className="song-image"
-                                                 style={{backgroundImage: `url(${topTrack.artwork_url})`}}>
+                                                 style={{backgroundImage: `url(${currentTrack.artwork_url})`}}>
                                                 <div className="toggle-play-button-detail">
                                                     <div className="toggle-play-button-detail-icon">
-                                                        <i className={this.props.isPlaying && this.props.playingTrackId === topTrack.id ? "fa fa-pause" : "fa fa-play"}/>
+                                                        <i className={this.props.isPlaying && this.props.playingTrackId === currentTrack.id ? "fa fa-pause" : "fa fa-play"}/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="song--info--wrap">
                                             <div className="song-title">
-                                                <TrackTitle title={topTrack.title}/>
+                                                <TrackTitle title={currentTrack.title}/>
                                             </div>
-                                            <TrackUser track={topTrack}/>
-                                            <TrackStatus likesCount={topTrack.favoritings_count}
-                                                         playsCount={topTrack.playback_count}
-                                                         commentsCount={topTrack.comment_count}
+                                            <TrackUser track={currentTrack}/>
+                                            <TrackStatus likesCount={currentTrack.favoritings_count}
+                                                         playsCount={currentTrack.playback_count}
+                                                         commentsCount={currentTrack.comment_count}
                                             />
                                         </div>
-                                        <TrackWave imageSrc={topTrack.waveform_url}/>
+                                        <TrackWave imageSrc={currentTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown tracks={tracksList} ignorIndex={trackIndex} playTracks={playTracks}/>
+                                <TrackDown tracks={relatedTracks}  playTracks={playTracks}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>

@@ -12,26 +12,7 @@ const initialState = {
 * **/
 const tracksReducers = function (state = initialState, action) {
     switch (action.type) {
-        case "SET_TOP_TRACK":
-            const {topTrack} = action.payload;
-            return {
-                ...state,
-                topTrack: topTrack
-            };
-        case "SET_RELATED_TRACKS":
-            const {relatedTracks} = action.payload;
-            return {
-                ...state,
-                tracksList: relatedTracks
-            };
-        case "SET_COMMENTS":
-            const {comments} = action.payload;
-            return {
-                ...state,
-                comments: comments
-            };
-            break;
-        case 'SET_TRACKS_LIST':
+       case 'SET_TRACKS_LIST':
             const {tracksList} = action.payload;
             const {next_href} = action.payload;
 

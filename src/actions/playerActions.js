@@ -14,6 +14,13 @@ export function setPlaylist(playlist) {
     }
 }
 
+export function AddMoreToPlaylist(tracks) {
+    return {
+        type: 'ADD_TRACKS_TO_PLAYLIST',
+        payload: tracks
+    }
+}
+
 export function playTracks(track) {
     return {
         type: 'PLAY_TRACKS',

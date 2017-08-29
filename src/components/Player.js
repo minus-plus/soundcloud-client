@@ -278,7 +278,6 @@ class Player extends Component {
 
 
     render() {
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!',this.props);
         const {
             playingTrackIndex,
             playList,

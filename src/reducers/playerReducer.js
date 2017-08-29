@@ -11,6 +11,12 @@ const initialState = {
 
 export default function playerReducer(state = initialState, action) {
     switch (action.type) {
+        case "ADD_TRACKS_TO_PLAYLIST":
+            const newPlaylist = [...state.currentPlayList, ...action.payload];
+            return {
+                ...state,
+                currentPlayList: newPlaylist
+            }
         case "PLAY_TRACKS":
             return {
                 ...state,
