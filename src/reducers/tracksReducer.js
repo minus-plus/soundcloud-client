@@ -17,11 +17,13 @@ const tracksReducers = function (state = initialState, action) {
                 ...state,
                 tracksList: topTrack
             };
-        case "SET_RELATED_TRACKS":``
+        case "SET_RELATED_TRACKS":
             const {relatedTracks} = action.payload;
             return {
                 ...state,
-                tracksList: relatedTracks
+                tracksList: [
+                    ...state.tracksList, ...relatedTracks
+                ]
             };
         case "SET_COMMENTS":
             const {comments} = action.payload;

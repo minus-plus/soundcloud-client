@@ -29,12 +29,20 @@ class TrackDisplay extends Component {
     }
 
     render() {
-        const {tracksList} = this.props;
-        const topTrack = tracksList[0];
-        if (!tracksList || tracksList.length === 0 || !topTrack) {
+        let {tracksList} = this.props;
+        if (tracksList.length === undefined) {
+            this.topTrack = tracksList;
+        }
+        let topTrack = this.topTrack;
+        if (tracksList.length > 0) {
+            this.tracksList = tracksList.slice(1);
+        }
+        let tracks = this.tracksList;
+        console.log('>>>>>>>>>>>>', tracks)
+        if (!tracksList || tracksList.length === 0 || !tracks || !topTrack) {
             return <div>loading...</div>
         }
-        console.log(topTrack);
+
         return (
             <div className="myContainer">
                 <div className="container">
@@ -45,8 +53,7 @@ class TrackDisplay extends Component {
                                     <div className="song-main">
                                         <div className="song-poster" onClick={() => this.handleClick({
                                             track_id: topTrack.id,
-                                            track_index: 0,
-                                            playList: topTrack
+                                            track_index: 0
                                         })}>
                                             <div className="song-image"
                                                  style={{backgroundImage: `url(${topTrack.artwork_url})`}}>
@@ -65,13 +72,12 @@ class TrackDisplay extends Component {
                                             <TrackStatus likesCount={topTrack.favoritings_count}
                                                          playsCount={topTrack.playback_count}
                                                          commentsCount={topTrack.comment_count}
-                                                         description={topTrack.description.substring(0, 100)}
                                             />
                                         </div>
                                         <TrackWave imageSrc={topTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown track={tracksList.slice(1)}/>
+                                <TrackDown track={tracks}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>
