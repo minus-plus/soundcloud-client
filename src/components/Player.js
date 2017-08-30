@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {CLIENT_ID} from '../constants/auth';
 import Popout from "./Popout";
 import Playlist from "../containers/PlaylistContainer";
-import TrackDetails from './TrackDetails';
+import PlayerTrackTitle from './PlayerTrackTitle';
 
 import '../../style/popout.scss';
 
@@ -299,7 +299,7 @@ class Player extends Component {
                                 className="player-image"
                                 src={playingTrack ? `${playingTrack.artwork_url || '/images/track-avatar.jpg'}` : ""}
                             />
-                            <TrackDetails
+                            <PlayerTrackTitle
                                 trackId={playingTrack.id}
                                 title={playingTrack.title}
                                 userId={user.id}
