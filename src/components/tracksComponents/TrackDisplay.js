@@ -19,6 +19,9 @@ class TrackDisplay extends Component {
 
     componentDidMount() {
         const id = this.props.params.id;
+        // console.log('Line 22, trackdisplay ', this.props.params);
+        // console.log('Line 23 trackdisplay ', this.props);
+        // this.props.router.push('/');
         this.props.getTrackDetails(id);
         this.props.getComments(id);
     }
@@ -45,8 +48,6 @@ class TrackDisplay extends Component {
 
     render() {
         let {currentTrack, relatedTracks, playList, playTracks} = this.props;
-
-        console.log('L47 ..... ', !currentTrack.id, this.props);
         if (!currentTrack.id) {
             return <div>loading...</div>
         }

@@ -16,8 +16,9 @@ class Stream extends Component {
     }
 
 
-    componentDidUpdate() {
-
+    componentDidMount() {
+        console.log('Line 20, streams ', this.props);
+        console.log('Line 21, streams ', this.props.route);
     }
 
 

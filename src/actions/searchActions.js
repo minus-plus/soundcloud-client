@@ -8,14 +8,19 @@ export function searchTracks(route) {
         const URL = "https://api.soundcloud.com/tracks?client_id=a281614d7f34dc30b665dfcaa3ed7505&linked_partitioning=1&limit=50&q=";
         axios.get(`${URL}${route.query.q}`)
             .then(function (res) {
-                console.log('res', res);
+                const tracks = res.data.collection;
+                const next_href = res.data.next_href;
                 if(res.data){
                     dispatch({
                         type:"SET_TRACKS_LIST",
                         payload: {
-                            tracksList: res.data.collection,
-                            next_href: res.data.next_href
+                            tracksList: tracks,
+                            next_href: next_href
                         }
+                    });
+                    dispatch({
+                        type: "SET_PLAYLIST",
+                        payload: tracks
                     })
                 }
             })
