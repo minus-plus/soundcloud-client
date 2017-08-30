@@ -10,9 +10,6 @@ import Player from '../../containers/PlayerContainer';
 class TrackDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isPlaying: false
-        };
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -49,13 +46,16 @@ class TrackDetails extends Component {
         this.props.resetComponent();
     }
 
-
     render() {
         let {currentTrack, relatedTracks, playList, playTracks} = this.props;
+        console.log('My PROPS', this.props);
         if (!currentTrack.id) {
-            return <div></div>
+            return <div>loading...</div>
         }
         const trackIndex = this.getIndexInTracklist(currentTrack, playList);
+        console.log('line 59 ', this.props.isPlaying);
+        console.log('line 60 ', this.props.playingTrackId);
+        console.log('line 61 ', currentTrack.id);
         return (
             <div className="myContainer">
                 <div className="container">

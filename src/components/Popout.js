@@ -37,7 +37,6 @@ class Popout extends Component {
         })
     }
 
-
     render() {
         const {isOpen} = this.state;
         const {className, children} = this.props;
