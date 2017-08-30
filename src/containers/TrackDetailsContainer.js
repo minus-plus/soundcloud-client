@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import TrackDisplay from '../components/tracksComponents/TrackDisplay';
-import {playTracks, getTrackDetails, getComments} from '../actions';
+import TrackDetails from '../components/tracksComponents/TrackDetails';
+import {playTracks, getTrackDetails, getComments, resetComponent} from '../actions';
 
 function mapStateToProps(state) {
     const {currentTrack, relatedTracks, comments} = state.trackDetails;
@@ -20,8 +20,9 @@ function mapDispatchToProps(dispatch) {
             getTrackDetails,
             getComments,
             playTracks,
+            resetComponent
         }, dispatch
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackDisplay);
+export default connect(mapStateToProps, mapDispatchToProps)(TrackDetails);

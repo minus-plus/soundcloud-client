@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import TrackPoster from './TrackPoster';
 import TrackTitle from './TrackTitle';
 import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
@@ -8,7 +7,7 @@ import TrackComments from './TrackComments';
 import TrackDown from './TrackDown';
 import Player from '../../containers/PlayerContainer';
 
-class TrackDisplay extends Component {
+class TrackDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,6 +17,7 @@ class TrackDisplay extends Component {
     }
 
     componentDidMount() {
+        console.log('L21 TrackDisplay Mount again');
         const id = this.props.params.id;
         // console.log('Line 22, trackdisplay ', this.props.params);
         // console.log('Line 23 trackdisplay ', this.props);
@@ -45,11 +45,15 @@ class TrackDisplay extends Component {
         return -1;
     }
 
+    componentWillUnmount() {
+        this.props.resetComponent();
+    }
+
 
     render() {
         let {currentTrack, relatedTracks, playList, playTracks} = this.props;
         if (!currentTrack.id) {
-            return <div>loading...</div>
+            return <div></div>
         }
         const trackIndex = this.getIndexInTracklist(currentTrack, playList);
         return (
@@ -102,5 +106,5 @@ class TrackDisplay extends Component {
     }
 }
 
-export default TrackDisplay;
+export default TrackDetails;
 

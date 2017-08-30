@@ -57,3 +57,9 @@ export function getComments(trackId) {
             })
     }
 }
+
+export function resetComponent() {
+    return {
+        type: "RESET_TRACK_DETAILS"
+    }
+}

@@ -9,7 +9,7 @@ import {Router, Route, IndexRoute, hashHistory, browserHistory} from 'react-rout
 import reducers from './reducers';
 import App from './components/App';
 import Callback from './components/Callback';
-import TrackDisplay from './containers/TrackDisplayContainer';
+import TrackDisplay from './containers/TrackDetailsContainer';
 // AUTH OF SOUND-CLOUD
 import {CLIENT_ID, REDIRECT_URI} from './constants/auth';
 

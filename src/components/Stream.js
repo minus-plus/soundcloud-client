@@ -16,25 +16,19 @@ class Stream extends Component {
     }
 
 
-    componentDidMount() {
-        console.log('Line 20, streams ', this.props);
-        console.log('Line 21, streams ', this.props.route);
-    }
-
-
     render() {
-        return (
-            <div className="parent-container">
-                <br/>
-                <div className="body-container">
-                    <TracksList />
-                </div>
+    return (
+<div className="parent-container">
+<br/>
+<div className="body-container">
+<TracksList />
+</div>
 
-                <Player />
-            </div>
+<Player />
+</div>
 
-        );
-    }
+);
+}
 }
 
 

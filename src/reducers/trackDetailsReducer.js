@@ -4,7 +4,7 @@
 const initialState = {
     currentTrack:{},
     relatedTracks: [],
-    comments: [],
+    comments: []
 };
 
 /*
@@ -18,19 +18,27 @@ const trackDetailsReducers = function (state = initialState, action) {
             const {currentTrack} = action.payload;
             return {
                 ...state,
-                currentTrack: currentTrack
+                currentTrack: currentTrack,
+                relatedTracks: [],
             };
         case "SET_RELATED_TRACKS":
             const {relatedTracks} = action.payload;
             return {
                 ...state,
-                relatedTracks: relatedTracks
+                relatedTracks: relatedTracks,
             };
         case "SET_COMMENTS":
             const {comments} = action.payload;
             return {
                 ...state,
                 comments: comments
+            };
+            break;
+        case "RESET_TRACK_DETAILS":
+            return {
+                currentTrack:{},
+                relatedTracks: [],
+                comments: []
             };
             break;
         default:
