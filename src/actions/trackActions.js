@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getTracks() {
     return function(dispatch){
-        const URL = "https://api.soundcloud.com/tracks?client_id=a281614d7f34dc30b665dfcaa3ed7505&linked_partitioning=1&limit=50&q=";
+        const URL = "https://api.soundcloud.com/tracks?client_id=a281614d7f34dc30b665dfcaa3ed7505&linked_partitioning=1&limit=80&q=";
     
         axios.get(`${URL}house`)
             .then(function (response) {
