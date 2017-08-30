@@ -4,7 +4,7 @@ class Popout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            isOpen: false
         };
 
         this.toggleIsOpen = this.toggleIsOpen.bind(this);
@@ -20,26 +20,26 @@ class Popout extends Component {
     }
 
     handleClickOutside(event) {
-        console.log("L23 Popout", this.state.open && !this.popout.contains(event.target))
-        console.log("L24 Popout", this.state.open);
-        if (this.state.open && !this.popout.contains(event.target)) {
+        console.log("L23 Popout", this.state.isOpen && !this.popout.contains(event.target));
+        console.log("L24 Popout", this.state.isOpen);
+        if (this.state.isOpen && !this.popout.contains(event.target)) {
             this.setState({
-                open: false
-            })
+                isOpen: false
+            }, console.log("L28 Popout", this.state.isOpen));
         } else {
-            console.log("L30 Popout", this.state.open)
+
         }
     }
 
     toggleIsOpen() {
         this.setState({
-            open: !this.state.open
+            isOpen: !this.state.isOpen
         })
     }
 
 
     render() {
-        const {open} = this.state;
+        const {isOpen} = this.state;
         const {className, children} = this.props;
         const icon = React.cloneElement(children[0], {
             onClick: this.toggleIsOpen
@@ -50,7 +50,7 @@ class Popout extends Component {
                 className={`${className} popout`}
             >
                 {icon}
-                {open ? children[1] : null}
+                {isOpen ? children[1] : null}
 
             </div>
         )
