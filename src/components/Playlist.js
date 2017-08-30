@@ -33,7 +33,7 @@ class Playlist extends Component {
                       <img className='playlist-image'
                         src={track.artwork_url || '/images/track-avatar.jpg'}
                       />
-                      <div className="track-title">{track.title}</div>
+                      <span className="track-title" title={track.title}>{track.title}</span>
                   </div>
               </li>
             );
