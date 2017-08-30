@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import '../../style/nav-bar.scss';
 import '../../style/trackslist.scss';
 import '../../style/player.scss';
-import '../../style/trackscomponent.css';
+import '../../style/trackscomponent.scss';
 
 import TracksList from '../containers/TracksListContainer';
 import Player from '../containers/PlayerContainer';
