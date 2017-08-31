@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import TrackTitle from './TrackTitle';
 import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
-import TrackDetailWave from './TrackDetailWave';
+import TrackWave from '../../containers/TrackWaveContainer';
 
 class RelatedTracks extends Component {
 
@@ -27,7 +27,6 @@ class RelatedTracks extends Component {
             return null;
         }
         const track = allTracks.map((track, index) => {
-            console.log(track.id);
             return (
                 <div className="song-list-item" key={track.id}>
                     {/*<TrackDetailPoster className="song-list-item-image" track={track} trackIndex={index} playTracks={playTracks} />*/}
@@ -64,7 +63,7 @@ class RelatedTracks extends Component {
                             </div>
                         </div>
                     </div>
-                    <TrackDetailWave imageSrc={track.waveform_url}/>
+                    <TrackWave imageSrc={track.waveform_url} trackId={track.id} index={index + 1} />
                 </div>
             )
         });

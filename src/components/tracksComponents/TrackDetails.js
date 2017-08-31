@@ -15,7 +15,6 @@ class TrackDetails extends Component {
     }
 
     componentDidMount() {
-        console.log('L21 TrackDisplay Mount again');
         const id = this.props.params.id;
         // console.log('Line 22, trackdisplay ', this.props.params);
         // console.log('Line 23 trackdisplay ', this.props);
@@ -85,10 +84,10 @@ class TrackDetails extends Component {
                                                          commentsCount={currentTrack.comment_count}
                                             />
                                         </div>
-                                        <TrackWave imageSrc={currentTrack.waveform_url} currentTrack={currentTrack}/>
+                                        <TrackWave imageSrc={currentTrack.waveform_url} trackId={currentTrack.id} index={0} />
                                     </div>
                                 </div>
-                                <RelatedTracks tracks={relatedTracks} />
+                                <RelatedTracks tracks={relatedTracks} playTracks={this.props.playTracks} />
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>

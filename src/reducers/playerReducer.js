@@ -16,7 +16,7 @@ export default function playerReducer(state = initialState, action) {
             return {
                 ...state,
                 currentPlayList: newPlaylist
-            }
+            };
         case "PLAY_TRACKS":
             return {
                 ...state,

@@ -3,11 +3,12 @@ import {bindActionCreators} from 'redux';
 import TrackWave from '../components/tracksComponents/TrackWave';
 import {playTracks, toggleIsPlaying} from '../actions';
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
     const {isPlaying, playingTrackId} = state.player;
     return {
+        ...ownProps,
         isPlaying,
-        playingTrackId
+        playingTrackId,
     }
 }
 

@@ -7,8 +7,6 @@ class TrackWave extends Component {
 
     handleClick(track) {
         // toggleIsPlaying
-        console.log(track.track_id);
-        console.log(this.props.playingTrackId);
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
@@ -17,22 +15,27 @@ class TrackWave extends Component {
     }
 
     render() {
-        const {currentTrack} = this.props;
-        const {isPlaying, playingTrackId} = this.props;
+        const {
+            trackId,
+            imageSrc,
+            index,
+            isPlaying,
+            playingTrackId
+        } = this.props;
         return (
             <div className="song-waveform">
                 <div className="waveform">
                     <canvas className="waveform-canvas"/>
                     <div className="waveform-image-container" onClick={() => this.handleClick({
-                        track_id: currentTrack.id,
-                        track_index: 0
+                        track_id: trackId,
+                        track_index: index
                     })}>
-                        <img src={this.props.imageSrc} className="waveform-image" alt="song waveform"/>
+                        <img src={imageSrc} className="waveform-image" alt="song waveform"/>
                         <div className="waveform-image-bg"></div>
                         <div>
                             <div className="waveform-play-highlight"></div>
                             <div className="waveform-play-highlight-icon">
-                                <i className={isPlaying && playingTrackId === currentTrack.id ? "fa fa-pause" : "fa fa-play"}/>
+                                <i className={isPlaying && playingTrackId === trackId ? "fa fa-pause" : "fa fa-play"}/>
                             </div>
                         </div>
                     </div>
@@ -42,4 +45,4 @@ class TrackWave extends Component {
     }
 }
 
-export default TrackWave
+export default TrackWave;

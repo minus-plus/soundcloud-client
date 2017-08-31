@@ -1,7 +1,5 @@
 const initialState = {
-    topTrack:[],
     tracksList: [],
-    comments: [],
     next_href: ""
 };
 
