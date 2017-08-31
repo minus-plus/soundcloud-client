@@ -62,7 +62,7 @@ class TracksList extends Component {
                         const username = track.user ? track.user.username : "";
                         let title = track.title || "";
                         title = title.split('-')[1] || title.substring(0, 12);
-                        title = title.split('(')[0];
+                        title = title.split('(')[0] || title;
                         const avatar_url = track.user ? track.user.avatar_url : "";
                         const id = track.id || "";
                         return (
