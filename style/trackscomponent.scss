@@ -278,8 +278,9 @@
     font-size: 18px;
 }
 
-.toggle-play-button:hover .toggle-play-button-icon {
+.toggle-play-button:hover {
     opacity: 1;
+    cursor: pointer;
 }
 
 .toggle-play-button-detail {
