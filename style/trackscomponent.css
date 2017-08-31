@@ -300,6 +300,7 @@
 
 .toggle-play-button-detail:hover {
     background-color: rgba(0,0,0,.8);
+    cursor: pointer;
 }
 
 .toggle-play-button-detail:hover .toggle-play-button-detail-icon {

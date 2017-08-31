@@ -87,7 +87,7 @@ class TracksList extends Component {
                                         < img alt="user avatar" className="song-card-user-image" src={avatar_url}/>
                                         <div className="song-card-details">
                                             <Link to={`/track/${id}`}>
-                                                <span className="song-card-title" onMouseEnter={title}>{title}</span>
+                                                <span className="song-card-title">{title}</span>
                                             </Link>
                                             <Link>
                                                 <span

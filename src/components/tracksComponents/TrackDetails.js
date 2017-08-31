@@ -4,12 +4,15 @@ import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
 import TrackWave from './TrackWave';
 import TrackComments from './TrackComments';
-import TrackDown from './TrackDown';
+import TrackDown from '../../containers/TrackDownContainer';
 import Player from '../../containers/PlayerContainer';
 
 class TrackDetails extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isPlaying: false
+        };
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -46,16 +49,13 @@ class TrackDetails extends Component {
         this.props.resetComponent();
     }
 
+
     render() {
         let {currentTrack, relatedTracks, playList, playTracks} = this.props;
-        console.log('My PROPS', this.props);
         if (!currentTrack.id) {
-            return <div>loading...</div>
+            return <div></div>
         }
         const trackIndex = this.getIndexInTracklist(currentTrack, playList);
-        console.log('line 59 ', this.props.isPlaying);
-        console.log('line 60 ', this.props.playingTrackId);
-        console.log('line 61 ', currentTrack.id);
         return (
             <div className="myContainer">
                 <div className="container">
@@ -90,7 +90,7 @@ class TrackDetails extends Component {
                                         <TrackWave imageSrc={currentTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown tracks={relatedTracks}  playTracks={playTracks}/>
+                                <TrackDown tracks={relatedTracks}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>
@@ -98,9 +98,7 @@ class TrackDetails extends Component {
                         </div>
                     </div>
                 </div>
-                <Player playList={this.props.track}
-                        playingTrackIndex={0}
-                />
+                <Player/>
             </div>
         )
     }
