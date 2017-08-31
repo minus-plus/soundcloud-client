@@ -61,7 +61,7 @@ class TracksList extends Component {
                     this.props.tracksList.map((track, track_index) => {
                         const username = track.user ? track.user.username : "";
                         let title = track.title || "";
-                        title = title.split('-')[1] || title.substring(0,12);
+                        title = title.split('-')[1] || title.substring(0, 12);
                         title = title.split('(')[0];
                         const avatar_url = track.user ? track.user.avatar_url : "";
                         const id = track.id || "";
@@ -90,7 +90,8 @@ class TracksList extends Component {
                                                 <span className="song-card-title">{title}</span>
                                             </Link>
                                             <Link>
-                                                <span className="song-card-user-username">{username.substring(0, 6)}</ span>
+                                                <span
+                                                    className="song-card-user-username">{username.substring(0, 6)}</ span>
                                             </Link>
                                         </div>
                                     </div>

@@ -2,17 +2,15 @@ import React, {Component} from 'react';
 import TrackTitle from './TrackTitle';
 import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
-import TrackWave from './TrackWave';
+import TrackWave from '../../containers/TrackWaveContainer';
 import TrackComments from './TrackComments';
-import RelatedTracks from './RelatedTracks';
+
+import RelatedTracks from '../../containers/RelatedTracksContainer';
 import Player from '../../containers/PlayerContainer';
 
 class TrackDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isPlaying: false
-        };
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -87,10 +85,10 @@ class TrackDetails extends Component {
                                                          commentsCount={currentTrack.comment_count}
                                             />
                                         </div>
-                                        <TrackWave imageSrc={currentTrack.waveform_url}/>
+                                        <TrackWave imageSrc={currentTrack.waveform_url} currentTrack={currentTrack}/>
                                     </div>
                                 </div>
-                                <RelatedTracks tracks={relatedTracks}  playTracks={playTracks}/>
+                                <RelatedTracks tracks={relatedTracks} />
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>
@@ -98,9 +96,7 @@ class TrackDetails extends Component {
                         </div>
                     </div>
                 </div>
-                <Player playList={this.props.track}
-                        playingTrackIndex={0}
-                />
+                <Player/>
             </div>
         )
     }
