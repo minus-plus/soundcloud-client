@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import TrackTitle from './TrackTitle';
 import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
-import TrackWave from './TrackWave';
+import TrackWave from '../../containers/TrackWaveContainer';
 import TrackComments from './TrackComments';
 import TrackDown from '../../containers/TrackDownContainer';
 import Player from '../../containers/PlayerContainer';
@@ -10,9 +10,6 @@ import Player from '../../containers/PlayerContainer';
 class TrackDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isPlaying: false
-        };
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -87,7 +84,7 @@ class TrackDetails extends Component {
                                                          commentsCount={currentTrack.comment_count}
                                             />
                                         </div>
-                                        <TrackWave imageSrc={currentTrack.waveform_url}/>
+                                        <TrackWave imageSrc={currentTrack.waveform_url} currentTrack={currentTrack}/>
                                     </div>
                                 </div>
                                 <TrackDown tracks={relatedTracks}/>

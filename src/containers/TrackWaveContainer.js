@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import TrackDown from '../components/tracksComponents/TrackDown';
+import TrackWave from '../components/tracksComponents/TrackWave';
 import {playTracks, toggleIsPlaying} from '../actions';
 
 function mapStateToProps(state) {
@@ -20,4 +20,4 @@ function mapDispatchToProps(dispatch) {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackDown);
+export default connect(mapStateToProps, mapDispatchToProps)(TrackWave);

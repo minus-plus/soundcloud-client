@@ -22,7 +22,7 @@ class TrackDown extends Component {
 
     render() {
         const allTracks = this.props.tracks;
-        const {trackIndex, playTracks, isPlaying, playingTrackId, toggleIsPlaying} = this.props;
+        const {isPlaying, playingTrackId} = this.props;
         if (allTracks.length === 0) {
             return null;
         }
