@@ -4,7 +4,7 @@ import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
 import TrackWave from './TrackWave';
 import TrackComments from './TrackComments';
-import TrackDown from './TrackDown';
+import RelatedTracks from './RelatedTracks';
 import Player from '../../containers/PlayerContainer';
 
 class TrackDetails extends Component {
@@ -90,7 +90,7 @@ class TrackDetails extends Component {
                                         <TrackWave imageSrc={currentTrack.waveform_url}/>
                                     </div>
                                 </div>
-                                <TrackDown tracks={relatedTracks}  playTracks={playTracks}/>
+                                <RelatedTracks tracks={relatedTracks}  playTracks={playTracks}/>
                             </div>
                             <div className="col-3-10">
                                 <TrackComments className="float-right" comments={this.props.comments}/>

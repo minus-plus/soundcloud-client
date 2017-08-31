@@ -5,7 +5,7 @@ import TrackUser from './TrackUser';
 import TrackStatus from './TrackStatus';
 import TrackDetailWave from './TrackDetailWave';
 
-export default function TrackDown(props) {
+export default function RelatedTracks(props) {
     const allTracks = props.tracks;
     const playTracks = props.playTracks;
     if (allTracks.length === 0) {
