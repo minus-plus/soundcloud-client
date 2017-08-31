@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import TrackWave from '../components/tracksComponents/TrackWave';
+import TrackWave from '../components/trackDetails/sharedComponents/TrackWave';
 import {playTracks, toggleIsPlaying} from '../actions';
 
 function mapStateToProps(state, ownProps) {

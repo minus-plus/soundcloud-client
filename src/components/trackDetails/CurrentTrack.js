@@ -2,9 +2,9 @@
  * Created by Yun on 8/31/2017.
  */
 import React, {Component} from 'react';
-import TrackTitle from './TrackTitle';
-import TrackUser from './TrackUser';
-import TrackStatus from './TrackStatus';
+import TrackTitle from './sharedComponents/TrackTitle';
+import TrackUser from './sharedComponents/TrackUser';
+import TrackStatus from './sharedComponents/TrackStatus';
 import TrackWave from '../../containers/TrackWaveContainer';
 class CurrentTrack extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class CurrentTrack extends Component {
     }
 
     render() {
-        let {currentTrack, playTracks} = this.props;
+        let {currentTrack} = this.props;
 
         return(
             <div className="song-main">

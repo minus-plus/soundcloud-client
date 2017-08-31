@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import TrackTitle from './TrackTitle';
-import TrackUser from './TrackUser';
-import TrackStatus from './TrackStatus';
+import TrackTitle from './sharedComponents/TrackTitle';
+import TrackUser from './sharedComponents/TrackUser';
+import TrackStatus from './sharedComponents/TrackStatus';
 import TrackWave from '../../containers/TrackWaveContainer';
 
 class RelatedTracks extends Component {
