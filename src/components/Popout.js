@@ -20,12 +20,10 @@ class Popout extends Component {
     }
 
     handleClickOutside(event) {
-        console.log("L23 Popout", this.state.isOpen && !this.popout.contains(event.target));
-        console.log("L24 Popout", this.state.isOpen);
         if (this.state.isOpen && !this.popout.contains(event.target)) {
             this.setState({
                 isOpen: false
-            }, console.log("L28 Popout", this.state.isOpen));
+            });
         } else {
 
         }
