@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NavbarMenu from '../containers/NavbarContainer';
+import Player from '../containers/PlayerContainer';
 
 class App extends Component {
 
@@ -8,6 +9,7 @@ class App extends Component {
             <div>
                 <NavbarMenu />
                 {this.props.children}
+                <Player />
             </div>
         )
     }

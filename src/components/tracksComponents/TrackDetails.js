@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
-import TrackTitle from './TrackTitle';
-import TrackUser from './TrackUser';
-import TrackStatus from './TrackStatus';
-import TrackWave from '../../containers/TrackWaveContainer';
-import TrackComments from './TrackComments';
 
+import CurrentTrack from "./CurrentTrack";
+import TrackComments from './TrackComments';
 import RelatedTracks from '../../containers/RelatedTracksContainer';
-import Player from '../../containers/PlayerContainer';
 
 class TrackDetails extends Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -23,36 +18,16 @@ class TrackDetails extends Component {
         this.props.getComments(id);
     }
 
-    handleClick(track) {
-        // toggleIsPlaying
-        console.log(track);
-        if (track.track_id !== this.props.playingTrackId) {
-            this.props.playTracks(track);
-        } else {
-            this.props.toggleIsPlaying();
-        }
-    }
-
-    getIndexInTracklist(track, playList) {
-        for (let i = 0; i < playList.length; i++) {
-            if (track.id === playList[i].id) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     componentWillUnmount() {
         this.props.resetComponent();
     }
 
 
     render() {
-        let {currentTrack, relatedTracks, playList, playTracks} = this.props;
+        let {currentTrack, relatedTracks, playTracks} = this.props;
         if (!currentTrack.id) {
             return <div></div>
         }
-        const trackIndex = this.getIndexInTracklist(currentTrack, playList);
         return (
             <div className="myContainer">
                 <div className="container">
@@ -60,32 +35,7 @@ class TrackDetails extends Component {
                         <div className="grid">
                             <div className="col-7-10">
                                 <div className="song card">
-                                    <div className="song-main">
-                                        <div className="song-poster" onClick={() => this.handleClick({
-                                            track_id: currentTrack.id,
-                                            track_index: 0
-                                        })}>
-                                            <div className="song-image"
-                                                 style={{backgroundImage: `url(${currentTrack.artwork_url})`}}>
-                                                <div className="toggle-play-button-detail">
-                                                    <div className="toggle-play-button-detail-icon">
-                                                        <i className={this.props.isPlaying && this.props.playingTrackId === currentTrack.id ? "fa fa-pause" : "fa fa-play"}/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="song--info--wrap">
-                                            <div className="song-title">
-                                                <TrackTitle title={currentTrack.title}/>
-                                            </div>
-                                            <TrackUser track={currentTrack}/>
-                                            <TrackStatus likesCount={currentTrack.favoritings_count}
-                                                         playsCount={currentTrack.playback_count}
-                                                         commentsCount={currentTrack.comment_count}
-                                            />
-                                        </div>
-                                        <TrackWave imageSrc={currentTrack.waveform_url} trackId={currentTrack.id} index={0} />
-                                    </div>
+                                    <CurrentTrack currentTrack={currentTrack} playTracks={playTracks} />
                                 </div>
                                 <RelatedTracks tracks={relatedTracks} playTracks={this.props.playTracks} />
                             </div>
@@ -95,7 +45,6 @@ class TrackDetails extends Component {
                         </div>
                     </div>
                 </div>
-                <Player/>
             </div>
         )
     }

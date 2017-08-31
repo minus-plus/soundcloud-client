@@ -22,7 +22,6 @@ class Stream extends Component {
                     <TracksList />
                 </div>
 
-                <Player />
             </div>
 
         );
