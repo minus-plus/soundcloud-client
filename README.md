@@ -14,3 +14,5 @@ click login button (make sure you have a SoundCloud accout), input your account 
 * * * 
 ### Todo
 implement player footer bar
+
+playlist li use classname to change css

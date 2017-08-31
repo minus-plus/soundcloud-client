@@ -24,7 +24,7 @@ class Playlist extends Component {
         const trackList = playList.map((track, index) => {
             const isActive = this.isActive(track.id);
             return(
-              <li
+              <li className="playlist-li"
                 key={`${track.id}-${index}`}
               >
                   <div className={`track-item ${isActive ? 'playlist-active' : ''}`}

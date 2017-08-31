@@ -7,7 +7,6 @@ import '../../style/trackscomponent.scss';
 
 import TracksList from '../containers/TracksListContainer';
 import Player from '../containers/PlayerContainer';
-
 class Stream extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +18,11 @@ class Stream extends Component {
             <div className="parent-container">
                 <br/>
                 <div className="body-container">
-                    <TracksList />
+                    <Toolbar/>
+                    <div className="col-4-5 tracks-container">
+                        <TracksList />
+                    </div>
+                    
                 </div>
 
             </div>

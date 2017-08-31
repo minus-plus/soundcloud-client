@@ -2,8 +2,12 @@
     white-space: pre-line;
 }
 .song-card {
-    border: 1px solid #e3e3e3;
+    border: 1px solid #222222;
     padding: 10px;
+}
+
+.tracks-container{
+    margin-left: 100px;
 }
 
 .clearfix {
@@ -15,10 +19,16 @@
     min-height: 1px;
     padding-right: 20px;
 }
-.col-1-5 {
-    width: 20%;
+
+
+.col-1-4 {
+    width: 25%;
     min-width: 175px;
     margin-bottom: 15px;
+}
+.col-4-5 {
+    width: 80%;
+    margin-left: 12%;
 }
 .song-card-container{
     position: relative;
@@ -27,11 +37,11 @@
 .song-card-image {
     display: block;
     width: 100%;
-    transition: .5s ease;
+    //transition: .5s ease;
     height: 70px;
     margin-bottom: 10px;
     background-position: 50%;
-    opacity: 1;
+    //opacity: 1;
     background-repeat: no-repeat;
     background-size: cover;
 }

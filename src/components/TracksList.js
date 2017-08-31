@@ -15,7 +15,7 @@ class TracksList extends Component {
     }
 
     componentDidMount() {
-        document.addEventListener('scroll', this.onScroll, false);
+        // document.addEventListener('scroll', this.onScroll, false);
         this.props.getTracks();
     }
 
@@ -24,7 +24,7 @@ class TracksList extends Component {
     }
 
     handleClick(track) {
-        // toggleIsPlaying
+      
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
@@ -65,6 +65,10 @@ class TracksList extends Component {
                         title = title.split('(')[0] || title;
                         const avatar_url = track.user ? track.user.avatar_url : "";
                         const id = track.id || "";
+                        let image_url;
+                        if (track.artwork_url !== null) {
+                            image_url = track.artwork_url.toString().replace('-large', '-t300x300');
+                        }
                         return (
                             <div className="col-1-5 clearfix" key={track_index}>
                                 <div className="song-card">
@@ -75,7 +79,7 @@ class TracksList extends Component {
                                          })}
                                     >
                                         <div className="song-card-image"
-                                             style={{backgroundImage: `url(${ track.artwork_url || '/images/track-avatar.jpg'})`}}>
+                                             style={{backgroundImage: `url(${ image_url || '/images/track-avatar.jpg'})`}}>
                                         </div>
                                         <div className="toggle-play-button">
                                             <i className={isPlaying && playingTrackId === track.id ? "fa fa-pause" : "fa fa-play"}
