@@ -268,8 +268,7 @@
 }
 
 .song-stats {
-    margin-top: 10px;
-    font-size: 11px;
+    font-size: 18px;
     color: #ccc;
 }
 
@@ -383,4 +382,12 @@
 }
 
 element.style {
+}
+
+
+.song-stats-icon {
+    margin-right: 16px;
+    & i{
+        margin-right: 4px;
+    }
 }

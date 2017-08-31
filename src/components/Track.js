@@ -2,6 +2,11 @@
  * Created by Yun on 8/31/2017.
  */
 import React, {Component} from 'react';
+import TrackTitle from './trackDetails/sharedComponents/TrackTitle';
+import TrackUser from './trackDetails/sharedComponents/TrackUser';
+import TrackStatus from './trackDetails/sharedComponents/TrackStatus';
+
+import {Link} from 'react-router';
 
 class Track extends Component {
     constructor(props) {
@@ -10,17 +15,10 @@ class Track extends Component {
         this.state = {
             isPlaying: false
         };
-        this.handleClick = this.handleClick.bind(this);
+        this.togglePlay = this.togglePlay.bind(this);
     }
 
-    componentDidMount() {
-        document.addEventListener('scroll', this.onScroll, false);
-        this.props.getTracks();
-    }
 
-    componentWillUnmount() {
-        document.removeEventListener('scroll', this.onScroll, false);
-    }
 
     togglePlay(track) {
         // toggleIsPlaying
@@ -31,60 +29,83 @@ class Track extends Component {
         }
     }
 
-
     render() {
-        const {playingTrackId, isPlaying} = this.props;
-        return (
-            <div>
-                {
-                    this.props.tracksList.map((track, track_index) => {
-                        const username = track.user ? track.user.username : "";
-                        let title = track.title || "";
-                        title = title.split('-')[1] || title.substring(0, 12);
-                        title = title.split('(')[0] || title;
-                        const avatar_url = track.user ? track.user.avatar_url : "";
-                        const id = track.id || "";
-                        return (
-                            <div className="col-1-5 clearfix" key={track_index}>
-                                <div className="song-card">
-                                    <div className="song-card-container"
-                                         onClick={() => this.handleClick({
-                                             track_index: track_index,
-                                             track_id: track.id
-                                         })}
-                                    >
-                                        <div className="song-card-image"
-                                             style={{backgroundImage: `url(${ track.artwork_url || '/images/track-avatar.jpg'})`}}>
-                                        </div>
-                                        <div className="toggle-play-button">
-                                            <i className={isPlaying && playingTrackId === track.id ? "fa fa-pause" : "fa fa-play"}
-                                            > </i>
-                                        </div>
-                                    </div>
+        const {playingTrackId, isPlaying, track, track_index} = this.props;
 
-                                    <div className="song-card-user clearfix">
-                                        < img alt="user avatar" className="song-card-user-image" src={avatar_url}/>
-                                        <div className="song-card-details">
-                                            <Link to={`/track/${id}`}>
-                                                <span className="song-card-title">{title}</span>
-                                            </Link>
-                                            <Link>
-                                                <span
-                                                    className="song-card-user-username">{username.substring(0, 6)}</ span>
-                                            </Link>
-                                        </div>
+        const username = track.user ? track.user.username : "";
+        let image_url;
+        if (track.artwork_url !== null) {
+            image_url = track.artwork_url.toString().replace('-large', '-t300x300');
+        }
+        let title = track.title || "";
+        // title = title.split('-')[1] || title.substring(0, 12);
+        // title = title.split('(')[0] || title;
+        let avatar_url = track.user ? track.user.avatar_url : "";
+        return (
+            <div className="song-list-item" key={track.id}>
+                <div className="song-list-item-image"
+                     style={{backgroundImage: `url(${ image_url || '/images/track-avatar.jpg'})`}}
+                >
+                    <div className="toggle-play-button-detail"
+                         onClick={() => this.togglePlay({
+                             track_id: track.id,
+                             track_index: track_index
+                         })}
+                    >
+                        <div className="toggle-play-button-detail-icon">
+                            <i className={isPlaying && playingTrackId === track.id ? "fa fa-pause" : "fa fa-play"}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="song-list-item-info-wrap">
+                    <div className="song-list-item-info">
+                        <div className="song-list-item-title">
+                            {title}
+                        </div>
+                        <div className="song-list-item-info-extra">
+                            <div className="song-list-item-user">
+                                <div className="song-user">
+                                    <div alt="user avatar" className="song-user-image"
+                                         style={{backgroundImage: `url(${avatar_url})`}}>
                                     </div>
-                                </div>
-                                <div className="return-to-top" onClick={this.handleScrollToTop}>
-                                    <i className="fa fa-angle-up" aria-hidden="true"></i>
+                                    <Link className="song-username"
+                                          to={`/user/${track.user.id}`}>{username}
+                                    </Link>
                                 </div>
                             </div>
-                        )
-                    })
-                }
+                            <div className="song-list-item-stats">
+                                <div className="song-stats">
+                                    <span className="song-stats-icon">
+                                        <i className="fa fa-heart"></i>
+                                        <span>{track.favoritings_count}</span>
+                                    </span>
+
+                                    <span className="song-stats-icon">
+                                        <i className="fa fa-play"></i>
+
+                                        <span>{track.playback_count}</span>
+                                    </span>
+
+                                    <span className="song-stats-icon">
+                                        <i className="fa fa-comment"></i>
+
+                                        <span>{track.comment_count}</span>
+                                    </span>
+
+                                    <span className="song-stats-icon">
+                                        <i className="fa fa-download"></i>
+                                        &nbsp;&nbsp;
+                                        <span>{track.download_count}</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        );
+        )
     }
+
 }
 
 export default Track;
