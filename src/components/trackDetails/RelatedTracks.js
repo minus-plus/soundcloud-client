@@ -29,7 +29,6 @@ class RelatedTracks extends Component {
         const track = allTracks.map((track, index) => {
             return (
                 <div className="song-list-item" key={track.id}>
-                    {/*<TrackDetailPoster className="song-list-item-image" track={track} trackIndex={index} playTracks={playTracks} />*/}
                     <div className="song-list-item-image"
                          style={{backgroundImage: `url(${track.artwork_url})`}}
                     >
