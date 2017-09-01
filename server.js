@@ -7,7 +7,6 @@ var logger = require('morgan');
 
 var app = express();
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -19,6 +18,6 @@ app.get('*', function(req, res) {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
-app.listen(8080, function() {
-    console.log('web-server running on localhost:8080');
-});
+const port = process.env.PORT || 8080;
+
+app.listen(port);
