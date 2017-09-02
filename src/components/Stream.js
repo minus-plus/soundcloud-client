@@ -5,9 +5,9 @@ import '../../style/trackslist.scss';
 import '../../style/player.scss';
 import '../../style/trackscomponent.scss';
 import '../../style/waveform.scss';
+import '../../style/notfound.scss';
 
 import TracksList from '../containers/TracksListContainer';
-import Player from '../containers/PlayerContainer';
 
 class Stream extends Component {
     constructor(props) {

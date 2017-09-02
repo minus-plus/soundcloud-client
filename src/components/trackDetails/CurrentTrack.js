@@ -5,7 +5,6 @@ import React, {Component} from 'react';
 import TrackTitle from './sharedComponents/TrackTitle';
 import TrackUser from './sharedComponents/TrackUser';
 import TrackStatus from './sharedComponents/TrackStatus';
-import TrackWave from '../../containers/TrackWaveContainer';
 import WaveForm from '../../containers/WaveFormContainer';
 
 class CurrentTrack extends Component {

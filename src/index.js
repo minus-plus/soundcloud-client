@@ -10,6 +10,7 @@ import reducers from './reducers';
 import App from './components/App';
 import Callback from './components/Callback';
 import TrackDetails from './containers/TrackDetailsContainer';
+import NotFound from './components/NotFound';
 // AUTH OF SOUND-CLOUD
 import {CLIENT_ID, REDIRECT_URI} from './constants/auth';
 
@@ -27,6 +28,7 @@ const Routes = (
                 <IndexRoute component={Stream}/>
                 <Route path="callback" component={Callback}/>
                 <Route path="/user/:id" component={TrackDetails}/>
+                <Route path="*" component={NotFound}/>
             </Route>
         </Router>
     </Provider>
