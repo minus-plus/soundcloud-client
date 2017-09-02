@@ -1,3 +1,4 @@
 /node_modules
 /.idea
 npm-debug.log.2759614634
+public/bundle.js

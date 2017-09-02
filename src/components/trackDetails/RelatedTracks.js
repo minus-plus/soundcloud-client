@@ -3,6 +3,7 @@ import TrackTitle from './sharedComponents/TrackTitle';
 import TrackUser from './sharedComponents/TrackUser';
 import TrackStatus from './sharedComponents/TrackStatus';
 import TrackWave from '../../containers/TrackWaveContainer';
+import Waveform from "../../containers/WaveFormContainer";
 
 class RelatedTracks extends Component {
 
@@ -28,7 +29,8 @@ class RelatedTracks extends Component {
         }
         const track = allTracks.map((track, index) => {
             return (
-                <div className="song-list-item" key={track.id}>
+                <div className="song-list-item"
+                     key={track.id}>
                     <div className="song-list-item-image"
                          style={{backgroundImage: `url(${track.artwork_url || '/images/track-avatar.jpg'})`}}
                     >
@@ -62,7 +64,13 @@ class RelatedTracks extends Component {
                             </div>
                         </div>
                     </div>
-                    <TrackWave imageSrc={track.waveform_url} trackId={track.id} index={index + 1}/>
+                    <Waveform waveformUrl={track.waveform_url}
+                              dispatch={this.props.dispatch}
+                              playSong={this.props.playTracks}
+                              isActive={track.id === this.props.playingTrackId}
+                              duration={track.duration}
+                              track={track}
+                              index={index + 1}/>
                 </div>
             )
         });

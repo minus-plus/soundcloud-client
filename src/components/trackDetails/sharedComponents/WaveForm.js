@@ -74,7 +74,7 @@ class Waveform extends Component {
                         className="waveform-play-highlight-icon"
                         onClick={playSong.bind(this, {
                             track_id: this.props.track.id,
-                            track_index: 0
+                            track_index: this.props.index
                         })}
                     >
                         <i className="icon ion-ios-play"/>
@@ -111,8 +111,9 @@ class Waveform extends Component {
     }
 
     renderWaveform() {
-        const {currentTime, duration, isActive} = this.props;
+        const {currentTime, duration, isActive, track} = this.props;
         const width = isActive ? currentTime / (duration / 1000) * 100 : 0;
+        console.log(track);
         return (
             <div
                 className="waveform-image-container"
@@ -129,9 +130,11 @@ class Waveform extends Component {
 
     render() {
         return (
-            <div className="waveform">
-                <canvas className="waveform-canvas"></canvas>
-                {this.renderWaveform()}
+            <div className="song-waveform">
+                <div className="waveform">
+                    <canvas className="waveform-canvas"></canvas>
+                    {this.renderWaveform()}
+                </div>
             </div>
         );
     }

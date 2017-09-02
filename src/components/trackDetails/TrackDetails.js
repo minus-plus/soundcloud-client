@@ -40,6 +40,7 @@ class TrackDetails extends Component {
                                 </div>
                                 <RelatedTracks tracks={relatedTracks} playTracks={this.props.playTracks}
                                                toggleIsPlaying={this.props.toggleIsPlaying}
+                                               currentTrack={currentTrack}
                                 />
                             </div>
                             <div className="col-3-10">
