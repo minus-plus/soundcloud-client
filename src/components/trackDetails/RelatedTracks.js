@@ -24,13 +24,13 @@ class RelatedTracks extends Component {
     render() {
         const allTracks = this.props.tracks;
         const {isPlaying, playingTrackId} = this.props;
-        console.log(this.props.isPlaying);
         if (allTracks.length === 0) {
             return null;
         }
         const track = allTracks.map((track, index) => {
             return (
-                <div className="song-list-item" key={track.id}>
+                <div className="song-list-item"
+                     key={track.id}>
                     <div className="song-list-item-image"
                          style={{backgroundImage: `url(${track.artwork_url || '/images/track-avatar.jpg'})`}}
                     >
