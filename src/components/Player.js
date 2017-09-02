@@ -7,8 +7,6 @@ import PlayerTrackTitle from './PlayerTrackTitle';
 import '../../style/popout.scss';
 
 function getStreamUrl(playList, trackIndex) {
-    console.log('111', playList);
-    console.log('222', trackIndex);
     if (trackIndex === undefined || !playList || trackIndex < 0 || trackIndex >= playList.length) {
         return "";
     }
@@ -202,13 +200,11 @@ class Player extends Component {
     }
 
     handleSeekMouseDown() {
-        console.log('mouse down');
         this.bindSeekMouseEvents();
         this.setState({isSeeking: true});
     }
 
     handleSeekMouseMove(e) {
-        console.log('moving');
         const seekBar = this.seekBar;
         let offset = e.clientX - offsetLeft(seekBar);
         offset = Math.max(offset, 0);
@@ -218,7 +214,6 @@ class Player extends Component {
     }
 
     handleSeekMouseUp() {
-        console.log('mouse up');
         if (!this.state.isSeeking) {
             return;
         }
@@ -234,7 +229,6 @@ class Player extends Component {
         const audioElement = this.audioElement;
         const percent = (e.clientX - offsetLeft(e.currentTarget)) / e.currentTarget.offsetWidth;
         const currentTime = Math.floor(percent * this.props.duration);
-        console.log(percent, currentTime);
         this.props.setCurrentTime(currentTime);
         audioElement.currentTime = currentTime;
     }

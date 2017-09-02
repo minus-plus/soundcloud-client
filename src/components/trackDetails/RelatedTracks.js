@@ -22,12 +22,16 @@ class RelatedTracks extends Component {
     }
 
     render() {
-        const allTracks = this.props.tracks;
+        let allTracks = this.props.tracks;
+        let {currentTrack} = this.props;
         const {isPlaying, playingTrackId} = this.props;
         if (allTracks.length === 0) {
             return null;
         }
-        const track = allTracks.map((track, index) => {
+        let target = allTracks.filter((track) => {
+            return track.id !== currentTrack.id
+        });
+        const track = target.map((track, index) => {
             return (
                 <div className="song-list-item"
                      key={track.id}>

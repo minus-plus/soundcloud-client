@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function TrackStatus(props) {
-    // console.log(props);
     return (
         <div>
             <div className="song-stats">

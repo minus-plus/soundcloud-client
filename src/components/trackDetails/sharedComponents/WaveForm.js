@@ -113,7 +113,6 @@ class Waveform extends Component {
     renderWaveform() {
         const {currentTime, duration, isActive, track} = this.props;
         const width = isActive ? currentTime / (duration / 1000) * 100 : 0;
-        console.log(track);
         return (
             <div
                 className="waveform-image-container"
