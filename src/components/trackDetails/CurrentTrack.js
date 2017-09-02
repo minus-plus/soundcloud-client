@@ -58,9 +58,10 @@ class CurrentTrack extends Component {
                 <WaveForm waveformUrl={currentTrack.waveform_url}
                           dispatch={this.props.dispatch}
                           playSong={this.props.playTracks}
-                          isActive={this.props.isPlaying}
+                          isActive={currentTrack.id === this.props.playingTrackId}
                           duration={currentTrack.duration}
                           track={currentTrack}
+                          index={0}
                 />
             </div>
         )

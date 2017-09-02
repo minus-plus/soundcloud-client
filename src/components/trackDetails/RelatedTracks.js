@@ -3,6 +3,7 @@ import TrackTitle from './sharedComponents/TrackTitle';
 import TrackUser from './sharedComponents/TrackUser';
 import TrackStatus from './sharedComponents/TrackStatus';
 import TrackWave from '../../containers/TrackWaveContainer';
+import Waveform from "../../containers/WaveFormContainer";
 
 class RelatedTracks extends Component {
 
@@ -23,6 +24,7 @@ class RelatedTracks extends Component {
     render() {
         const allTracks = this.props.tracks;
         const {isPlaying, playingTrackId} = this.props;
+        console.log(this.props.isPlaying);
         if (allTracks.length === 0) {
             return null;
         }
@@ -62,7 +64,13 @@ class RelatedTracks extends Component {
                             </div>
                         </div>
                     </div>
-                    <TrackWave imageSrc={track.waveform_url} trackId={track.id} index={index + 1}/>
+                    <Waveform waveformUrl={track.waveform_url}
+                              dispatch={this.props.dispatch}
+                              playSong={this.props.playTracks}
+                              isActive={track.id === this.props.playingTrackId}
+                              duration={track.duration}
+                              track={track}
+                              index={index + 1}/>
                 </div>
             )
         });

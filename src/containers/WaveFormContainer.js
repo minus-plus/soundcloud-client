@@ -5,7 +5,8 @@ import {playTracks} from '../actions/playerActions';
 
 function mapStateToProps(state) {
     return {
-        currentTime: state.player.currentTime
+        currentTime: state.player.currentTime,
+        playingTrackId: state.player.playingTrackId
     }
 }
 
