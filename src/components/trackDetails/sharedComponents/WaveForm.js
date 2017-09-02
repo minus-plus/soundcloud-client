@@ -129,9 +129,11 @@ class Waveform extends Component {
 
     render() {
         return (
-            <div className="waveform">
-                <canvas className="waveform-canvas"></canvas>
-                {this.renderWaveform()}
+            <div className="song-waveform">
+                <div className="waveform">
+                    <canvas className="waveform-canvas"></canvas>
+                    {this.renderWaveform()}
+                </div>
             </div>
         );
     }
