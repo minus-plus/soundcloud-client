@@ -7,6 +7,8 @@ import PlayerTrackTitle from './PlayerTrackTitle';
 import '../../style/popout.scss';
 
 function getStreamUrl(playList, trackIndex) {
+    console.log('111', playList);
+    console.log('222', trackIndex);
     if (trackIndex === undefined || !playList || trackIndex < 0 || trackIndex >= playList.length) {
         return "";
     }
@@ -27,6 +29,7 @@ function offsetLeft(element) {
     }
     return offset;
 }
+
 class Player extends Component {
     constructor(props) {
         super(props);
@@ -134,6 +137,7 @@ class Player extends Component {
         this.props.setDuration(0);
         this.props.setCurrentTime(0);
     }
+
     handleLoadedMetadata() {
         const audioElement = this.audioElement;
         // DISPATCH AN ACTION
@@ -160,14 +164,14 @@ class Player extends Component {
 
     // DURATION BAR
     renderDurationBar() {
-        const { currentTime, duration } = this.props;
+        const {currentTime, duration} = this.props;
 
         if (duration !== 0) {
             const width = currentTime / duration * 100;
             return (
                 <div
                     className="player-seek-duration-bar"
-                    style={{  width: `${width}%` , border: "1px solid red"}}
+                    style={{width: `${width}%`, border: "1px solid red"}}
                 >
                     <div
                         className="player-seek-handle"
@@ -220,7 +224,7 @@ class Player extends Component {
         }
         this.unbindSeekMouseEvents();
         const {currentTime} = this.props;
-        this.setState({isSeeking: false}, function() {
+        this.setState({isSeeking: false}, function () {
             const audioElement = this.audioElement;
             audioElement.currentTime = currentTime;
         })
@@ -267,7 +271,7 @@ class Player extends Component {
 
     renderPlaylist() {
         const {playList} = this.props;
-        return(
+        return (
             <Playlist
                 playList={playList}
             />
@@ -285,12 +289,13 @@ class Player extends Component {
         } = this.props;
         const playingTrack = playList[playingTrackIndex] || {};
         const user = playingTrack.user || {};
-        if (playingTrackIndex === -1 ) {
+        if (playingTrackIndex === -1) {
 
         }
         return (
             <div className={`player ${playingTrackIndex === -1 ? 'player-hidden' : ''}`}>
-                <audio id="audio" ref={(audio) => this.audioElement = audio} src={getStreamUrl(playList, playingTrackIndex)}  />
+                <audio id="audio" ref={(audio) => this.audioElement = audio}
+                       src={getStreamUrl(playList, playingTrackIndex)}/>
                 <div className="container">
                     <div className="player-main">
                         <div className="player-section player-info">
@@ -332,7 +337,8 @@ class Player extends Component {
 
 
                         <div className="player-section player-seek">
-                            <div className="player-seek-bar-wrap" onClick={this.handleMouseClick} onMouseDown={this.handleSeekWithClick}>
+                            <div className="player-seek-bar-wrap" onClick={this.handleMouseClick}
+                                 onMouseDown={this.handleSeekWithClick}>
                                 <div className="player-seek-bar" ref={(seekBar) => this.seekBar = seekBar}>
                                     {this.renderDurationBar()}
                                 </div>
@@ -348,16 +354,16 @@ class Player extends Component {
                                 className={`player-button ${(this.state.playMode === 'REPEAT' ? ' active' : '')}`}
                                 onClick={this.handleToggleRepeat}
                             >
-                                <i className="fa fa-repeat" />
+                                <i className="fa fa-repeat"/>
                             </div>
                             <div
                                 className={`player-button ${(this.state.playMode === 'SHUFFLE' ? ' active' : '')}`}
                                 onClick={this.handleToggleShuffle}
                             >
-                                <i className="fa fa-random" />
+                                <i className="fa fa-random"/>
                             </div>
                             <Popout className="player-button top-right">
-                                <i className="fa fa-list" />
+                                <i className="fa fa-list"/>
                                 {this.renderPlaylist()}
                             </Popout>
                         </div>

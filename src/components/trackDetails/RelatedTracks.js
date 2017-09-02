@@ -30,7 +30,7 @@ class RelatedTracks extends Component {
             return (
                 <div className="song-list-item" key={track.id}>
                     <div className="song-list-item-image"
-                         style={{backgroundImage: `url(${track.artwork_url})`}}
+                         style={{backgroundImage: `url(${track.artwork_url || '/images/track-avatar.jpg'})`}}
                     >
                         <div className="toggle-play-button-detail"
                              onClick={() => this.handleClick({
@@ -62,7 +62,7 @@ class RelatedTracks extends Component {
                             </div>
                         </div>
                     </div>
-                    <TrackWave imageSrc={track.waveform_url} trackId={track.id} index={index + 1} />
+                    <TrackWave imageSrc={track.waveform_url} trackId={track.id} index={index + 1}/>
                 </div>
             )
         });

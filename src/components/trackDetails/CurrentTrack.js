@@ -6,6 +6,8 @@ import TrackTitle from './sharedComponents/TrackTitle';
 import TrackUser from './sharedComponents/TrackUser';
 import TrackStatus from './sharedComponents/TrackStatus';
 import TrackWave from '../../containers/TrackWaveContainer';
+import WaveForm from '../../containers/WaveFormContainer';
+
 class CurrentTrack extends Component {
     constructor(props) {
         super(props);
@@ -23,15 +25,19 @@ class CurrentTrack extends Component {
 
     render() {
         let {currentTrack} = this.props;
+        let image_url;
+        if (currentTrack.artwork_url !== null) {
+            image_url = currentTrack.artwork_url.toString().replace('-large', '-t300x300');
+        }
 
-        return(
+        return (
             <div className="song-main">
                 <div className="song-poster" onClick={() => this.togglePlay({
                     track_id: currentTrack.id,
                     track_index: 0
                 })}>
                     <div className="song-image"
-                         style={{backgroundImage: `url(${currentTrack.artwork_url})`}}>
+                         style={{backgroundImage: `url(${image_url || '/images/track-avatar.jpg'})`}}>
                         <div className="toggle-play-button-detail">
                             <div className="toggle-play-button-detail-icon">
                                 <i className={this.props.isPlaying && this.props.playingTrackId === currentTrack.id ? "fa fa-pause" : "fa fa-play"}/>
@@ -49,7 +55,13 @@ class CurrentTrack extends Component {
                                  commentsCount={currentTrack.comment_count}
                     />
                 </div>
-                <TrackWave imageSrc={currentTrack.waveform_url} trackId={currentTrack.id} index={0} />
+                <WaveForm waveformUrl={currentTrack.waveform_url}
+                          dispatch={this.props.dispatch}
+                          playSong={this.props.playTracks}
+                          isActive={this.props.isPlaying}
+                          duration={currentTrack.duration}
+                          track={currentTrack}
+                />
             </div>
         )
     }
