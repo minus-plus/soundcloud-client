@@ -44,6 +44,18 @@ export default function playerReducer(state = initialState, action) {
                 ...state,
                 isPlaying: !state.isPlaying
             };
+            break;
+        case "RESET_PLAYER":
+            return {
+                ...state,
+                currentPlayList: [],
+                isPlaying: false,
+                playingTrack: {},
+                playingTrackIndex: -1,
+                duration: 0,
+                currentTime: 0
+            };
+            break;
         default:
             return state;
     }
