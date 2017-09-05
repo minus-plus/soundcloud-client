@@ -48,9 +48,12 @@ class Track extends Component {
             image_url = track.artwork_url.toString().replace('-large', '-t300x300');
         }
         let title = track.title || "";
-        // title = title.split('-')[1] || title.substring(0, 12);
-        // title = title.split('(')[0] || title;
+        title = title.split('-')[1] || title.substring(0, 12);
+        title = title.split('(')[0] || title;
         let avatar_url = track.user ? track.user.avatar_url : "";
+        const trackId = track.id || "";
+
+
         return (
             <div className="track-list-item" key={track.id}>
                 <div className="track-list-item-image"
@@ -71,15 +74,26 @@ class Track extends Component {
                     <div className="track-list-item-info-header">
 
                         <div className="track-list-item-title">
+                            <div className="track-title">
+
+                            </div>
+
+
                             <div className="track-user">
                                 <div alt="user avatar" className="track-user-image"
                                      style={{backgroundImage: `url(${avatar_url})`}}>
                                 </div>
-                                <Link className="track-username"
-                                      to={`/user/${track.user.id}`}>{username}
+
+                                <div className="track-username">
+                                    {username}
+                                </div>
+                                &nbsp;/&nbsp;
+                                <Link to={`/track/${trackId}`}>
+                                    <span className="track-title">{title}</span>
                                 </Link>
+
                             </div>
-                            {title}
+
                         </div>
                         <div className="track-duration">
                             {formatDuration(track.duration)}

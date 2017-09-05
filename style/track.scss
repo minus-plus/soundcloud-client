@@ -17,7 +17,7 @@ $fontColor: #3a3f41;
   }
 
   & .track-list-item-info {
-    padding: 5px;
+    padding: 0 5px 5px 5px;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -32,7 +32,6 @@ $fontColor: #3a3f41;
 
     & .track-list-item-title {
       display: flex;
-      background: #e3e3e3;
 
       & .track-user {
         display: flex;
