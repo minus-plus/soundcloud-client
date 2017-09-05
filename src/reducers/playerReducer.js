@@ -46,16 +46,7 @@ export default function playerReducer(state = initialState, action) {
             };
             break;
         case "RESET_PLAYER":
-            return {
-                ...state,
-                currentPlayList: [],
-                isPlaying: false,
-                playingTrack: {},
-                playingTrackIndex: 0,
-                // 这里要设置成0，保证切换页面时始终是currentTrack在当前播放列表
-                duration: 0,
-                currentTime: 0
-            };
+            return initialState;
             break;
         default:
             return state;
