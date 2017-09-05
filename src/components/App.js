@@ -8,7 +8,7 @@ class App extends Component {
         return(
             <div>
                 <NavbarMenu />
-                {React.cloneElement(this.props.children, {dispatch: this.props.dispatch})}
+                {this.props.children}
                 <Player />
             </div>
         )

@@ -10,12 +10,12 @@ function mapStateToProps(state) {
     }
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators(
-//         {
-//             dispatch: dispatch
-//         }, dispatch
-//     )
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(
+        {
+            dispatch: dispatch
+        }, dispatch
+    )
+}
 
-export default connect(mapStateToProps)(WaveForm);
+export default connect(mapStateToProps, mapDispatchToProps)(WaveForm);
