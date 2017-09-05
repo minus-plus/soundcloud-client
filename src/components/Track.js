@@ -8,6 +8,17 @@ import TrackStatus from './trackDetails/sharedComponents/TrackStatus';
 
 import {Link} from 'react-router';
 
+function formatDuration(d) {
+    let t = d / 1000;
+    let fd = [];
+    while (t ^ 0 !== 0) {
+        let c = ('00' + ((t % 60) | 0));
+        fd.unshift(c.substring(c.length - 2));
+        t = t / 60;
+    }
+    return fd.join(":");
+}
+
 class Track extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +28,6 @@ class Track extends Component {
         };
         this.togglePlay = this.togglePlay.bind(this);
     }
-
 
 
     togglePlay(track) {
@@ -42,8 +52,8 @@ class Track extends Component {
         // title = title.split('(')[0] || title;
         let avatar_url = track.user ? track.user.avatar_url : "";
         return (
-            <div className="song-list-item" key={track.id}>
-                <div className="song-list-item-image"
+            <div className="track-list-item" key={track.id}>
+                <div className="track-list-item-image"
                      style={{backgroundImage: `url(${ image_url || '/images/track-avatar.jpg'})`}}
                 >
                     <div className="toggle-play-button-detail"
@@ -57,49 +67,56 @@ class Track extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="song-list-item-info-wrap">
-                    <div className="song-list-item-info">
-                        <div className="song-list-item-title">
+                <div className="track-list-item-info">
+                    <div className="track-list-item-info-header">
+
+                        <div className="track-list-item-title">
+                            <div className="track-user">
+                                <div alt="user avatar" className="track-user-image"
+                                     style={{backgroundImage: `url(${avatar_url})`}}>
+                                </div>
+                                <Link className="track-username"
+                                      to={`/user/${track.user.id}`}>{username}
+                                </Link>
+                            </div>
                             {title}
                         </div>
-                        <div className="song-list-item-info-extra">
-                            <div className="song-list-item-user">
-                                <div className="song-user">
-                                    <div alt="user avatar" className="song-user-image"
-                                         style={{backgroundImage: `url(${avatar_url})`}}>
-                                    </div>
-                                    <Link className="song-username"
-                                          to={`/user/${track.user.id}`}>{username}
-                                    </Link>
-                                </div>
+                        <div className="track-duration">
+                            {formatDuration(track.duration)}
+                        </div>
+                    </div>
+                    <div className="track-list-item-info-footer">
+
+                        <div className="track-list-item-stats">
+
+                            <div className="track-stats-icon">
+                                <i className="fa fa-play"></i>
+
+                                <span>{track.playback_count}</span>
                             </div>
-                            <div className="song-list-item-stats">
-                                <div className="song-stats">
-                                    <span className="song-stats-icon">
-                                        <i className="fa fa-heart"></i>
-                                        <span>{track.favoritings_count}</span>
-                                    </span>
 
-                                    <span className="song-stats-icon">
-                                        <i className="fa fa-play"></i>
+                            <div className="track-stats-icon">
+                                <i className="fa fa-heart"></i>
+                                <span>{track.likes_count}</span>
+                            </div>
 
-                                        <span>{track.playback_count}</span>
-                                    </span>
 
-                                    <span className="song-stats-icon">
-                                        <i className="fa fa-comment"></i>
+                            <div className="track-stats-icon">
+                                <i className="fa fa-comment"></i>
 
-                                        <span>{track.comment_count}</span>
-                                    </span>
+                                <span>{track.comment_count}</span>
+                            </div>
 
-                                    <span className="song-stats-icon">
-                                        <i className="fa fa-download"></i>
-                                        &nbsp;&nbsp;
-                                        <span>{track.download_count}</span>
-                                    </span>
-                                </div>
+                            <div className="track-stats-icon">
+                                <i className="fa fa-download"></i>
+                                <span>{track.download_count}</span>
                             </div>
                         </div>
+                        <div className="comment-button">
+                            Comments
+                            <i className="fa fa-comment"></i>
+                        </div>
+
                     </div>
                 </div>
             </div>
