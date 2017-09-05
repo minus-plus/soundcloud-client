@@ -15,6 +15,7 @@ class CurrentTrack extends Component {
 
     togglePlay(track) {
         // toggleIsPlaying
+        console.log(track.track_index);
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {

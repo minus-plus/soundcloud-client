@@ -7,6 +7,8 @@ import PlayerTrackTitle from './PlayerTrackTitle';
 import '../../style/popout.scss';
 
 function getStreamUrl(playList, trackIndex) {
+    console.log(playList);
+    console.log('trackindex', trackIndex);
     if (trackIndex === undefined || !playList || trackIndex < 0 || trackIndex >= playList.length) {
         return "";
     }

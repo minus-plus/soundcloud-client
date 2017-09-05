@@ -23,6 +23,7 @@ class TracksList extends Component {
 
     componentWillUnmount() {
         document.removeEventListener('scroll', this.onScroll, false);
+        this.props.resetPlayer();
     }
 
     handleClick(track) {

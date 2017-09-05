@@ -1,7 +1,7 @@
 import {getTracks, loadMoreTracks} from './trackActions';
 import {searchTracks} from './searchActions';
 import {auth} from './authActions';
-import {playTracks, setCurrentTime, setDuration, setPlaylist, toggleIsPlaying} from './playerActions';
+import {playTracks, setCurrentTime, setDuration, setPlaylist, toggleIsPlaying, resetPlayer} from './playerActions';
 import {getTrackDetails, getComments, resetComponent} from "./trackDetailActions";
 
 export {
@@ -20,5 +20,7 @@ export {
 
     getTrackDetails,
     getComments,
-    resetComponent
+    resetComponent,
+
+    resetPlayer
 };

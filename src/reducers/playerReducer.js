@@ -51,7 +51,8 @@ export default function playerReducer(state = initialState, action) {
                 currentPlayList: [],
                 isPlaying: false,
                 playingTrack: {},
-                playingTrackIndex: -1,
+                playingTrackIndex: 0,
+                // 这里要设置成0，保证切换页面时始终是currentTrack在当前播放列表
                 duration: 0,
                 currentTime: 0
             };

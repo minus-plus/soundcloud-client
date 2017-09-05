@@ -14,10 +14,6 @@ class Stream extends Component {
         super(props);
     }
 
-    componentWillUnmount() {
-        this.props.resetPlayer()
-    }
-
     render() {
         return (
             <div className="parent-container">
