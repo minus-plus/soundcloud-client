@@ -49,5 +49,11 @@ export function toggleIsPlaying () {
     }
 }
 
+export function resetPlayer() {
+    return {
+        type: 'RESET_PLAYER'
+    }
+}
+
 
 

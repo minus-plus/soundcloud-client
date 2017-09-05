@@ -19,7 +19,7 @@ SC.initialize({client_id: CLIENT_ID, redirect_uri: REDIRECT_URI});
 const middleware = applyMiddleware(thunk);
 const store = createStore(reducers, middleware);
 
-import Stream from './components/Stream';
+import Stream from './containers/StreamContainer';
 
 const Routes = (
     <Provider store={store}>
