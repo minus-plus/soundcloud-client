@@ -19,7 +19,6 @@ class Track extends Component {
     }
 
 
-
     togglePlay(track) {
         // toggleIsPlaying
         if (track.track_id !== this.props.playingTrackId) {
@@ -60,7 +59,9 @@ class Track extends Component {
                 <div className="song-list-item-info-wrap">
                     <div className="song-list-item-info">
                         <div className="song-list-item-title">
-                            {title}
+                            <Link className="song-username" to={`/track/${track.id}`}>
+                                {title}
+                            </Link>
                         </div>
                         <div className="song-list-item-info-extra">
                             <div className="song-list-item-user">
@@ -68,9 +69,7 @@ class Track extends Component {
                                     <div alt="user avatar" className="song-user-image"
                                          style={{backgroundImage: `url(${avatar_url})`}}>
                                     </div>
-                                    <Link className="song-username"
-                                          to={`/user/${track.id}`}>{username}
-                                    </Link>
+                                    {username}
                                 </div>
                             </div>
                             <div className="song-list-item-stats">

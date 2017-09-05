@@ -27,13 +27,12 @@ const Routes = (
             <Route path="/" component={App}>
                 <IndexRoute component={Stream}/>
                 <Route path="callback" component={Callback}/>
-                <Route path="/user/:id" component={TrackDetails}/>
+                <Route path="/track/:id" component={TrackDetails}/>
                 <Route path="*" component={NotFound}/>
             </Route>
         </Router>
     </Provider>
 );
-
 
 render(
     Routes,

@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from 'react-router';
 
 export default function TrackUser (props) {
-    const track = props.track;
+    const track = props.track.user;
+    console.log(track);
     return (
         <div className="song-user">
             <div alt="user avatar" className="song-user-image"
