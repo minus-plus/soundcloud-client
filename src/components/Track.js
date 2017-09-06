@@ -29,6 +29,7 @@ class Track extends Component {
 
     togglePlay(track) {
         // toggleIsPlaying
+        console.log("L32 track, togglePlay ", this.props);
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {

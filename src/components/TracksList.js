@@ -56,17 +56,22 @@ class TracksList extends Component {
     }
 
     render() {
-        const {playingTrackId, isPlaying, playTracks} = this.props;
+        const {playingTrackId, isPlaying, playTracks, toggleIsPlaying} = this.props;
         return (
             <div>
                 {
                     this.props.tracksList.map((track, track_index) => {
-                        const props = {playingTrackId, isPlaying, track, track_index, playTracks};
+                        const props = {playingTrackId, isPlaying, track, track_index, playTracks, toggleIsPlaying};
                         return(
                             <Track key={track_index} {...props} />
                         )
                     })
                 }
+
+
+                <div className="return-to-top" onClick={this.handleScrollToTop}>
+                    <i className="fa fa-angle-up" aria-hidden="true"></i>
+                </div>
             </div>
         );
     }
