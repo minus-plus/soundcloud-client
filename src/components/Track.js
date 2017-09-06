@@ -2,9 +2,6 @@
  * Created by Yun on 8/31/2017.
  */
 import React, {Component} from 'react';
-import TrackTitle from './trackDetails/sharedComponents/TrackTitle';
-import TrackUser from './trackDetails/sharedComponents/TrackUser';
-import TrackStatus from './trackDetails/sharedComponents/TrackStatus';
 
 import {Link} from 'react-router';
 
@@ -53,6 +50,8 @@ class Track extends Component {
         let avatar_url = track.user ? track.user.avatar_url : "";
         const trackId = track.id || "";
 
+        const delimma = "/";
+
 
         return (
             <div className="track-list-item" key={track.id}>
@@ -87,7 +86,7 @@ class Track extends Component {
                                 <div className="track-username">
                                     {username}
                                 </div>
-                                &nbsp;/&nbsp;
+                                &nbsp;{delimma}&nbsp;
                                 <Link to={`/track/${trackId}`}>
                                     <span className="track-title">{title}</span>
                                 </Link>

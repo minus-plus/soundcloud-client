@@ -21,28 +21,24 @@ class TrackDetails extends Component {
 
 
     render() {
-        let {currentTrack, relatedTracks, playTracks} = this.props;
+        let {currentTrack, relatedTracks, playTracks, isPlaying, playingTrackId} = this.props;
         if (!currentTrack.id) {
             return <div></div>
         }
         return (
-            <div className="myContainer">
-                <div className="container">
-                    <div className="content">
-                        <div className="grid">
-                            <div className="col-7-10">
-                                <div className="song card">
-                                    <CurrentTrack currentTrack={currentTrack} playTracks={playTracks} />
-                                </div>
-                                <RelatedTracks tracks={relatedTracks} playTracks={this.props.playTracks} />
-                            </div>
-                            <div className="col-3-10">
-                                <TrackComments className="float-right" comments={this.props.comments}/>
-                            </div>
-                        </div>
+
+            <div className="details-container">
+                <div className="col-7-10">
+                    <div className="song card">
+                        <CurrentTrack {...this.props} />
                     </div>
+                    <RelatedTracks tracks={relatedTracks} playTracks={this.props.playTracks} />
+                </div>
+                <div className="col-3-10">
+                    <TrackComments className="float-right" comments={this.props.comments}/>
                 </div>
             </div>
+
         )
     }
 }

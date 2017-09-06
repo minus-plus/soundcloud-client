@@ -91,9 +91,103 @@ $fontColor: #3a3f41;
         cursor: pointer;
       }
     }
-
   }
 
 }
 
+
+.track-grid-item {
+  display: flex;
+  height: 60px;
+  margin: 10px 0;
+  border: 1px solid #e3e3e3;
+  position: relative;
+  color: $fontColor;
+
+  & .track-list-item-image {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    background-size: cover;
+    flex-shrink: 0;
+  }
+
+  & .track-list-item-info {
+    padding: 0 5px 5px 5px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & .track-list-item-info-header, .track-list-item-info-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    & .track-list-item-title {
+      display: flex;
+
+      & .track-user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        & .track-user-image {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          margin-right: 10px;
+          background-size: cover;
+        }
+
+        & .track-username {
+          font-size: 14px;
+          text-decoration: none;
+          color:#3a3f41
+        }
+      }
+
+    }
+
+    & .track-duration {
+      padding-right: 5px;
+    }
+
+    & .track-list-item-stats {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 14px;
+      color: #3a3f41;
+    }
+
+    & .track-stats-icon {
+      width: 100px;
+      margin-right: 16px;
+      display: inline-block;
+      & i{
+        margin-right: 4px;
+      }
+    }
+
+    & .comment-button {
+      border: 1px solid #e3e3e3;
+      border-radius: 5px;
+      padding: 2px 10px 2px 10px;
+
+      & i {
+        margin-left: 10px;
+      }
+
+      &:hover {
+        background: #e3e3e3;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+  }
+
+}
 

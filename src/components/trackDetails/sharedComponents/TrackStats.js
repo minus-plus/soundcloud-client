@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function TrackStatus(props) {
+export default function TrackStats(props) {
     // console.log(props);
     return (
         <div>

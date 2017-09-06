@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import TrackTitle from './sharedComponents/TrackTitle';
 import TrackUser from './sharedComponents/TrackUser';
-import TrackStatus from './sharedComponents/TrackStatus';
+import TrackStats from './sharedComponents/TrackStats';
 import TrackWave from '../../containers/TrackWaveContainer';
 
 class RelatedTracks extends Component {
@@ -53,7 +53,7 @@ class RelatedTracks extends Component {
                                     <TrackUser track={track}/>
                                 </div>
                                 <div className="song-list-item-stats">
-                                    <TrackStatus likesCount={track.favoritings_count}
+                                    <TrackStats likesCount={track.favoritings_count}
                                                  playsCount={track.playback_count}
                                                  commentsCount={track.comment_count}
                                                  description=""

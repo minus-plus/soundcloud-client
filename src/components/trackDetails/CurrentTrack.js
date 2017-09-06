@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import TrackTitle from './sharedComponents/TrackTitle';
 import TrackUser from './sharedComponents/TrackUser';
-import TrackStatus from './sharedComponents/TrackStatus';
+import TrackStats from './sharedComponents/TrackStats';
 import TrackWave from '../../containers/TrackWaveContainer';
 class CurrentTrack extends Component {
     constructor(props) {
@@ -14,6 +14,7 @@ class CurrentTrack extends Component {
 
     togglePlay(track) {
         // toggleIsPlaying
+        console.log('clicked');
         if (track.track_id !== this.props.playingTrackId) {
             this.props.playTracks(track);
         } else {
@@ -22,8 +23,8 @@ class CurrentTrack extends Component {
     }
 
     render() {
-        let {currentTrack} = this.props;
-
+        let {currentTrack, isPlaying, playingTrackId} = this.props;
+        console.log(this.props.isPlaying, this.props.playingTrackId, currentTrack.id);
         return(
             <div className="song-main">
                 <div className="song-poster" onClick={() => this.togglePlay({
@@ -34,17 +35,17 @@ class CurrentTrack extends Component {
                          style={{backgroundImage: `url(${currentTrack.artwork_url})`}}>
                         <div className="toggle-play-button-detail">
                             <div className="toggle-play-button-detail-icon">
-                                <i className={this.props.isPlaying && this.props.playingTrackId === currentTrack.id ? "fa fa-pause" : "fa fa-play"}/>
+                                <i className={isPlaying && playingTrackId === currentTrack.id ? "fa fa-pause" : "fa fa-play"}/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="song--info--wrap">
                     <div className="song-title">
-                        <TrackTitle title={currentTrack.title}/>
+                        <TrackTitle title={currentTrack.title} />
                     </div>
-                    <TrackUser track={currentTrack}/>
-                    <TrackStatus likesCount={currentTrack.favoritings_count}
+                    <TrackUser track={currentTrack} />
+                    <TrackStats likesCount={currentTrack.favoritings_count}
                                  playsCount={currentTrack.playback_count}
                                  commentsCount={currentTrack.comment_count}
                     />
