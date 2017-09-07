@@ -11,10 +11,10 @@ class Navbar extends Component {
         const {user} = this.props;
         return (
             <div className="nav">
-                <div className="container clearfix">
+                <div className="nav container">
                     <div className="nav-nav float-left">
                         <div className="nav-nav-item">
-                            <a className="nav-nav-item-link active" href="/" title="">Sound Client</a>
+                            <a className="nav-nav-item-link active" href="/" title=""><i className="fa fa-soundcloud website-icon"></i>SoundCloud Client</a>
                         </div>
                     </div>
                     <div className="nav-nav float-right">
