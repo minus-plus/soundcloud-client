@@ -51,11 +51,11 @@ class Track extends Component {
         let avatar_url = track.user ? track.user.avatar_url : "";
         const trackId = track.id || "";
 
-        const delimma = "/";
+        const delimma = "";
 
 
         return (
-            <div className="track-list-item" key={track.id}>
+            <div className="track-grid-item" key={track.id}>
                 <div className="track-list-item-image"
                      style={{backgroundImage: `url(${ image_url || '/images/track-avatar.jpg'})`}}
                 >
@@ -74,23 +74,20 @@ class Track extends Component {
                     <div className="track-list-item-info-header">
 
                         <div className="track-list-item-title">
-                            <div className="track-title">
-
-                            </div>
-
-
                             <div className="track-user">
                                 <div alt="user avatar" className="track-user-image"
                                      style={{backgroundImage: `url(${avatar_url})`}}>
                                 </div>
+                                <div track-user-card>
+                                    <div className="track-username">
+                                        {username}
+                                    </div>
 
-                                <div className="track-username">
-                                    {username}
+                                    <Link to={`/track/${trackId}`}>
+                                        <span className="track-title">{title}</span>
+                                    </Link>
                                 </div>
-                                &nbsp;{delimma}&nbsp;
-                                <Link to={`/track/${trackId}`}>
-                                    <span className="track-title">{title}</span>
-                                </Link>
+
 
                             </div>
 
