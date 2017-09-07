@@ -1,12 +1,17 @@
 $fontColor: #3a3f41;
 
 .track-list-item {
-  display: flex;
-  height: 60px;
+
+  height: 64px;
   margin: 10px 0;
+  padding: 1px;
   border: 1px solid #e3e3e3;
   position: relative;
   color: $fontColor;
+
+  & .track-container {
+    display: flex;
+  }
 
   & .track-list-item-image {
     width: 60px;
@@ -14,6 +19,7 @@ $fontColor: #3a3f41;
     margin-right: 10px;
     background-size: cover;
     flex-shrink: 0;
+    border: 1px solid #e3e3e3;
   }
 
   & .toggle-play-button-detail {
@@ -43,10 +49,6 @@ $fontColor: #3a3f41;
     }
   }
 
-
-
-
-
   & .track-list-item-info {
     padding: 0 5px 5px 5px;
     display: flex;
@@ -69,6 +71,10 @@ $fontColor: #3a3f41;
         flex-direction: row;
         align-items: center;
 
+        & .track-user-title-container {
+          display: flex;
+        }
+
         & .track-user-image {
           flex: 1;
           width: 24px;
@@ -80,19 +86,17 @@ $fontColor: #3a3f41;
         & .track-user-card {
           overflow: hidden;
           border: 1px solid red;
-          & .track-username {
+          & .track-user-username {
             font-size: 14px;
             text-decoration: none;
             color:#3a3f41
           }
 
-          & .track-title {
+          & .track-user-title {
 
           }
         }
-
       }
-
     }
 
     & .track-duration {
@@ -136,16 +140,18 @@ $fontColor: #3a3f41;
 }
 
 .track-grid-item {
-  border: 1px solid #e3e3e3;
+  width: 20%;
   padding: 10px;
   display: block;
   float: left;
   min-height: 1px;
-  padding-right: 20px;
-  width: 20%;
   min-width: 175px;
-  margin-bottom: 15px;
 
+  & .track-container {
+    border: 1px solid #e3e3e3;
+    padding: 10px;
+
+  }
 
   & .track-list-item-image {
     position: relative;
@@ -194,45 +200,55 @@ $fontColor: #3a3f41;
     }
   }
 
-
   & .track-list-item-info {
     position: relative;
     width:100%;
 
-
-
-  }
-
-
-
-  & .track-list-item-info {
-
-
     & .track-list-item-info-header {
     }
-
     & .track-list-item-info-footer {
       display: none;
     }
-
     & .track-list-item-title {
-
-
+      font-size: 11px;
       & .track-user {
-
-
-        & .track-user-image {
-          display: block;
-          width: 24px;
-          height: 24px;
-          margin-top: 4px;
-          margin-right: 10px;
-          border-radius: 100%;
-          float: left;
+        display: flex;
+        & .track-user-image-container {
+          display: flex;
+          align-items: center;
+          & .track-user-image {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
         }
+        & .track-user-title-container {
+          position: relative;
+          flex: 1;
+          width: 100%;
+          overflow: hidden;
 
-        & .track-username {
+          & .track-user-username {
 
+          }
+
+          & .track-delimma {
+            display: none;
+          }
+
+          & .track-user-title {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+
+            a {
+              width: 100%;
+            }
+          }
         }
       }
 
@@ -250,6 +266,4 @@ $fontColor: #3a3f41;
       display: none;
     }
   }
-
-
 }

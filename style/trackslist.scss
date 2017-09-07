@@ -78,6 +78,9 @@
 
 .return-to-top {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     right: 20px;
     bottom: 70px;
     width: 40px;
@@ -86,10 +89,31 @@
     color: white;
     font-size: 28px;
     text-align: center;
-    opacity: 0.5;
     filter: alpha(opacity=50);
 
     &:hover {
         background: #3a3f41;
     }
+}
+
+
+.toggle-grid-layout {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 20px;
+  bottom: 120px;
+  width: 40px;
+  height: 40px;
+  background: #888888;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+
+  filter: alpha(opacity=50);
+
+  &:hover {
+    background: #3a3f41;
+  }
 }
