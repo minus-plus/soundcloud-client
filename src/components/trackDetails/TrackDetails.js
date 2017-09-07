@@ -4,6 +4,7 @@ import CurrentTrack from "./CurrentTrack";
 import TrackComments from './TrackComments';
 import RelatedTracks from '../../containers/RelatedTracksContainer';
 
+
 class TrackDetails extends Component {
     constructor(props) {
         super(props);
@@ -27,7 +28,7 @@ class TrackDetails extends Component {
         }
         return (
 
-            <div className="details-container">
+            <div className="track-details-container">
                 <div className="col-7-10">
                     <div className="song card">
                         <CurrentTrack {...this.props} />

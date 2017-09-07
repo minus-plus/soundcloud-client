@@ -1,9 +1,5 @@
-.myContainer {
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 80px;
+.track-details-container {
+    margin: 40px 80px;
 }
 
 .comment {
@@ -132,6 +128,7 @@
 
 .tab-content {
     margin-top: 20px;
+    margin-bottom: 80px;
     background-color: #fff;
 }
 
@@ -267,12 +264,12 @@
 }
 
 .song-stats {
-    font-size: 18px;
+    font-size: 14px;
     color: #ccc;
 }
 
 .song-username {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .toggle-play-button:hover {
