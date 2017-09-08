@@ -44,10 +44,11 @@ class TracksList extends Component {
         if (!this.props.next_href || this.isLoading) {
             return;
         }
-
         const th = 20;
-        let scrollTop = event.srcElement.body.scrollTop;
-        if (scrollTop >= document.documentElement.offsetHeight - window.innerHeight - th) {
+        let scrollTop = document.documentElement.scrollTop;
+        let offset = document.documentElement.offsetHeight - window.innerHeight;
+        if (scrollTop >= offset - th) {
+            console.log('loading more .....');
             this.toggleLoading();
             this.props.loadMoreTracks(this.props.next_href, this.toggleLoading);
         }
