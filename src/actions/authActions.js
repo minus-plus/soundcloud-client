@@ -1,4 +1,5 @@
 import SC from 'soundcloud';
+import {CLIENT_ID, REDIRECT_URI} from '../constants/auth';
 
 import axios from 'axios';
 
@@ -22,6 +23,11 @@ export function auth() {
                 return;
             }
         }
+
+        SC.initialize({
+            client_id: CLIENT_ID,
+            redirect_uri: REDIRECT_URI
+        });
 
         SC.connect().then((session) => {
             setSession(dispatch, session);
