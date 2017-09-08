@@ -233,7 +233,9 @@ $fontColor: #3a3f41;
           overflow: hidden;
 
           & .track-user-username {
-
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
           }
 
           & .track-delimma {

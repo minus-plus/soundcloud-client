@@ -45,8 +45,9 @@ class TracksList extends Component {
             return;
         }
         const th = 20;
-        let scrollTop = document.documentElement.scrollTop;
+        let scrollTop = document.documentElement.scrollTop || window.scrollY;
         let offset = document.documentElement.offsetHeight - window.innerHeight;
+        console.log(scrollTop, offset);
         if (scrollTop >= offset - th) {
             console.log('loading more .....');
             this.toggleLoading();
