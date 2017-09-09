@@ -6,6 +6,7 @@ import '../../style/trackslist.scss';
 import '../../style/player.scss';
 import '../../style/trackscomponent.scss';
 import '../../style/track.scss';
+import '../../style/mobile.scss';
 
 
 import TracksList from '../containers/TracksListContainer';
