@@ -20,6 +20,8 @@ and (-webkit-min-device-pixel-ratio: 3) {
   // body
   .body-container {
     width: 100%;
+    padding-top: 96px;
+    margin: auto;
   }
 
   // nav-bar
@@ -172,7 +174,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     align-items: center;
     justify-content: center;
     right: 20px;
-    bottom: 110px;
+    bottom: 30%;
     width: 70px;
     height: 70px;
     background: #888888;
