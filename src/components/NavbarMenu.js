@@ -12,10 +12,10 @@ class Navbar extends Component {
         return (
             <div className="top-nav-bar">
                 <div className="top-nav-bar-container">
-                    <div className="top-nav-item">
+                    <div className="top-nav-item logo">
                         <a className="nav-nav-item-link active" href="/" title=""><i className="fa fa-soundcloud website-icon"></i>SoundCloud Client</a>
                     </div>
-                    <div className="top-nav-item">
+                    <div className="top-nav-item search">
                         <div className="nav-search">
                             <i className="fa fa-search" aria-hidden="true"> </i>
                             <NavSearch/>
