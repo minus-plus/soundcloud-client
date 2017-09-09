@@ -1,7 +1,10 @@
 // ==============================================
 
 // body
-@media only screen and (max-width: 768px) {
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
 
   .body-container {
     width: 100%;
@@ -10,7 +13,10 @@
 
 
 // nav-bar
-@media only screen and (max-width: 768px) {
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3){
 
 
   .top-nav-bar {
@@ -159,7 +165,10 @@
 }
 
 // track-list
-@media only screen and (max-width: 768px) {
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
 
   .return-to-top {
     position: fixed;
@@ -193,7 +202,10 @@
 }
 
 // track
-@media only screen and (max-width: 768px) {
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
 
   .track-list-item {
     font-size: 32px;
@@ -318,7 +330,10 @@
 }
 
 // player
-@media only screen and (max-width: 768px) {
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 3) {
   .player-hidden {
     display: none;
   }
