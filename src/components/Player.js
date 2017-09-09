@@ -167,7 +167,7 @@ class Player extends Component {
             return (
                 <div
                     className="player-seek-duration-bar"
-                    style={{  width: `${width}%` , border: "1px solid red"}}
+                    style={{  width: `${width}%`}}
                 >
                     <div
                         className="player-seek-handle"
@@ -291,7 +291,7 @@ class Player extends Component {
         return (
             <div className={`player ${playingTrackIndex === -1 ? 'player-hidden' : ''}`}>
                 <audio id="audio" ref={(audio) => this.audioElement = audio} src={getStreamUrl(playList, playingTrackIndex)}  />
-                <div className="container">
+                <div className="player-container">
                     <div className="player-main">
                         <div className="player-section player-info">
                             <img
@@ -307,7 +307,7 @@ class Player extends Component {
                             />
 
                         </div>
-                        <div className="player-section">
+                        <div className="player-section player-player-buttons">
                             <div
                                 className="player-button"
                                 onClick={this.handlePlayPrev}
@@ -331,7 +331,7 @@ class Player extends Component {
                         </div>
 
 
-                        <div className="player-section player-seek">
+                        <div className="player-section player-seek player-seek-bar-container">
                             <div className="player-seek-bar-wrap" onClick={this.handleMouseClick} onMouseDown={this.handleSeekWithClick}>
                                 <div className="player-seek-bar" ref={(seekBar) => this.seekBar = seekBar}>
                                     {this.renderDurationBar()}
@@ -343,7 +343,7 @@ class Player extends Component {
                             </div>
                         </div>
 
-                        <div className="player-section player-seek">
+                        <div className="player-section player-mode-button">
                             <div
                                 className={`player-button ${(this.state.playMode === 'REPEAT' ? ' active' : '')}`}
                                 onClick={this.handleToggleRepeat}
@@ -356,7 +356,7 @@ class Player extends Component {
                             >
                                 <i className="fa fa-random" />
                             </div>
-                            <Popout className="player-button top-right">
+                            <Popout className="player-button top-right player-playlist">
                                 <i className="fa fa-list" />
                                 {this.renderPlaylist()}
                             </Popout>

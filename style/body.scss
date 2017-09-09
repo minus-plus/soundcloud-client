@@ -4,3 +4,21 @@
           box-sizing: border-box;
   overflow-y: scroll;
 }
+
+body{
+  background-color: white;
+  width:100%;
+  height:auto;
+}
+.body-container{
+  width:80%;
+  padding-top: 96px;
+  margin: auto;
+}
+
+@media only screen and (min-width: 320px) {
+
+  .body-container {
+    width: 100%;
+  }
+}

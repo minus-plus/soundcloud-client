@@ -74,8 +74,6 @@
     float: left;
 }
 
-
-
 .return-to-top {
     position: fixed;
     display: flex;
@@ -116,4 +114,38 @@
   &:hover {
     background: #3a3f41;
   }
+}
+
+
+@media only screen and (min-width: 320px) {
+
+  .return-to-top {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 20px;
+    bottom: 110px;
+    width: 70px;
+    height: 70px;
+    background: #888888;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    filter: alpha(opacity=50);
+
+    &:hover {
+      background: #3a3f41;
+    }
+  }
+
+
+  .toggle-grid-layout {
+    display: none;
+
+    &:hover {
+      background: #3a3f41;
+    }
+  }
+
 }
