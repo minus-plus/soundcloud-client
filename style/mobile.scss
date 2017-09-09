@@ -1,22 +1,28 @@
 // =========================================
 
-// body
+
 @media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2),
+screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2),
+screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (-webkit-min-device-pixel-ratio: 2),
+screen
+and (min-device-width: 414px)
 and (max-device-width: 736px)
 and (-webkit-min-device-pixel-ratio: 3) {
-
+  // body
   .body-container {
     width: 100%;
   }
-}
 
-
-// nav-bar
-@media only screen
-and (max-device-width: 736px)
-and (-webkit-min-device-pixel-ratio: 3){
-
-
+  // nav-bar
   .top-nav-bar {
     height: 96px;
     background-color: #3a3f41;
@@ -159,14 +165,7 @@ and (-webkit-min-device-pixel-ratio: 3){
   .website-icon {
     margin-right: 5px;
   }
-
-}
-
-// track-list
-@media only screen
-and (max-device-width: 736px)
-and (-webkit-min-device-pixel-ratio: 3) {
-
+  // track-list
   .return-to-top {
     position: fixed;
     display: flex;
@@ -196,12 +195,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     }
   }
 
-}
-
-// track
-@media only screen
-and (max-device-width: 736px)
-and (-webkit-min-device-pixel-ratio: 3) {
+  // track
 
   .track-list-item {
     font-size: 32px;
@@ -323,12 +317,9 @@ and (-webkit-min-device-pixel-ratio: 3) {
     }
 
   }
-}
 
-// player
-@media only screen
-and (max-device-width: 736px)
-and (-webkit-min-device-pixel-ratio: 3) {
+
+  // player
   .player-hidden {
     display: none;
   }
@@ -438,6 +429,5 @@ and (-webkit-min-device-pixel-ratio: 3) {
 
     }
   }
-
-
 }
+
