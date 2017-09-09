@@ -1,4 +1,9 @@
 // =========================================
+$_unit: 1.5;
+
+@function multiply-px($val) {
+  @return $val * $_unit;
+}
 
 
 @media only screen
@@ -20,16 +25,16 @@ and (-webkit-min-device-pixel-ratio: 3) {
   // body
   .body-container {
     width: 100%;
-    padding-top: 96px;
+    padding-top: multiply-px(96px);
     margin: auto;
   }
 
   // nav-bar
   .top-nav-bar {
-    height: 96px;
+    height: multiply-px(96px);
     background-color: #3a3f41;
     font-family: 'Avenir Next', sans-serif, "Calibri Light";
-    font-size: 32px;
+    font-size: multiply-px(32px);
     position: fixed;
     top:0;
     left: 0;
@@ -51,7 +56,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     }
 
     .nav-nav-item-link i {
-      font-size: 36px;
+      font-size: multiply-px(36px);
     }
 
   }
@@ -61,11 +66,11 @@ and (-webkit-min-device-pixel-ratio: 3) {
     display: inline-block;
     margin: 10px 0;
     color: hsla(0,0%,100%,.5);
-    font-size: 32px;
+    font-size: multiply-px(32px);
     font-weight: lighter;
 
     & i {
-      font-size: 24px;
+      font-size: multiply-px(24px);
     }
   }
   .nav-nav-item-link.active {
@@ -91,8 +96,8 @@ and (-webkit-min-device-pixel-ratio: 3) {
     display: flex;
     align-items: center;
     background-color: #2b2b2b;
-    border-radius: 3px;
-    width: 290px;
+    border-radius: multiply-px(3px);
+    width: multiply-px(290px);
   }
 
   .nav-search i {
@@ -126,7 +131,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     display: inline-block;
     text-align: start;
     margin: 0em;
-    font: 13.3333px Arial;
+    font: multiply-px(13.3333px) Arial;
   }
   input, textarea, select, button, meter, progress {
     -webkit-writing-mode: horizontal-tb;
@@ -134,10 +139,10 @@ and (-webkit-min-device-pixel-ratio: 3) {
 
   input[type=text].nav-search-input {
     width: 290px;
-    padding: 6px 10px 6px 45px;
+    padding: 6px 10px 6px multiply-px(45px);
     color: #e3e3e3;
     font-weight: 300;
-    font-size: 28px;
+    font-size: multiply-px(28px);
     background-color: transparent;
   }
   input[type=text] {
@@ -147,7 +152,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     color: #222;
     text-align: left;
     font-family: Arial;
-    font-size: 14px;
+    font-size: multiply-px(14px);
     outline: 0;
     border-radius: 3px;
     -webkit-transition: all .2s ease-in-out;
@@ -155,10 +160,10 @@ and (-webkit-min-device-pixel-ratio: 3) {
   }
 
   .nav-logo{
-    margin-left: 30px;
+    margin-left: multiply-px(30px);
   }
   i.fa.fa-user {
-    font-size: 50px;
+    font-size: multiply-px(50px);
   }
 
   i.fa.fa-user.fa-2x.sign-in:hover {
@@ -180,11 +185,11 @@ and (-webkit-min-device-pixel-ratio: 3) {
     justify-content: center;
     right: 20px;
     bottom: 30%;
-    width: 70px;
-    height: 70px;
+    width: multiply-px(70px);
+    height: multiply-px(70px);
     background: #888888;
     color: white;
-    font-size: 50px;
+    font-size: multiply-px(50px);
     text-align: center;
     filter: alpha(opacity=50);
 
@@ -205,8 +210,8 @@ and (-webkit-min-device-pixel-ratio: 3) {
   // track
 
   .track-list-item {
-    font-size: 32px;
-    height: 100px;
+    font-size: multiply-px(32px);
+    height: multiply-px(100px);
     padding: 1px;
     border: 1px solid #e3e3e3;
     position: relative;
@@ -218,8 +223,8 @@ and (-webkit-min-device-pixel-ratio: 3) {
     }
 
     & .track-list-item-image {
-      width: 94px;
-      height: 94px;
+      width: multiply-px(94px);
+      height: multiply-px(94px);
       margin-right: 10px;
       background-size: cover;
       flex-shrink: 0;
@@ -270,8 +275,8 @@ and (-webkit-min-device-pixel-ratio: 3) {
 
             align-items: center;
             & .track-user-image {
-              width: 56px;
-              height: 56px;
+              width: multiply-px(56px);
+              height: multiply-px(56px);
               border-radius: 50%;
               margin-right: 10px;
               background-position: 50%;
@@ -335,11 +340,11 @@ and (-webkit-min-device-pixel-ratio: 3) {
     position: fixed;
     display: flex;
     align-items: center;
-    height: 96px;
+    height: multiply-px(96px);
     bottom: 0;
     left: 0;
     width: 100%;
-    font-size: 32px;
+    font-size: multiply-px(32px);
     background-color: #fff;
     border-top: 1px solid #e3e3e3;
     user-select: none;
@@ -349,7 +354,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     .player-container {
       position: relative;
       width: 100%;
-      height: 100px;
+      height: multiply-px(100px);
 
       .player-main {
         width: 100%;
@@ -360,17 +365,17 @@ and (-webkit-min-device-pixel-ratio: 3) {
 
         .player-section.player-info {
           height: 100%;
-          width: 300px;
-          font-size: 28px;
+          width: multiply-px(300px);
+          font-size: multiply-px(28px);
           overflow: hidden;
 
           & .song-card-title, & .song-card-user-username {
-            font-size: 28px;
+            font-size: multiply-px(28px);
           }
 
           & .player-image {
-            width: 96px;
-            height: 96px;
+            width: multiply-px(96px);
+            height: multiply-px(96px);
           }
 
         }
