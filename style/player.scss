@@ -8,6 +8,11 @@
   user-select: none;
   z-index:999;
 
+  .player-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   .player-main {
     display: flex;
     flex-direction: row;
