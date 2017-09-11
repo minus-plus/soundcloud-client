@@ -24,6 +24,8 @@ export function auth() {
             }
         }
 
+        console.log("redirect to", REDIRECT_URI);
+
         SC.initialize({
             client_id: CLIENT_ID,
             redirect_uri: REDIRECT_URI
