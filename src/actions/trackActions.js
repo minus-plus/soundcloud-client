@@ -43,7 +43,7 @@ export function loadMoreTracks(next_href, toggleLoading) {
                 dispatch({
                     type: "ADD_TRACKS_TO_PLAYLIST",
                     payload: tracks
-                })
+                });
                 toggleLoading();
             })
             .catch(function(err) {
